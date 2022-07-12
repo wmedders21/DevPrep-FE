@@ -1,8 +1,17 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Nav from "../nav/Nav";
 import Card from "../card/Card";
+const cardsData = require('../../mock-data/getUsersCards.json')
+const userData = require('../../mock-data/loginUserResponse.json')
 
 const Dashboard = () => {
+    const [user, setUser] = useState(userData.data)
+
+    useEffect(() => {
+
+    })
+ 
+    console.log(user)
   return (
     <div className="dashboard">
       <Nav />
