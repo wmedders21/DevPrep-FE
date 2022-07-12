@@ -3,10 +3,11 @@
 // login button -> navigate to dashboard
 // new user sign up -> modal pop-up
 
+import { Navigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import './Login.scss';
 
-const Login = () => {
+const Login = ({ user, setUser }) => {
   const [email, setEmail] = useState('')
   const [error, setError] = useState(false)
 
@@ -17,6 +18,7 @@ const Login = () => {
 
   const userLogin = (event) => {
     event.preventDefault()
+    setUser('Ross')
 
     //userarray.find (or filter)
     //if the user name and password match the database API, then user can navigate to the dashboard and we'll set current user,
@@ -32,6 +34,7 @@ const Login = () => {
 
   return (
     <div className='login-container'>
+      {user && ( < Navigate to='/dashboard' replace /> )}
       <h1>DevPrep</h1>
       <form>
         <input
