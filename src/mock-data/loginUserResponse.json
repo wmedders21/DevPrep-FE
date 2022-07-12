@@ -1,0 +1,13 @@
+{
+	"data": {
+			"id": "1",
+			"type": "user",
+			"attributes": {
+					 "email": "hello@example.com",
+					 "first_name": "Jane",
+					 "last_name": "Doe",
+					 "codewars_username": "null"
+					
+			}
+	}
+}
