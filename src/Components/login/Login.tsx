@@ -32,6 +32,11 @@ const Login = ({ user, setUser }) => {
     setEmail('')
   }
 
+  const openModal = () => {
+    console.log('modal');
+
+  }
+
   return (
     <div className='login-container'>
       {user && ( < Navigate to='/dashboard' replace /> )}
@@ -48,6 +53,7 @@ const Login = ({ user, setUser }) => {
 
         <button className='login-button' onClick={event => userLogin(event)}>Login</button>
       </form>
+      <p onClick={openModal}>New user sign up</p>
       {error && <p>Please input correct email</p>}
     </div>
   );
