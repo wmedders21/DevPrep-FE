@@ -1,8 +1,11 @@
 import React from 'react';
-const Nav = () => {
+
+
+ const Nav = () => {
     return (
-        
-        <div></div>
+        <div>
+            <h2>DEVPREP</h2>
+        </div>
 
     );
 }
