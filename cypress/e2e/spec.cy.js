@@ -1,7 +1,7 @@
 describe('empty spec', () => {
-  beforeEach(() => {
-    cy.visit("http://localhost:3000/")
-  })
+  // beforeEach(() => {
+  //   cy.visit("http://localhost:3000/")
+  // })
 
   it('should land on login', () => {
 
