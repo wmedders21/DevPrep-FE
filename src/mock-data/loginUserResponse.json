@@ -4,10 +4,9 @@
 			"type": "user",
 			"attributes": {
 					 "email": "hello@example.com",
-					 "first_name": "Jane",
-					 "last_name": "Doe",
-					 "codewars_username": "null"
-					
+					 "first_name": "Michael",
+					 "last_name": "Putnam",
+					 "codewars_username": null
 			}
 	}
 }
