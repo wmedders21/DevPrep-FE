@@ -11,8 +11,17 @@ const Decks = [
 const dropdownMenuStyles = {
     container: (provided)=>({
         ...provided,
-        width: '200px'
-})
+        width: '15vw'
+}),
+    option: (styles, state) => ({
+        ...styles,
+        height: '4vh',
+        'font-size': '2vh'
+    }),
+    menu: (styles, state) => ({
+        ...styles,
+        width: '35vw'
+    })
 }
 
 
