@@ -9,6 +9,7 @@ import './Login.scss';
 import Modal from '../modal/Modal'
 
 const Login = ({ user, setUser }: {user: string; setUser: React.Dispatch<React.SetStateAction<string>>}) => {
+  const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [error, setError] = useState(false)
   const [showModal, setShowModal] = useState(false)
@@ -17,6 +18,11 @@ const Login = ({ user, setUser }: {user: string; setUser: React.Dispatch<React.S
   const handleChangeEmail = (event) => {
     setEmail(event.target.value)
   }
+
+  const handleChangeUsername = (event) => {
+    setUsername(event.target.value)
+  }
+
 
   const userLogin = (event) => {
     event.preventDefault()
@@ -51,9 +57,18 @@ const Login = ({ user, setUser }: {user: string; setUser: React.Dispatch<React.S
                 <p>See your stats on the dashbaord</p>
             </div>
             <div className='right-side-container'>
-                <p>Please Login</p>
+                <p className='ask-login'>Please Login</p>
                 <form>
                     {/* <label>Email</label> */}
+                    <input
+                    className='input-username'
+                    type='text'
+                    placeholder='Username'
+                    name='name'
+                    value={username}
+                    onChange={event => handleChangeUsername(event)}
+                    />
+
                     <input
                     className='input-email'
                     type='text'
@@ -63,9 +78,10 @@ const Login = ({ user, setUser }: {user: string; setUser: React.Dispatch<React.S
                     onChange={event => handleChangeEmail(event)}
                     />
 
+
                     <button className='login-button' onClick={event => userLogin(event)}>Login</button>
                 </form>
-                <p onClick={openModal}>New User? Sign Up</p>
+                <p onClick={openModal} className='ask-signup'>New User? Sign Up</p>
                 {error && <p>Please input correct email</p>}
 
             </div>
