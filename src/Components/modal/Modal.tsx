@@ -27,7 +27,7 @@ const Modal = ({ setShowModal }) => {
 
   return ReactDom.createPortal(
     <div className='modal-container' ref={modalRef} onClick={closeModal}>
-      <div className='modal'>
+      <div className='modal popup'>
        <h1>DevPrep Registration</h1>
        <form>
             {/* <label>Email</label> */}
