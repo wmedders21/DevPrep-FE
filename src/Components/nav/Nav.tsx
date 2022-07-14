@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "./Nav.scss"
 import { NavLink, Link, Navigate } from 'react-router-dom'
 import Select from 'react-select';
@@ -8,11 +8,9 @@ const Decks = [
     { label: <NavLink className='nav-link dd-menu-behavioral' to='/behavioral'><p>Behavioral</p></NavLink> }
 ]
 
-const [user, setUser] = useState()
+
 
  const Nav = () => {
-
-    }
 
     return (
         <div className='nav'>
@@ -26,7 +24,7 @@ const [user, setUser] = useState()
                 <button>Home</button>
             </NavLink>
             <NavLink className='signout-button nav-button' to='/login'>
-                <button onClick={() => setUser('')}>Logout</button>
+                <button>Logout</button>
                 {/* {user ? 'Signout' : 'Login'} */}
             </NavLink>
 
