@@ -1,5 +1,5 @@
 import './App.scss';
-import { Routes, Route, Navigate, useResolvedPath } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from '../login/Login';
 import FlashcardPage from '../flashcardPage /FlashcardPage';
 import Dashboard from '../dashboard/Dashboard';
