@@ -60,6 +60,16 @@
   .codewars-container {
 		border-radius: $borderRadius;
 		background-color: $primaryMono1;
+    .codewars-stats-container {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      ul {
+        list-style-type: none;
+      }
+    }
     form {
 			align-items: center;
 			height: 100%;
