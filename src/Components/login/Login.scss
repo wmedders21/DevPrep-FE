@@ -58,10 +58,14 @@
         height: 100%;
         width: 50%;
 
-        .ask-login, 
+        .ask-login {
+          font-size: 3vh;
+          margin: 50px;
+        }
+
         .ask-signup {
           margin: 50px;
-          font-size: 3vh;
+          font-size: 2.3vh;
         }
 
         .ask-signup:hover {

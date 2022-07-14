@@ -30,7 +30,6 @@ const Modal = ({ setShowModal }) => {
       <div className='modal popup'>
        <h1>DevPrep Registration</h1>
        <form>
-            {/* <label>Email</label> */}
             <input
               className='input-username'
               type='text'
