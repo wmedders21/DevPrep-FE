@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from '../login/Login';
 import FlashcardPage from '../flashcardPage /FlashcardPage';
@@ -9,7 +9,7 @@ import UserContext from '../../UserContext';
 
 const App = () => {
 
-  const [user, setUser] = useState('Ross')
+  const [user, setUser] = useState('')
 
   return (
     < UserContext.Provider value={user} >
