@@ -23,7 +23,7 @@ const Decks = [
                 <button>Home</button>
             </NavLink>
             <NavLink className='signout-button nav-button' to='/login'>
-                <button>Signout</button>
+                <button>{user ? 'Signout' : 'Login'}</button>
             </NavLink>
 
         </div>
