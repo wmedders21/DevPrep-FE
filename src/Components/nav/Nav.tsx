@@ -1,13 +1,19 @@
 import React from 'react';
 import "./Nav.scss"
 import { NavLink, Link, Navigate } from 'react-router-dom'
-import Select from 'react-select';
+import Select, { StylesConfig } from 'react-select';
 const Decks = [
-    { label: <Link className='nav-link dd-menu-be' to='/flashcards/technicalBE'>FE</Link>},
-    { label: <NavLink className='nav-link dd-menu-fe' to='/flashcards/technicalFE'>BE</NavLink> },
+    { label: <NavLink className='nav-link dd-menu-be' to='/flashcards/technicalBE'>Technical Back End</NavLink>},
+    { label: <NavLink className='nav-link dd-menu-fe' to='/flashcards/technicalFE'>Technical Front End</NavLink> },
     { label: <NavLink className='nav-link dd-menu-behavioral' to='/flashcards/behavioral'>Behavioral</NavLink> }
 ]
 
+const dropdownMenuStyles = {
+    container: (provided)=>({
+        ...provided,
+        width: '200px'
+})
+}
 
 
  const Nav = () => {
@@ -17,9 +23,11 @@ const Decks = [
             <NavLink className='nav-link appName' to='/dashboard'>
                 <h2>DEVPREP</h2>
             </NavLink>
-            <NavLink className='flashcards-button nav-button' to='/flashcards'>
-            <Select placeholder={<p className='deck-select'>Decks</p>} options={Decks} />
-            </NavLink>
+            {/* <div style={{width: '500px'}}> */}
+
+            <Select styles={dropdownMenuStyles} placeholder={<p className='deck-select'>Decks</p>} options={Decks} />
+            {/* </div> */}
+     
             <NavLink className='home-button nav-button' to='/dashboard'>
                 <button>Home</button>
             </NavLink>
