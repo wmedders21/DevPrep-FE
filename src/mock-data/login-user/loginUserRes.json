@@ -1,0 +1,23 @@
+{
+  "data": {
+    "userId": "1",
+    "type": "user_dashboard",
+    "attributes": {
+      "username": "coolguy123",
+      "preparednessRating": {
+        "technicalBE": 4.34,
+        "technicalFE": 3.54,
+        "behavioral": 5.0
+      },
+      "cwAttributes": {
+        "codewarsUsername": null,
+        "cwLeaderboardPosition": 236,
+        "totalCompleted": 230,
+        "languageRanks": {
+          "java": 1234,
+          "ruby": 1324
+        }
+      }
+    }
+  }
+}
