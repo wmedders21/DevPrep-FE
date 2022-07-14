@@ -1,29 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./Nav.scss"
 import { NavLink, Link, Navigate } from 'react-router-dom'
 import Select from 'react-select';
 const Decks = [
-    { label: <NavLink className='appName' to='/technicalBE'><p>FE</p></NavLink>},
-    { label: <NavLink className='appName' to='/technicalBE'>BE</NavLink> },
-    { label: <NavLink className='appName' to='/behavioral'><p>Behavioral</p></NavLink> }
+    { label: <NavLink className='nav-link dd-menu-be' to='/technicalBE'><p>FE</p></NavLink>},
+    { label: <NavLink className='nav-link dd-menu-fe' to='/technicalBE'>BE</NavLink> },
+    { label: <NavLink className='nav-link dd-menu-behavioral' to='/behavioral'><p>Behavioral</p></NavLink> }
 ]
 
-
+const [user, setUser] = useState()
 
  const Nav = () => {
+
+    }
+
     return (
         <div className='nav'>
-            <NavLink className='appName' to='/dashboard'>
+            <NavLink className='nav-link appName' to='/dashboard'>
                 <h2>DEVPREP</h2>
             </NavLink>
             <NavLink className='flashcards-button nav-button' to='/flashcards'>
-            <Select placeholder={<button>Decks</button>} options={Decks} />
+            <Select placeholder={<p className='deck-select'>Decks</p>} options={Decks} />
             </NavLink>
             <NavLink className='home-button nav-button' to='/dashboard'>
                 <button>Home</button>
             </NavLink>
             <NavLink className='signout-button nav-button' to='/login'>
-                <button>{user ? 'Signout' : 'Login'}</button>
+                <button onClick={() => setUser('')}>Logout</button>
+                {/* {user ? 'Signout' : 'Login'} */}
             </NavLink>
 
         </div>
