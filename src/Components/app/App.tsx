@@ -6,10 +6,11 @@ import Dashboard from '../dashboard/Dashboard';
 import ErrorHandling from '../errorHandling/ErrorHandling';
 import React, { useState } from 'react';
 import UserContext from '../../UserContext';
+import { User } from '../../interface'
 
 const App = () => {
 
-  const [user, setUser] = useState('')
+  const [user, setUser] = useState<User>()
 
   return (
     < UserContext.Provider value={user} >

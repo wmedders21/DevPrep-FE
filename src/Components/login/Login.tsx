@@ -2,10 +2,11 @@ import { Navigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import './Login.scss';
 import Modal from '../modal/Modal'
+const userData = require("../../mock-data/login-user/loginUserRes.json");
 
 interface LoginProps {
-    user: string;
-    setUser: (userInfo: string) => void;
+    user: {};
+    setUser: (userInfo: {}) => void;
 }
 
 const Login: React.FC<LoginProps> = ({ user, setUser }) => {
@@ -23,9 +24,8 @@ const Login: React.FC<LoginProps> = ({ user, setUser }) => {
     setUsername(event.target.value)
   }
 
-  const userLogin = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
-    event.preventDefault()
-    setUser('Ross')
+  const userLogin = (): void => {
+    setUser(userData)
 
     //userarray.find (or filter)
     //if the user name and password match the database API, then user can navigate to the dashboard and we'll set current user,
@@ -56,8 +56,9 @@ const Login: React.FC<LoginProps> = ({ user, setUser }) => {
             </div>
             <div className='right-side-container'>
                 <p className='ask-login'>Please Login</p>
-                <form>
+                <form onSubmit={(event) => {userLogin(); {event.preventDefault();}}}>
                     <input
+                    required
                     className='input-username'
                     type='text'
                     placeholder='Username'
@@ -67,6 +68,7 @@ const Login: React.FC<LoginProps> = ({ user, setUser }) => {
                     />
 
                     <input
+                    required
                     className='input-email'
                     type='text'
                     placeholder='Email'
@@ -74,8 +76,8 @@ const Login: React.FC<LoginProps> = ({ user, setUser }) => {
                     value={email}
                     onChange={event => handleChangeEmail(event)}
                     />
-
-                    <button className='login-button' onClick={event => userLogin(event)}>Login</button>
+                    
+                    <input type="submit" className='login-button'/>
                 </form>
                 <p onClick={openModal} className='ask-signup'>New User? Sign Up</p>
                 {error && <p>Please input correct email</p>}
