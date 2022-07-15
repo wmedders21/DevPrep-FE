@@ -3,9 +3,9 @@ import "./Nav.scss"
 import { NavLink, Link, Navigate } from 'react-router-dom'
 import Select, { StylesConfig } from 'react-select';
 const Decks = [
-    { label: <NavLink className='nav-link dd-menu-be' to='/flashcards/technicalBE'>Technical Back End</NavLink>},
-    { label: <NavLink className='nav-link dd-menu-fe' to='/flashcards/technicalFE'>Technical Front End</NavLink> },
-    { label: <NavLink className='nav-link dd-menu-behavioral' to='/flashcards/behavioral'>Behavioral</NavLink> }
+    { label: <NavLink className='dd-menu dd-menu-be' to='/flashcards/technicalBE'>Technical Back End</NavLink>},
+    { label: <NavLink className='dd-menu dd-menu-fe' to='/flashcards/technicalFE'>Technical Front End</NavLink> },
+    { label: <NavLink className='dd-menu dd-menu-behavioral' to='/flashcards/behavioral'>Behavioral</NavLink> }
 ]
 
 const dropdownMenuStyles = {
@@ -29,12 +29,12 @@ const dropdownMenuStyles = {
 
     return (
         <div className='nav'>
-            <NavLink className='nav-link appName' to='/dashboard'>
+            <NavLink className='appName' to='/dashboard'>
                 <h2>DEVPREP</h2>
             </NavLink>
             {/* <div style={{width: '500px'}}> */}
 
-            <Select styles={dropdownMenuStyles} placeholder={<p className='deck-select'>Decks</p>} options={Decks} />
+            <Select className='deck-select'styles={dropdownMenuStyles} placeholder={<p>Decks</p>} options={Decks} />
             {/* </div> */}
      
             <NavLink className='home-button nav-button' to='/dashboard'>
