@@ -2,24 +2,71 @@ describe('Modal', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/')
     //intercept GET here with fixture
+    cy.get('.ask-signup')
+      .click()
   })
 
-//should be able to see modal's title
+  //should be able to open and see modal's title
+  it('should be able to open modal and see title', () => {
+    cy.get('h1')
+      .should('contain', 'DevPrep Registration')
+  })
 
+  //should be able to input 2 fields and check those inputs
+  it('should be able to fill out two inputs of a form and check those inputs for modal', () => {
 
-//should be able to input 2 fields and check those inputs
+    // cy.get('form')
+    // cy.get('.input-username')
+    //   .type('Gary')
+    //   .should('have.value', 'Gary')
 
+    // cy.get("input[name='name']")
+    //   .type('Igor')
+    //   .should('have.value', 'Igor')
+    // cy.get("input[name='email']")
+    //   .type('email@example.com')
+    //   .should('have.value', 'email@example.com')
+  })
 
-//should be able to see sign up botton
+  //should be able to see sign up botton
+  it('should be able to see signup button', () => {
+    cy.get('.signup-button')
+      .should('contain', 'Signup')
+  })
 
+  //should be able to see close botton
+  it('should be able to see close button', () => {
+    cy.get('.close-button')
+      .should('contain', 'Close')
+  })
 
-//should be able to see close botton
+  //should be able to sign up with username and email upon clicking signup button
+  it('should be able to sign up with username and email filled upon clicking signup button', () => {
+    //cy.intercept('GET', 'url', {
+    //statusCode: 200,
+    //body: {
+    //.....
+    //}
+    //})
+    // cy.get('form')
+    // cy.get("input[name='name']")
+    //   .type('Igor')
+    // cy.get("input[name='email']")
+    //   .type('email@example.com')
+    // cy.get('.login-button')
+    //   .click()
+    // cy.url('http://localhost:3000/)
+    //  .should('exist')
+  })
 
+  //should be able to close modal by clicking close button
+  it('should be able to close modal by clicking close button', () => {
+    cy.get('.close-button')
+      .click()
+    cy.get('h1')
+      .should('contain', 'Welcome to DevPrep!')
+  })
 
-//should be able to sign up with username and email upon clicking signup button
-
-
-//should be able to display an error message if signup is unsuccessful?
-
+  //should be able to display an error message if signup is unsuccessful?
 
 })

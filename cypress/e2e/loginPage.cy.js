@@ -64,7 +64,6 @@ describe('Login Page', () => {
     //   .type('email@example.com')
     // cy.get('.login-button')
     //   .click()
-    //need some kind of confirmation that user was logged in
     // cy.url('http://localhost:3000/dashboard')
     //  .should('exist')
   })
