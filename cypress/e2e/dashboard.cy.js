@@ -40,6 +40,8 @@ describe("Dashboard", () => {
 	})
 
 	it('a user should be able to see charts regarding their progress in the 3 different decks', () => {
-		
+		cy.get('.flashcard-statistics')
+		.find('canvas')
+		.should('exist')
 	})
 });
