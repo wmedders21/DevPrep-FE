@@ -6,13 +6,11 @@ describe('Modal', () => {
       .click()
   })
 
-  //should be able to open and see modal's title
   it('should be able to open modal and see title', () => {
     cy.get('h1')
       .should('contain', 'DevPrep Registration')
   })
 
-  //should be able to input 2 fields and check those inputs
   it('should be able to fill out two inputs of a form and check those inputs for modal', () => {
 
     // cy.get('form')
@@ -28,19 +26,16 @@ describe('Modal', () => {
     //   .should('have.value', 'email@example.com')
   })
 
-  //should be able to see sign up botton
   it('should be able to see signup button', () => {
     cy.get('.signup-button')
       .should('contain', 'Signup')
   })
 
-  //should be able to see close botton
   it('should be able to see close button', () => {
     cy.get('.close-button')
       .should('contain', 'Close')
   })
 
-  //should be able to sign up with username and email upon clicking signup button
   it('should be able to sign up with username and email filled upon clicking signup button', () => {
     //cy.intercept('GET', 'url', {
     //statusCode: 200,
@@ -59,7 +54,6 @@ describe('Modal', () => {
     //  .should('exist')
   })
 
-  //should be able to close modal by clicking close button
   it('should be able to close modal by clicking close button', () => {
     cy.get('.close-button')
       .click()
