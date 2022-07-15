@@ -18,6 +18,28 @@ describe("Dashboard", () => {
       .type("MichaelPutnam2")
       .should("have.value", "MichaelPutnam2")
       .get('input[type="submit"]')
-      .click();
+      .click()
+			.get('.codewars-stats-container')
+			.should('contain', 'Codewars Stats')
+			.find('p')
+			.first()
+			.should('have.text', "Username: MichaelPutnam2")
+			.next()
+			.find('li')
+			.first()
+			.should('have.text', 'java: 1234')
   });
+
+	it('a user should be able to see a group of decks and be navigate to a flashcard page witht for that deck', () => {
+		cy.get('.dashboard-deck-list')
+		.find('a')
+		.first()
+		.click()
+		.url()
+		.should('equal', 'http://localhost:3000/flashcards/behavioral')
+	})
+
+	it('a user should be able to see charts regarding their progress in the 3 different decks', () => {
+		
+	})
 });

@@ -36,9 +36,9 @@ const Dashboard = () => {
 
     return (<div className="codewars-stats-container">
       <h2>Codewars Stats</h2>
-        <p> Username: {cwStats.codewarsUsername}</p>
+        <p>Username: {cwStats.codewarsUsername}</p>
         <ul>
-          <label>Language Ranks:</label>
+          <h3>Language Ranks:</h3>
           {languageRanks()}
         </ul>
         <p>Leader Board Position: {cwStats.cwLeaderboardPosition}</p>
