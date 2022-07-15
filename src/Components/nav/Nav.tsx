@@ -40,7 +40,7 @@ const dropdownMenuStyles = {
             <NavLink className='home-button nav-button' to='/dashboard'>
                 <button>Home</button>
             </NavLink>
-            <NavLink className='signout-button nav-button' to='/login'>
+            <NavLink className='signout-button nav-button' to='/'>
                 <button>Logout</button>
                 {/* {user ? 'Signout' : 'Login'} */}
             </NavLink>
