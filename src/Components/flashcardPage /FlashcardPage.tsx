@@ -1,22 +1,47 @@
-import React, {useEffect} from 'react';
-import { useParams } from 'react-router-dom';
-import Nav from '../nav/Nav';
+import React, { useState, useEffect } from "react";
+import "./FlashcardPage.scss";
+import { useParams } from "react-router-dom";
+import Nav from "../nav/Nav";
+import DeckList from "../deckList/DeckList";
+import FlashcardCarousel from "./flashcardCarousel/FlashcardCarousel";
+import FlashcardList from "./flashcardList/FlashcardList";
+const { data } = require("../../mock-data/getUsersCards.json");
 
 const FlashcardPage = () => {
-    let { id } = useParams();
+  let { id } = useParams();
+  const [deckId, setDeckId] = useState("");
+  const [deckEnum, setDeckEnum] = useState<null | number>(null);
+  const [deck, setDeck] = useState([]);
 
-    useEffect(() => {
-        console.log(id)
-    })
+  useEffect(() => {
+    setDeckId(id);
+  });
 
-    
+  useEffect(() => {
+    switch (deckId) {
+      case "behavioral":
+        return setDeckEnum(0);
+      case "technicalFE":
+        return setDeckEnum(1);
+      case "technicalBE":
+        return setDeckEnum(2);
+      default:
+        return;
+    }
+  }, [deckId]);
 
-    return (
-        <div>
-            < Nav />
-            <h2>  </h2>
-        </div>
-    );
-}
+  useEffect(() => {
+    setDeck(data.attributes.cards.filter((card) => card.type === deckEnum));
+  }, [deckEnum]);
+
+  return (
+    <div className="flashcards">
+      <Nav />
+      <FlashcardCarousel deck={id} />
+      <FlashcardList deck={deck}  />
+      <DeckList style="flashcards" />
+    </div>
+  );
+};
 
 export default FlashcardPage;

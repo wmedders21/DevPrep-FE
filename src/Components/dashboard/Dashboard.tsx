@@ -2,11 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, Navigate } from "react-router-dom";
 
 import "./Dashboard.scss";
+import DeckList from '../deckList/DeckList'
 
 import Nav from "../nav/Nav";
 import Card from "../card/Card";
 import StatsChart from "../stats-chart/statsChart";
-const cardsData = require("../../mock-data/getUsersCards.json");
+
 const userData = require("../../mock-data/login-user/loginUserRes.json");
 
 const options = {
@@ -123,15 +124,7 @@ const Dashboard = () => {
           {cwStats.codewarsUsername ? renderCodewarsStats() : renderForm()}
         </div>
 
-        <div className="dashboard-deck-container">
-          <ul className="dashboard-deck-list">
-            <Link to="/flashcards/behavioral">Behavior</Link>
-
-            <Link to="/flashcards/technicalFE">Technical FE</Link>
-
-            <Link to="/flashcards/technicalBE">Technical BE</Link>
-          </ul>
-        </div>
+        <DeckList style='dashboard' />
 
         <div className="flashcard-of-the-day">
           <Card />
