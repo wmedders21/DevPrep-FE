@@ -23,8 +23,11 @@ describe('empty spec', () => {
     })
 
       it('User should be able to signout, which will take them to login page', () => {
-        cy.url().should('eq', 'http://localhost:3000/')
+        cy.url().should('eq', 'http://localhost:3000/dashboard')
         cy.get('.signout-button').click()
-
+        cy.url().should('eq', 'http://localhost:3000/')
+        cy.get('.login-container').contains('Please Login')
+        cy.get('.left-info-container').contains('Welcome to DevPrep!')
       })
+      
     })
