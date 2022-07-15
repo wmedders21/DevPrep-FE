@@ -29,22 +29,28 @@ const dropdownMenuStyles = {
 
     return (
         <div className='nav'>
+            
             <NavLink className='appName' to='/dashboard'>
                 <h2>DEVPREP</h2>
             </NavLink>
-            {/* <div style={{width: '500px'}}> */}
-
-            <Select className='deck-select'styles={dropdownMenuStyles} placeholder={<p>Decks</p>} options={Decks} />
-            {/* </div> */}
-     
-            <NavLink className='home-button nav-button' to='/dashboard'>
-                <button>Home</button>
-            </NavLink>
-            <NavLink className='signout-button nav-button' to='/'>
-                <button>Logout</button>
-                {/* {user ? 'Signout' : 'Login'} */}
-            </NavLink>
-
+            
+            <div className='navlink-container'>
+                <NavLink 
+                        className='home-button nav-button' 
+                        to='/dashboard'>
+                    <button className='nav-button'>Home</button>
+                </NavLink>
+                <NavLink 
+                        className='signout-button nav-button' 
+                        to='/'>
+                    <button className='nav-button'>Logout</button>
+                </NavLink>
+                <Select 
+                        className='deck-select'
+                        styles={dropdownMenuStyles} 
+                        placeholder={<p>Decks</p>} 
+                        options={Decks} />
+            </div>
         </div>
 
     );
