@@ -3,22 +3,27 @@ import React, { useState } from 'react';
 import './Login.scss';
 import Modal from '../modal/Modal'
 
-const Login = ({ user, setUser }: {user: string; setUser: React.Dispatch<React.SetStateAction<string>>}) => {
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
-  const [error, setError] = useState(false)
-  const [showModal, setShowModal] = useState(false)
+interface LoginProps {
+    user: string;
+    setUser: (userInfo: string) => void;
+}
+
+const Login: React.FC<LoginProps> = ({ user, setUser }) => {
+  const [username, setUsername] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [error, setError] = useState<boolean>(false)
+  const [showModal, setShowModal] = useState<boolean>(false)
 
 
-  const handleChangeEmail = (event) => {
+  const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setEmail(event.target.value)
   }
 
-  const handleChangeUsername = (event) => {
+  const handleChangeUsername = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setUsername(event.target.value)
   }
 
-  const userLogin = (event) => {
+  const userLogin = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     event.preventDefault()
     setUser('Ross')
 

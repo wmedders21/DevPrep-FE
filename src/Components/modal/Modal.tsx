@@ -2,25 +2,30 @@ import React, { useRef, useState } from 'react'
 import ReactDom from 'react-dom'
 import './Modal.scss'
 
-const Modal = ({ setShowModal }) => {
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
-  const modalRef = useRef();
-  const closeModal = (event) => {
+interface ModalProps {
+  setShowModal: (userInfo: boolean) => void;
+}
+
+const Modal: React.FC<ModalProps> = ({ setShowModal }) => {
+  const [username, setUsername] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const modalRef: React.MutableRefObject<undefined> = useRef();
+  const closeModal = (event: any): void => {
     if (event.target === modalRef.current) {
+      console.log(modalRef)
       setShowModal(false);
     }
   }
 
-  const handleChangeEmail = (event) => {
+  const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value)
   }
 
-  const handleChangeUsername = (event) => {
+  const handleChangeUsername = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value)
   }
 
-  const userSignup = (event) => {
+  const userSignup = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault()
     //post new user to data base and setShowModal(false)
   }
