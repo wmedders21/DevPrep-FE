@@ -57,6 +57,11 @@
       }
     }
   }
+  .flashcard-statistics {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .codewars-container {
 		border-radius: $borderRadius;
 		background-color: $primaryMono1;
