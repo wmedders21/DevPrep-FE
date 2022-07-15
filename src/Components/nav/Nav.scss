@@ -1,12 +1,47 @@
-.nav-link,
-.nav-button {
-    text-decoration: none;
-    height: 10vh;
+@import "../../constants/constants.scss";
+
+.nav {
+    background-color: $primary;
+    height: auto;
+      display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-content: stretch;
 }
 
-.deck-select {
-    color: black;
-    width: 70%;
+.nav-link,
+.nav-button {
+    border-color: #111110;
+    background-color: #FFA500;
+    color: #111110;
+    width: 50%;
+    height: 30%;
+    border-radius: 15px;
+    font-size: 1.5vh;
+
+    &:hover{
+      cursor: pointer;
+      background-color: $primary;
+      color: #FFA500;
+    }
+  }
+
+
+
+.appName {
+    font-size: larger;
+    color: $primaryMono2;
+    margin-top: 12px;
+    margin-left: 15px;
+    text-decoration: none;
 }
+
+.navlink-container {
+    display: inline;
+}
+
+
 
 
