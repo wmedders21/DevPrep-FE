@@ -34,10 +34,11 @@ const FlashcardPage = () => {
     setDeck(data.attributes.cards.filter((card) => card.type === deckEnum));
   }, [deckEnum]);
 
+  
+
   return (
     <div className="flashcards">
       <Nav />
-      <h1>{deck}</h1>
       <FlashcardCarousel deck={id} />
       <FlashcardList deck={deck}  />
       <Decks style="flashcards" />
