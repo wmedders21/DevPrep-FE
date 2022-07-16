@@ -32,7 +32,7 @@ const Modal = ({ setShowModal }) => {
        <form>
             {/* <label>Email</label> */}
             <input
-              className='input-username'
+              className='signup-input-username'
               type='text'
               placeholder='Username'
               name='name'
@@ -41,7 +41,7 @@ const Modal = ({ setShowModal }) => {
             />
 
             <input
-              className='input-email'
+              className='signup-input-email'
               type='text'
               placeholder='Email'
               name='email'
