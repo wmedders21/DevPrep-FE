@@ -34,10 +34,16 @@ const FlashcardPage = () => {
     setDeck(data.attributes.cards.filter((card) => card.type === deckEnum));
   }, [deckEnum]);
 
+  
+
   return (
     <div className="ççç">
       <Nav />
+<<<<<<< HEAD
       <FlashcardCarousel deck={deck} />
+=======
+      <FlashcardCarousel deck={id} />
+>>>>>>> Feature/flashcards-page-flashcardlist
       <FlashcardList deck={deck}  />
       <Decks style="flashcards" />
     </div>
