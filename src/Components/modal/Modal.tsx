@@ -36,7 +36,7 @@ const Modal: React.FC<ModalProps> = ({ setShowModal }) => {
        <h1>DevPrep Registration</h1>
        <form>
             <input
-              className='input-username'
+              className='signup-input-username'
               type='text'
               placeholder='Username'
               name='name'
@@ -45,7 +45,7 @@ const Modal: React.FC<ModalProps> = ({ setShowModal }) => {
             />
 
             <input
-              className='input-email'
+              className='signup-input-email'
               type='text'
               placeholder='Email'
               name='email'
