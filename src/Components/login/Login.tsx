@@ -1,32 +1,31 @@
-// 2 inputs
-// logo
-// login button -> navigate to dashboard
-// new user sign up -> modal pop-up
-
 import { Navigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import './Login.scss';
 import Modal from '../modal/Modal'
+const userData = require("../../mock-data/login-user/loginUserRes.json");
 
-const Login = ({ user, setUser }: {user: string; setUser: React.Dispatch<React.SetStateAction<string>>}) => {
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
-  const [error, setError] = useState(false)
-  const [showModal, setShowModal] = useState(false)
+interface LoginProps {
+    user: {};
+    setUser: (userInfo: {}) => void;
+}
+
+const Login: React.FC<LoginProps> = ({ user, setUser }) => {
+  const [username, setUsername] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [error, setError] = useState<boolean>(false)
+  const [showModal, setShowModal] = useState<boolean>(false)
 
 
-  const handleChangeEmail = (event) => {
+  const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setEmail(event.target.value)
   }
 
-  const handleChangeUsername = (event) => {
+  const handleChangeUsername = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setUsername(event.target.value)
   }
 
-
-  const userLogin = (event) => {
-    event.preventDefault()
-    setUser('Ross')
+  const userLogin = (): void => {
+    setUser(userData)
 
     //userarray.find (or filter)
     //if the user name and password match the database API, then user can navigate to the dashboard and we'll set current user,
@@ -42,7 +41,6 @@ const Login = ({ user, setUser }: {user: string; setUser: React.Dispatch<React.S
 
   const openModal = () => {
     setShowModal(prev => !prev)
-
   }
 
   return (
@@ -54,13 +52,13 @@ const Login = ({ user, setUser }: {user: string; setUser: React.Dispatch<React.S
                 <p>Study for your upcoming interview</p>
                 <p>Integrated flashcards</p>
                 <p>Create and modify custom cards</p>
-                <p>See your stats on the dashbaord</p>
+                <p>See your stats on the dashboard</p>
             </div>
             <div className='right-side-container'>
                 <p className='ask-login'>Please Login</p>
-                <form>
-                    {/* <label>Email</label> */}
+                <form onSubmit={(event) => {userLogin(); {event.preventDefault();}}}>
                     <input
+                    required
                     className='login-input-username'
                     type='text'
                     placeholder='Username'
@@ -70,6 +68,7 @@ const Login = ({ user, setUser }: {user: string; setUser: React.Dispatch<React.S
                     />
 
                     <input
+                    required
                     className='login-input-email'
                     type='text'
                     placeholder='Email'
@@ -77,13 +76,11 @@ const Login = ({ user, setUser }: {user: string; setUser: React.Dispatch<React.S
                     value={email}
                     onChange={event => handleChangeEmail(event)}
                     />
-
-
-                    <button className='login-button' onClick={event => userLogin(event)}>Login</button>
+                    
+                    <input type="submit" value='Login' className='login-button'/>
                 </form>
                 <p onClick={openModal} className='ask-signup'>New User? Sign Up</p>
                 {error && <p>Please input correct email</p>}
-
             </div>
             </div>
         {showModal && <Modal setShowModal= {setShowModal}/> }
