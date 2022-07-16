@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./FlashcardPage.scss";
 import { useParams } from "react-router-dom";
 import Nav from "../nav/Nav";
-import DeckList from "../deckList/DeckList";
+import Decks from "../decks/Decks";
 import FlashcardCarousel from "./flashcardCarousel/FlashcardCarousel";
 import FlashcardList from "./flashcardList/FlashcardList";
 const { data } = require("../../mock-data/getUsersCards.json");
@@ -39,7 +39,7 @@ const FlashcardPage = () => {
       <Nav />
       <FlashcardCarousel deck={id} />
       <FlashcardList deck={deck}  />
-      <DeckList style="flashcards" />
+      <Decks style="flashcards" />
     </div>
   );
 };

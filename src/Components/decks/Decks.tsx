@@ -1,8 +1,8 @@
 import React from 'react';
-import './DeckList.scss';
+import './Decks.scss';
 import {NavLink} from 'react-router-dom';
 
-const DeckList = ({style}) => {
+const Decks = ({style}) => {
     return (
         <div className={`${style}-deck-container`}>
         <ul className={`${style}-deck-list`}>
@@ -17,4 +17,4 @@ const DeckList = ({style}) => {
     );
 }
 
-export default DeckList;
+export default Decks;

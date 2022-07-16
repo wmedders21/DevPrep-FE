@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, Navigate } from "react-router-dom";
 
 import "./Dashboard.scss";
-import DeckList from '../deckList/DeckList'
+import Decks from '../decks/Decks'
 
 import Nav from "../nav/Nav";
 import Card from "../card/Card";
@@ -124,7 +124,7 @@ const Dashboard = () => {
           {cwStats.codewarsUsername ? renderCodewarsStats() : renderForm()}
         </div>
 
-        <DeckList style='dashboard' />
+        <Decks style='dashboard' />
 
         <div className="flashcard-of-the-day">
           <Card />
