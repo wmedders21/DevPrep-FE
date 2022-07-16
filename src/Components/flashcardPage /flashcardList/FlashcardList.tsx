@@ -1,13 +1,28 @@
 import React, { useState } from "react";
 import "./FlashcardList.scss";
 import Select, { StylesConfig } from 'react-select';
-import apiCalls from "../../../apiCalls/apiCalls";
 
 const filters = [
 	{ label: 'stars high-low'},
 	{ label: 'stars low-high'},
 	{ label: 'Js' }
 ]
+
+const dropdownMenuStyles = {
+    container: (provided)=>({
+        ...provided,
+        width: '15vw'
+}),
+    option: (styles, state) => ({
+        ...styles,
+        height: '4vh',
+        'font-size': '2vh'
+    }),
+    menu: (styles, state) => ({
+        ...styles,
+        width: '35vw'
+    })
+}
 
 const FlashcardList = ({deck}) => {
 
@@ -30,9 +45,10 @@ const FlashcardList = ({deck}) => {
   return (
 	<div className="flashcard-list-container">
 		<div className='deck-list-header'>
-			<h2>{deck.name}</h2>
+			<h3 className='deck-list-header-deckname'>Deck Name{deck.name}</h3>
 			<Select 
 				className='deck-list-filter'
+				styles={dropdownMenuStyles} 
 				placeholder={<h4>filter</h4>} 
 				options={filters} />			
 		</div>
