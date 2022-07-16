@@ -1,4 +1,4 @@
-describe('Login Page', () => {
+      describe('Login Page', () => {
   beforeEach(() => {
     // cy.intercept('GET', '', { fixture: 'example.json' })
     cy.visit('http://localhost:3000/')
