@@ -54,7 +54,7 @@ const Modal: React.FC<ModalProps> = ({ setShowModal }) => {
               onChange={event => handleChangeEmail(event)}
             />
 
-            <input type="submit" className='signup-button'/>
+            <input type='submit' value='Signup' className='signup-button'/>
         </form>
         <button className="close-button" onClick={() => setShowModal(false)}>Close</button>
       </div>
