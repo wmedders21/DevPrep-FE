@@ -15,7 +15,7 @@ describe('Login Page', () => {
       .should('contain', 'Study for your upcoming interview')
       .should('contain', 'Integrated flashcards')
       .should('contain', 'Create and modify custom cards')
-      .should('contain', 'See your stats on the dashbaord')
+      .should('contain', 'See your stats on the dashboard')
   })
 
   it('should be able to see text asking to log in', () => {
