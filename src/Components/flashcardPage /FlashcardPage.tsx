@@ -37,6 +37,7 @@ const FlashcardPage = () => {
   return (
     <div className="flashcards">
       <Nav />
+      <h1>{deck}</h1>
       <FlashcardCarousel deck={id} />
       <FlashcardList deck={deck}  />
       <Decks style="flashcards" />
