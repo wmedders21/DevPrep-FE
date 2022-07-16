@@ -1,3 +1,4 @@
+import userEvent from '@testing-library/user-event';
 import React, { createContext } from 'react';
 
 const UserContext = React.createContext({})
