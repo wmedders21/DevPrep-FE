@@ -2,10 +2,6 @@ type User = {
   data: Data
 }
 
-// type CUser = {
-//   user: User,
-//   setUser: undefined
-// }
 type Data = {
   userId: string,
   type: string,

@@ -27,7 +27,7 @@ const options = {
 }
 
 const Dashboard: React.FC = () => {
-  const {user} : CurrentUser = useContext(UserContext)
+  const {user, setUser} : CurrentUser = useContext(UserContext)
  
   // const [user, setUser] = useState(userData.data.attributes);
   const [username, setUsername] = useState(user.data.attributes.username);
