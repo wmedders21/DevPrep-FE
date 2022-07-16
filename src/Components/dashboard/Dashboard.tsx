@@ -5,7 +5,6 @@ import "./Dashboard.scss";
 import Decks from '../decks/Decks'
 
 import Nav from "../nav/Nav";
-import Card from "../flashcardPage /flashcard/Card";
 import StatsChart from "../stats-chart/statsChart";
 
 const userData = require("../../mock-data/login-user/loginUserRes.json");
@@ -126,9 +125,6 @@ const Dashboard = () => {
 
         <Decks style='dashboard' />
 
-        <div className="flashcard-of-the-day">
-          <Card />
-        </div>
       </div>
       <div className="bottom-nav">
         <a href="https://github.com/2201-DevPrep">GitHub</a>

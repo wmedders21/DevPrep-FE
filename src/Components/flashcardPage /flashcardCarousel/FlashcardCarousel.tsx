@@ -2,6 +2,9 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Thumbs } from "swiper";
 import "./FlashcardCarousel.scss";
+import CreateNewFlashcardButton from "../components/CreateNewFlashcardButton";
+import DeleteFlashCardButton from "../components/DeleteFlashCardButton";
+import UpdateFlashcardButton from "../components/UpdateFlashcardButton";
 
 //styles for swiper:
 
@@ -28,11 +31,11 @@ const FlashCardCarousel = ({ deck }) => {
       >
         {renderCards()}
       </Swiper>
-			<div className='carousel-bottom-nav-container'>
-				<button>Remove From Deck</button>
-				<button>Create New Card</button>
-				<button>Edit</button>
-			</div>
+      <div className="carousel-bottom-nav-container">
+				<CreateNewFlashcardButton></CreateNewFlashcardButton>
+        <UpdateFlashcardButton></UpdateFlashcardButton>
+        <DeleteFlashCardButton></DeleteFlashCardButton>
+      </div>
     </div>
   );
 };
