@@ -61,7 +61,7 @@ const Login = ({ user, setUser }: {user: string; setUser: React.Dispatch<React.S
                 <form>
                     {/* <label>Email</label> */}
                     <input
-                    className='input-username'
+                    className='login-input-username'
                     type='text'
                     placeholder='Username'
                     name='name'
@@ -70,7 +70,7 @@ const Login = ({ user, setUser }: {user: string; setUser: React.Dispatch<React.S
                     />
 
                     <input
-                    className='input-email'
+                    className='login-input-email'
                     type='text'
                     placeholder='Email'
                     name='email'

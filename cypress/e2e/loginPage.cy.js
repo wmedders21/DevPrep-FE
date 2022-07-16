@@ -1,7 +1,7 @@
 describe('Login Page', () => {
   beforeEach(() => {
+    // cy.intercept('GET', '', { fixture: 'example.json' })
     cy.visit('http://localhost:3000/')
-    //intercept GET here with fixture
   })
 
   it('should be able to visit the login page by accessing `http://localhost:3000/`', () => {
@@ -25,10 +25,10 @@ describe('Login Page', () => {
 
   it('should be able to fill out two inputs of a form and check those inputs for login', () => {
     cy.get('form')
-    cy.get("input[name='name']")
+    cy.get(".login-input-username[name='name']")
       .type('Igor')
       .should('have.value', 'Igor')
-    cy.get("input[name='email']")
+    cy.get(".login-input-email[name='email']")
       .type('email@example.com')
       .should('have.value', 'email@example.com')
   })
@@ -43,7 +43,7 @@ describe('Login Page', () => {
       .should('contain', 'New User? Sign Up')
   })
 
-  it('should be able to log in with username and email filled upon clicking login button', () => {
+  it('should be able to log in with username and email when clicking login button', () => {
     //cy.intercept('GET', 'url', {
     //statusCode: 200,
     //body: {

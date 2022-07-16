@@ -1,7 +1,7 @@
 describe('Modal', () => {
   beforeEach(() => {
+    // cy.intercept('GET', '', { fixture: 'example.json' })
     cy.visit('http://localhost:3000/')
-    //intercept GET here with fixture
     cy.get('.ask-signup')
       .click()
   })
@@ -12,18 +12,13 @@ describe('Modal', () => {
   })
 
   it('should be able to fill out two inputs of a form and check those inputs for modal', () => {
-
-    // cy.get('form')
-    // cy.get('.input-username')
-    //   .type('Gary')
-    //   .should('have.value', 'Gary')
-
-    // cy.get("input[name='name']")
-    //   .type('Igor')
-    //   .should('have.value', 'Igor')
-    // cy.get("input[name='email']")
-    //   .type('email@example.com')
-    //   .should('have.value', 'email@example.com')
+    cy.get('form')
+    cy.get(".signup-input-username[name='name']")
+      .type('Igor')
+      .should('have.value', 'Igor')
+    cy.get(".signup-input-email[name='email']")
+      .type('email@example.com')
+      .should('have.value', 'email@example.com')
   })
 
   it('should be able to see signup button', () => {
@@ -36,8 +31,8 @@ describe('Modal', () => {
       .should('contain', 'Close')
   })
 
-  it('should be able to sign up with username and email filled upon clicking signup button', () => {
-    //cy.intercept('GET', 'url', {
+  it('should be able to sign up with username and email when clicking signup button', () => {
+    //cy.intercept('POST', 'url', {
     //statusCode: 200,
     //body: {
     //.....
