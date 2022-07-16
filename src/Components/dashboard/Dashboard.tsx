@@ -1,13 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { Link, Navigate } from "react-router-dom";
-
 import "./Dashboard.scss";
-
 import Nav from "../nav/Nav";
 import Card from "../card/Card";
 import StatsChart from "../stats-chart/statsChart";
+import UserContext from '../../UserContext';
+import { CurrentUser } from '../../interface'
+
 const cardsData = require("../../mock-data/getUsersCards.json");
-const userData = require("../../mock-data/login-user/loginUserRes.json");
+// const userData = require("../../mock-data/login-user/loginUserRes.json");
 
 const options = {
   scales: {
@@ -25,19 +26,21 @@ const options = {
   }
 }
 
-const Dashboard = () => {
-  const [user, setUser] = useState(userData.data.attributes);
-  const [username, setUsername] = useState(userData.data.attributes.username);
+const Dashboard: React.FC = () => {
+  const {user} : CurrentUser = useContext(UserContext)
+ 
+  // const [user, setUser] = useState(userData.data.attributes);
+  const [username, setUsername] = useState(user.data.attributes.username);
 
   const [statsData, setStatsData] = useState({
-    labels: Object.keys(userData.data.attributes.preparednessRating).map(
+    labels: Object.keys(user.data.attributes.preparednessRating).map(
       (key) => key
     ),
     datasets: [
       {
         label: "Preparedness Level",
-        data: Object.keys(userData.data.attributes.preparednessRating).map(
-          (key) => userData.data.attributes.preparednessRating[key]
+        data: Object.keys(user.data.attributes.preparednessRating).map(
+          (key) => user.data.attributes.preparednessRating[key]
           ),
         backgroundColor: ['red', 'green', 'blue'],
         borderColor: "black",
@@ -47,7 +50,7 @@ const Dashboard = () => {
 
   });
 
-  const [cwStats, setCWStats] = useState(userData.data.attributes.cwAttributes);
+  const [cwStats, setCWStats] = useState(user.data.attributes.cwAttributes);
 
   const [cwUsername, setCWUsername] = useState("");
   if (!user) {
