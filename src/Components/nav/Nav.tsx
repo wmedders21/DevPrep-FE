@@ -31,7 +31,7 @@ const dropdownMenuStyles = {
         <div className='nav'>
             
             <NavLink className='appName' to='/dashboard'>
-                <h2>DEVPREP</h2>
+                <h2>DevPrep</h2>
             </NavLink>
             
             <div className='navlink-container'>
