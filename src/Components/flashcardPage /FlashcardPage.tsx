@@ -35,10 +35,9 @@ const FlashcardPage = () => {
   }, [deckEnum]);
 
   return (
-    <div className="flashcards">
+    <div className="ççç">
       <Nav />
-      <h1>{deck}</h1>
-      <FlashcardCarousel deck={id} />
+      <FlashcardCarousel deck={deck} />
       <FlashcardList deck={deck}  />
       <Decks style="flashcards" />
     </div>

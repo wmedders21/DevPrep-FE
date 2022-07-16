@@ -5,7 +5,7 @@ import "./Dashboard.scss";
 import Decks from '../decks/Decks'
 
 import Nav from "../nav/Nav";
-import Card from "../card/Card";
+import Card from "../flashcardPage /flashcard/Card";
 import StatsChart from "../stats-chart/statsChart";
 
 const userData = require("../../mock-data/login-user/loginUserRes.json");
