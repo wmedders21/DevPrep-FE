@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 import UserContext from '../../UserContext';
 import { CurrentUser } from '../../interface'
 
-const App = () => {
+const App: React.FC = () => {
 
   const [user, setUser ] = useState<CurrentUser>()
 

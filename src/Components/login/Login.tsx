@@ -76,7 +76,7 @@ const Login: React.FC<LoginProps> = ({ user, setUser }) => {
                     value={email}
                     onChange={event => handleChangeEmail(event)}
                     />
-                    
+
                     <input type="submit" value='Login' className='login-button'/>
                 </form>
                 <p onClick={openModal} className='ask-signup'>New User? Sign Up</p>

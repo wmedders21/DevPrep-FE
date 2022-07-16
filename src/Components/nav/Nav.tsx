@@ -15,7 +15,7 @@ const dropdownMenuStyles = {
     container: (provided)=>({
         ...provided,
         width: '15vw'
-}),
+    }),
     option: (styles, state) => ({
         ...styles,
         height: '4vh',
@@ -27,20 +27,17 @@ const dropdownMenuStyles = {
     })
 }
 
-
-const Nav = () => {
+const Nav: React.FC = () => {
     const {setUser}: CurrentUser = useContext(UserContext)
-
     const logout = () => {
         setUser(undefined)
     }
+
     return (
         <div className='nav'>
-            
             <NavLink className='appName' to='/dashboard'>
                 <h2>DevPrep</h2>
             </NavLink>
-            
             <div className='navlink-container'>
                 <NavLink 
                         className='home-button nav-button' 

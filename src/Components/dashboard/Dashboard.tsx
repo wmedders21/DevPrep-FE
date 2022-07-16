@@ -5,12 +5,48 @@ import Nav from "../nav/Nav";
 import Card from "../card/Card";
 import StatsChart from "../stats-chart/statsChart";
 import UserContext from '../../UserContext';
-import { CurrentUser } from '../../interface'
+import { CurrentUser } from '../../interface';
 
 const cardsData = require("../../mock-data/getUsersCards.json");
-// const userData = require("../../mock-data/login-user/loginUserRes.json");
 
-const options = {
+
+type StatsData = {
+  labels: string[];
+  datasets: {
+    label: string;
+    data: any[];
+    backgroundColor: string[];
+    borderColor: string;
+    borderWidth: number;
+  }[];
+}
+
+type CwStats = {
+  codewarsUsername: string;
+  cwLeaderboardPosition: number;
+  totalCompleted: number;
+  languageRanks: {
+    java: number;
+    ruby: number;
+  };
+}
+
+type Options = {
+  scales: {
+    x: {
+      grid: {
+        display: boolean;
+      };
+    };
+    y: {
+      grid: {
+        display: boolean;
+        };
+    };
+  };
+}
+
+const options: Options = {
   scales: {
     x: {
       grid: {
@@ -22,17 +58,13 @@ const options = {
         display: false
       }
     }
-
   }
 }
 
 const Dashboard: React.FC = () => {
   const {user, setUser} : CurrentUser = useContext(UserContext)
- 
-  // const [user, setUser] = useState(userData.data.attributes);
-  const [username, setUsername] = useState(user.data.attributes.username);
-
-  const [statsData, setStatsData] = useState({
+  const [username, setUsername] = useState<string>(user.data.attributes.username);
+  const [statsData, setStatsData] = useState<StatsData>({
     labels: Object.keys(user.data.attributes.preparednessRating).map(
       (key) => key
     ),
@@ -47,19 +79,18 @@ const Dashboard: React.FC = () => {
         borderWidth: 2,
       },
     ],
-
   });
 
-  const [cwStats, setCWStats] = useState(user.data.attributes.cwAttributes);
+  const [cwStats, setCWStats] = useState<CwStats>(user.data.attributes.cwAttributes);
+  const [cwUsername, setCWUsername] = useState<string>("");
 
-  const [cwUsername, setCWUsername] = useState("");
   if (!user) {
     return <Navigate to="/login" replace={true} />;
   }
 
   const renderCodewarsStats = () => {
     const languageRanks = () => {
-      let languageKeys = Object.keys(cwStats.languageRanks);
+      let languageKeys: string[] = Object.keys(cwStats.languageRanks);
       return languageKeys.map((language) => {
         return (
           <li key={Math.random() * 100}>
@@ -83,7 +114,7 @@ const Dashboard: React.FC = () => {
     );
   };
 
-  const handleFormSubmission = (e) => {
+  const handleFormSubmission = (e: any): void => {
     e.preventDefault();
     setCWStats({
       ...cwStats,
@@ -115,27 +146,21 @@ const Dashboard: React.FC = () => {
       <Nav />
       <div className="dashboard">
         <h1 className="username">
-          <span>hello,</span> {username}
+          <span>Hello,</span> {username}
         </h1>
-
         <div className="flashcard-statistics">
           <StatsChart chartData={statsData} options={options} />
         </div>
-
         <div className="codewars-container">
           {cwStats.codewarsUsername ? renderCodewarsStats() : renderForm()}
         </div>
-
         <div className="dashboard-deck-container">
           <ul className="dashboard-deck-list">
             <Link to="/flashcards/behavioral">Behavior</Link>
-
             <Link to="/flashcards/technicalFE">Technical FE</Link>
-
             <Link to="/flashcards/technicalBE">Technical BE</Link>
           </ul>
         </div>
-
         <div className="flashcard-of-the-day">
           <Card />
         </div>
