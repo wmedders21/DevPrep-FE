@@ -12,7 +12,6 @@ const Modal: React.FC<ModalProps> = ({ setShowModal }) => {
   const modalRef: React.MutableRefObject<undefined> = useRef();
   const closeModal = (event: any): void => {
     if (event.target === modalRef.current) {
-      console.log(modalRef)
       setShowModal(false);
     }
   }
@@ -25,8 +24,8 @@ const Modal: React.FC<ModalProps> = ({ setShowModal }) => {
     setUsername(event.target.value)
   }
 
-  const userSignup = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    event.preventDefault()
+  const userSignup = () => {
+    console.log("USER SIGNUP")
     //post new user to data base and setShowModal(false)
   }
 
@@ -34,8 +33,9 @@ const Modal: React.FC<ModalProps> = ({ setShowModal }) => {
     <div className='modal-container' ref={modalRef} onClick={closeModal}>
       <div className='modal popup'>
        <h1>DevPrep Registration</h1>
-       <form>
+       <form onSubmit={(event) => {userSignup(); {event.preventDefault();}}}>
             <input
+              required
               className='signup-input-username'
               type='text'
               placeholder='Username'
@@ -45,6 +45,7 @@ const Modal: React.FC<ModalProps> = ({ setShowModal }) => {
             />
 
             <input
+              required
               className='signup-input-email'
               type='text'
               placeholder='Email'
@@ -53,7 +54,7 @@ const Modal: React.FC<ModalProps> = ({ setShowModal }) => {
               onChange={event => handleChangeEmail(event)}
             />
 
-            <button className='signup-button' onClick={event => userSignup(event)}>Signup</button>
+            <input type="submit" className='signup-button'/>
         </form>
         <button className="close-button" onClick={() => setShowModal(false)}>Close</button>
       </div>

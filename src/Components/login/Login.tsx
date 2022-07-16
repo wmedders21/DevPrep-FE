@@ -58,6 +58,7 @@ const Login: React.FC<LoginProps> = ({ user, setUser }) => {
                 <p className='ask-login'>Please Login</p>
                 <form onSubmit={(event) => {userLogin(); {event.preventDefault();}}}>
                     <input
+                    required
                     className='login-input-username'
                     type='text'
                     placeholder='Username'
@@ -67,6 +68,7 @@ const Login: React.FC<LoginProps> = ({ user, setUser }) => {
                     />
 
                     <input
+                    required
                     className='login-input-email'
                     type='text'
                     placeholder='Email'
