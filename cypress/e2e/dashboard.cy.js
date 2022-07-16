@@ -1,6 +1,13 @@
 describe("Dashboard", () => {
-  beforeEach(() => {
-    cy.visit("http://localhost:3000/dashboard");
+  before(() => {
+    cy.visit("http://localhost:3000/");
+		cy.get('form')
+    cy.get(".login-input-username[name='name']")
+      .type('Igor')
+    cy.get(".login-input-email[name='email']")
+      .type('email@example.com')
+			.get('.login-button')
+			.click()
   });
 
   it("should land on dashboard", () => {
