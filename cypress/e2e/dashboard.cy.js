@@ -44,9 +44,13 @@ describe("Dashboard", () => {
 		.click()
 		.url()
 		.should('equal', 'http://localhost:3000/flashcards/behavioral')
+		.get('.appName > h2')
+		.click()
 	})
 
 	it('a user should be able to see charts regarding their progress in the 3 different decks', () => {
-		
+		cy.get('.flashcard-statistics')
+		.find('canvas')
+		.should('exist')
 	})
 });
