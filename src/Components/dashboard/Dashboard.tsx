@@ -9,7 +9,6 @@ import { CurrentUser } from '../../interface';
 
 const cardsData = require("../../mock-data/getUsersCards.json");
 
-
 type StatsData = {
   labels: string[];
   datasets: {
@@ -126,17 +125,17 @@ const Dashboard: React.FC = () => {
     return (
       <form onSubmit={(e) => handleFormSubmission(e)}>
         <h2 className="form-header">
-          Would you like to Link your Codewars account?
+          Link Your Codewars Account
         </h2>
         <input
           required
           type="text"
           name="username"
-          placeholder="username"
+          placeholder="Username"
           value={cwUsername}
           onChange={(e) => setCWUsername(e.target.value)}
         />
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" className="cw-submit-button" />
       </form>
     );
   };
@@ -156,6 +155,7 @@ const Dashboard: React.FC = () => {
         </div>
         <div className="dashboard-deck-container">
           <ul className="dashboard-deck-list">
+            <h2>Choose Your Deck</h2>
             <Link to="/flashcards/behavioral">Behavior</Link>
             <Link to="/flashcards/technicalFE">Technical FE</Link>
             <Link to="/flashcards/technicalBE">Technical BE</Link>

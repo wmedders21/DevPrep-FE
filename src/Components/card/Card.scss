@@ -1,0 +1,17 @@
+.flashcard-of-the-day {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.flashcard {
+  margin: 5%;
+  font-size: 4vh;
+
+  h2 {
+    font-size: 4.5vh;
+    margin-bottom: 7%;
+  }
+}

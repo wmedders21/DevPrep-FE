@@ -3,7 +3,7 @@ import "./Nav.scss"
 import { NavLink, Link, Navigate } from 'react-router-dom'
 import Select, { StylesConfig } from 'react-select';
 import UserContext from '../../UserContext';
-import { CurrentUser } from '../../interface'
+import { CurrentUser } from '../../interface';
 
 const Decks = [
     { label: <NavLink className='dd-menu dd-menu-be' to='/flashcards/technicalBE'>Technical Back End</NavLink>},
@@ -19,7 +19,7 @@ const dropdownMenuStyles = {
     option: (styles, state) => ({
         ...styles,
         height: '4vh',
-        'font-size': '2vh'
+        fontSize: '2vh'
     }),
     menu: (styles, state) => ({
         ...styles,
