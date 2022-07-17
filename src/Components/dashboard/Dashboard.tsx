@@ -145,7 +145,7 @@ const Dashboard: React.FC = () => {
       <Nav />
       <div className="dashboard">
         <h1 className="username">
-          <span>Hello,</span> {username}
+          Hello, {username}!
         </h1>
         <div className="flashcard-statistics">
           <StatsChart chartData={statsData} options={options} />

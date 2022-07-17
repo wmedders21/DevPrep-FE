@@ -4,46 +4,45 @@
     background-color: $primary;
     height: 10vh;
       display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        align-items: flex-start;
-        align-content: stretch;
-        padding: 1em;
+        // flex-direction: row;
+        // flex-wrap: nowrap;
+        justify-content: space-around;
+        gap: 350px;
+        // align-items: flex-start;
+        // align-content: stretch;
+        padding: 1%;
 
         h2 {
-          font-size: 6vh;
+          font-size: 5.5vh;
         }
 }
 
 .nav-link,
 .nav-button {
     border-color: #111110;
-    background-color: #FFA500;
-    color: #111110;
+    background-color: white;
+    // color: #111110;
     width: 50%;
     height: 30%;
-    border-color: #111110;
+    // border-color: #111110;
     border-radius: 15px;
-    font-size: 1.5vh;
+    // font-size: 1.5vh;
 
     &:hover{
       cursor: pointer;
-      background-color: $primary;
-      color: #FFA500;
+      background-color: #bababa;
+      
     }
   }
 
-
-
 .appName {
-    font-size: larger;
-    color: $primaryMono2;
+    // font-size: 50px;
+    color: white;
     text-decoration: none;
 }
 
 .navlink-container {
-    display: inline;
+    // display: inline;
 }
 
 
