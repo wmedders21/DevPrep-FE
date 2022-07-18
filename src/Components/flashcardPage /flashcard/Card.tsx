@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Card.scss";
+import Rating from '@mui/material/Rating';
 
 
 type Props = {
@@ -28,6 +29,13 @@ function Card({ card }: Props) {
   const renderFront = () => {
     return (
       <div className="flashcard-front">
+        <Rating 
+        name="read-only"
+        // value={card.attributes.competenceRating}
+        value={3}
+        readOnly
+        className='rating'
+        />
         <h2>Question:</h2>
         <p>{card.attributes.frontSide}</p>
         <button

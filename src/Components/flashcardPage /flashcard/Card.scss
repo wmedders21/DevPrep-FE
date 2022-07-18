@@ -2,12 +2,12 @@
 	height: 40vh;
 	width: 50vw;
 	border: solid black 2px;
-	.flashcard-front {
+	.flashcard-front, .flashcard-back {
+		display: grid;
+		grid-template-columns: 1fr;
 		.rating {
-			img {
-				height: 25px;
-				width: 25px;
-			}
+			justify-self: end;
 		}
+
 	}
 }
