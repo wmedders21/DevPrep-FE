@@ -34,28 +34,33 @@
       .left-info-container {
         display:flex;
         flex-direction: column;
-        text-align: center;
         background-color: white;
         box-shadow: 10px 12px 15px rgba(0, 0, 0, 0.25);
         z-index: 5;
         border-radius: 15px;
         height: 100%;
         width: 50%;
-        
-        .myImage {
-          height:30px;
-          width:30px;
+
+        img {
+          height: 4vh;
         }
+        
+        // .myImage {
+        //   height:30px;
+        //   width:30px;
+        // }
 
         h1 {
-          margin-top: 30px;
-          margin-bottom: 60px;
+          text-align: center;
+          margin-top: 12%;
+          margin-bottom: 5%;
           font-size: 4vh;
         }
 
         p {
           font-size: 2vh;
-          margin: 15px;
+          margin: 2%;
+          margin-left: 15%;
         }
       }
   
@@ -71,11 +76,12 @@
 
         .ask-login {
           font-size: 3vh;
-          margin: 50px;
+          margin-top: 12%;
+          margin-bottom: 12%;
         }
 
         .ask-signup {
-          margin: 50px;
+          margin: 12%;
           font-size: 2.3vh;
         }
 
@@ -92,7 +98,7 @@
           align-items: center;
           justify-content: center;
           input {
-            margin-bottom: 20px;
+            margin-bottom: 10%;
             font-size: 3vh;
             text-align: center;
             width: 100%;
