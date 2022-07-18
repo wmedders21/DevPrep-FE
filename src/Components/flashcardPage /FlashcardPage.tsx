@@ -23,12 +23,18 @@ const FlashcardPage = () => {
     setDeck(data[id]);
   }, [id]);
 
+  
+
   return (
     <div className="flashcards-page" style={{
       height: height
     }}>
       <Nav />
+<<<<<<< HEAD
       <FlashcardCarousel deck={deck} />
+=======
+      <FlashcardCarousel deck={id} />
+>>>>>>> Feature/flashcards-page-flashcardlist
       <FlashcardList deck={deck}  />
       <Decks style="flashcards" />
     </div>

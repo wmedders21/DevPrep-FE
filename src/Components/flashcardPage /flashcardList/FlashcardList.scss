@@ -1,0 +1,17 @@
+.flashcard-list-container {
+    margin: 0 auto;
+    width: 75vw;
+    overflow: hidden;
+    border: 1px solid #AAA;
+}
+    
+.deck-list-header {
+    display: flex;
+}
+.cards-list {
+    overflow-y: scroll;
+}
+
+.decklist-card {
+    display: flex;
+}
