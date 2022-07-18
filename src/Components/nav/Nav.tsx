@@ -3,9 +3,9 @@ import "./Nav.scss"
 import { NavLink, Link, Navigate } from 'react-router-dom'
 import Select, { StylesConfig } from 'react-select';
 const Decks = [
-    { label: <NavLink className='dd-menu dd-menu-be' to='/flashcards/technicalBE'>Technical Back End</NavLink>},
-    { label: <NavLink className='dd-menu dd-menu-fe' to='/flashcards/technicalFE'>Technical Front End</NavLink> },
-    { label: <NavLink className='dd-menu dd-menu-behavioral' to='/flashcards/behavioral'>Behavioral</NavLink> }
+    { label: <NavLink className='dd-menu dd-menu-be' to='/flashcards/BEtechnicalCards'>Technical Back End</NavLink>},
+    { label: <NavLink className='dd-menu dd-menu-fe' to='/flashcards/FEtechnicalCards'>Technical Front End</NavLink> },
+    { label: <NavLink className='dd-menu dd-menu-behavioral' to='/flashcards/behavioralCards'>Behavioral</NavLink> }
 ]
 
 const dropdownMenuStyles = {

@@ -5,18 +5,31 @@ import "./FlashcardCarousel.scss";
 import CreateNewFlashcardButton from "../components/CreateNewFlashcardButton";
 import DeleteFlashCardButton from "../components/DeleteFlashCardButton";
 import UpdateFlashcardButton from "../components/UpdateFlashcardButton";
-
-//styles for swiper:
+import Card from '../flashcard/Card'
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
+
+
+type Card = {
+  id: string;
+  type: string;
+  attributes: {
+    category: string;
+    competenceRating: number;
+    frontSide: string;
+    backSide: string;
+    userId: string;
+  };
+};
+
 const FlashCardCarousel = ({ deck }) => {
   const renderCards = () => {
     return deck.map((card) => (
-      <SwiperSlide key={card.id}>
-        <div className="flashcard">{card.question}</div>
+      <SwiperSlide className='flashcard' key={card.id}>
+        <Card card={card}></Card>
       </SwiperSlide>
     ));
   };
@@ -32,7 +45,7 @@ const FlashCardCarousel = ({ deck }) => {
         {renderCards()}
       </Swiper>
       <div className="carousel-bottom-nav-container">
-				<CreateNewFlashcardButton></CreateNewFlashcardButton>
+        <CreateNewFlashcardButton></CreateNewFlashcardButton>
         <UpdateFlashcardButton></UpdateFlashcardButton>
         <DeleteFlashCardButton></DeleteFlashCardButton>
       </div>

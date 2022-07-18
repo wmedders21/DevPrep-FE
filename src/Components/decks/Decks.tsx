@@ -9,11 +9,11 @@ const Decks = ({style}) => {
     return (
         <div className={`${style}-deck-container`}>
         <ul className={`${style}-deck-list`}>
-          <NavLink to="/flashcards/behavioral">Behavior</NavLink>
+          <NavLink to="/flashcards/behavioralCards">Behavior</NavLink>
 
-          <NavLink to="/flashcards/technicalFE">Technical FE</NavLink>
+          <NavLink to="/flashcards/FEtechnicalCards">Technical FE</NavLink>
 
-          <NavLink to="/flashcards/technicalBE">Technical BE</NavLink>
+          <NavLink to="/flashcards/BEtechnicalCards">Technical BE</NavLink>
         </ul>
       </div>
         

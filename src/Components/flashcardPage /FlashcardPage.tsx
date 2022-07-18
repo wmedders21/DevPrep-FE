@@ -5,39 +5,30 @@ import Nav from "../nav/Nav";
 import Decks from "../decks/Decks";
 import FlashcardCarousel from "./flashcardCarousel/FlashcardCarousel";
 import FlashcardList from "./flashcardList/FlashcardList";
+import apiCalls from '../../apiCalls/apiCalls'
 const { data } = require("../../mock-data/getUsersCards.json");
+const height = window.innerHeight
 
 const FlashcardPage = () => {
   let { id } = useParams();
-  const [deckId, setDeckId] = useState("");
-  const [deckEnum, setDeckEnum] = useState<null | number>(null);
+
+
+
   const [deck, setDeck] = useState([]);
 
   useEffect(() => {
-    setDeckId(id);
-  });
-
-  useEffect(() => {
-    switch (deckId) {
-      case "behavioral":
-        return setDeckEnum(0);
-      case "technicalFE":
-        return setDeckEnum(1);
-      case "technicalBE":
-        return setDeckEnum(2);
-      default:
-        return;
-    }
-  }, [deckId]);
-
-  useEffect(() => {
-    setDeck(data.attributes.cards.filter((card) => card.type === deckEnum));
-  }, [deckEnum]);
+    // apiCalls.getCards().then(data => {
+    //   console.log(data)
+    // })
+    setDeck(data[id]);
+  }, [id]);
 
   
 
   return (
-    <div className="ççç">
+    <div className="flashcards-page" style={{
+      height: height
+    }}>
       <Nav />
       <FlashcardCarousel deck={deck} />
       <FlashcardList deck={deck}  />
