@@ -30,11 +30,7 @@ const FlashcardPage = () => {
       height: height
     }}>
       <Nav />
-<<<<<<< HEAD
       <FlashcardCarousel deck={deck} />
-=======
-      <FlashcardCarousel deck={id} />
->>>>>>> Feature/flashcards-page-flashcardlist
       <FlashcardList deck={deck}  />
       <Decks style="flashcards" />
     </div>

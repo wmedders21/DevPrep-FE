@@ -32,7 +32,7 @@ function Card({ card }: Props) {
         <Rating 
         name="read-only"
         // value={card.attributes.competenceRating}
-        value={3}
+        value={3.5}
         readOnly
         className='rating'
         />

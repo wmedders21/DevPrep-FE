@@ -1,34 +1,13 @@
 import React, { useState } from "react";
 import "./FlashcardList.scss";
-<<<<<<< HEAD
-import Select, { StylesConfig } from "react-select";
-=======
 import Select, { StylesConfig } from 'react-select';
 
->>>>>>> Feature/flashcards-page-flashcardlist
 const filters = [
   { label: "stars high-low" },
   { label: "stars low-high" },
   { label: "Js" },
 ];
 
-<<<<<<< HEAD
-const FlashcardList = ({ deck }) => {
-  const renderDeck = () => {
-    return deck.map((card) => <div key={card.id}>{card.question}</div>);
-  };
-
-  return (
-    <div className="flashcard-list-container">
-      <Select
-        className="deck-list-filter"
-        placeholder={<h4>filter</h4>}
-        options={filters}
-      />
-      {renderDeck()}
-    </div>
-  );
-=======
 const dropdownMenuStyles = {
     container: (provided)=>({
         ...provided,
@@ -78,7 +57,6 @@ const FlashcardList = ({deck}) => {
 		</div>
 	</div>
   )
->>>>>>> Feature/flashcards-page-flashcardlist
 };
 
 export default FlashcardList;
