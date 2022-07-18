@@ -15,7 +15,7 @@ const FlashcardPage = () => {
 
   useEffect(() => {
     setDeck(data[id]);
-  }, []);
+  }, [id]);
 
   return (
     <div className="flashcards-page" style={{
