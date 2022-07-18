@@ -141,11 +141,11 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <>
+    <div className='all-dashboard'>
       <Nav />
       <div className="dashboard">
         <h1 className="username">
-          Hello, {username}!
+          <span>Hello,</span> {username}!
         </h1>
         <div className="flashcard-statistics">
           <StatsChart chartData={statsData} options={options} />
@@ -165,10 +165,7 @@ const Dashboard: React.FC = () => {
           <Card />
         </div>
       </div>
-      <div className="bottom-nav">
-        <a href="https://github.com/2201-DevPrep">GitHub</a>
-      </div>
-    </>
+    </div>
   );
 };
 

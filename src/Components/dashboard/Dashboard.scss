@@ -1,9 +1,15 @@
 @import "../../constants/constants.scss";
 
-.dashboard {
+.all-dashboard {
   background-image: url('../login/Black-Texture.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: hidden;
+}
+
+.dashboard {
   display: grid;
   grid-template-columns: 40% 40%;
   grid-template-rows: 0.2fr 1fr 1fr .05fr;
@@ -13,14 +19,14 @@
   justify-content: center;
 
   h1 {
-    // font-size: 4vh;
-    text-align: center;
     align-self: center;
     grid-column: 1 / span 2;
     grid-row: 1;
+    margin-top: 3%;
+    font-size: 4vh;
 
     span {
-      font-size: 2.5vh;
+      font-size: 3vh;
       font-weight: lighter;
     }
   }
@@ -34,13 +40,13 @@
   .flashcard-of-the-day {
     border-radius: $borderRadius;
     background-color: $primaryMono1;
-    box-shadow: 2px 2px 10px $primaryTint10;
+    box-shadow: 10px 12px 15px rgba(0, 0, 0, 0.35);
   }
 
   .dashboard-deck-container {
     border-radius: $borderRadius;
     background-color: $primaryMono1;
-    box-shadow: 2px 2px 10px $primaryTint10;
+    box-shadow: 10px 12px 15px rgba(0, 0, 0, 0.35);
     height: 100%;
 
     .dashboard-deck-list {
@@ -59,7 +65,6 @@
       a {
         display: flex;
         border-radius: $borderRadiusInputs;
-        // box-shadow: 2px 2px 10px $primaryTint10;
         box-shadow: 10px 12px 15px rgba(0, 0, 0, 0.25);
         height: 15%;
         width: 80%;
@@ -76,7 +81,6 @@
       a:hover {
         background-color: #bab8b8;
         color: black;
-        // cursor: pointer;
       }
     }
   }
@@ -85,12 +89,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 10px 12px 15px rgba(0, 0, 0, 0.35);
   }
 
   .codewars-container {
 		border-radius: $borderRadius;
 		background-color: $primaryMono1;
     padding-bottom: 3%;
+    box-shadow: 10px 12px 15px rgba(0, 0, 0, 0.35);
     
     .form-header {
       text-align: center;
@@ -129,7 +135,6 @@
       label {
         color: white;
         place-self: center;
-        font-size: 30px;
       }
 
       input {
