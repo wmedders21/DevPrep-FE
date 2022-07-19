@@ -27,8 +27,22 @@ type Props = {}
 			backSide: ''
 		})
 
-		const handleSubmit = () => {
+		const clearInputs = () => {
+			setNewCard({
+				category: id,
+				frontSide: '',
+				backSide: ''
+			})
+		}
+
+		const handleClick = (e) => {
+			e.preventDefault()
 			createNewCard(newCard, user.data.userId)
+			clearInputs()
+		}
+
+		const handleChange = e => {
+			setNewCard({...newCard, [e.target.name]: e.target.value})
 		}
 
 		return (
@@ -54,7 +68,8 @@ type Props = {}
 						label='Question'
 						value={newCard.frontSide}
 						className='newcard-textfield-question'
-						onChange={e => setNewCard({ ...newCard, frontSide: e.target.value})}
+						name='frontSide'
+						onChange={e => handleChange(e)}
 					/>
 			
 					<TextField						
@@ -66,9 +81,9 @@ type Props = {}
 						label='Answer'
 						value={newCard.backSide}
 						className='newcard-textfield-answer'
-						onChange={e => setNewCard({ ...newCard, backSide: e.target.value})}
-					/>
-					<Button color='primary' variant='contained' onSubmit={() => handleSubmit()} >Create New Card</Button>
+						name='backSide'
+						onChange={e => handleChange(e)}					/>
+					<Button color='primary' variant='contained' onClick={(e) => handleClick(e)} >Create New Card</Button>
 					</ThemeProvider>
 			  </Box>
 			</Modal>
