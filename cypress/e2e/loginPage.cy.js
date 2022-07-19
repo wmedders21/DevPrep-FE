@@ -13,7 +13,7 @@
       .should('contain', 'Welcome to DevPrep!')
     cy.get('p')
       .should('contain', 'Study for your upcoming interview')
-      .should('contain', 'Integrated flashcards')
+      .should('contain', 'Utilize integrated flashcards')
       .should('contain', 'Create and modify custom cards')
       .should('contain', 'See your stats on the dashboard')
   })

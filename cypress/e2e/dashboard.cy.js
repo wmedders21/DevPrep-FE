@@ -20,7 +20,7 @@ describe("Dashboard", () => {
 
   it("a user should be able fill out a codewars link form", () => {
     cy.get(".form-header")
-      .should("have.text", "Would you like to Link your Codewars account?")
+      .should("have.text", "Link Your Codewars Account")
       .get('input[name="username"]')
       .type("MichaelPutnam2")
       .should("have.value", "MichaelPutnam2")

@@ -11,7 +11,7 @@ describe('empty spec', () => {
   });
 
     it('User should see several navigation options, home, signout, decks', () => {
-        cy.get('.nav').contains('DEVPREP')
+        cy.get('.nav').contains('DevPrep')
         .get('.nav').contains('Home')
         .get('.nav').contains('Decks')
         .get('.nav').contains('Logout')

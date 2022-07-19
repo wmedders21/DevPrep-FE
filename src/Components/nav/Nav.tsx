@@ -1,7 +1,10 @@
-import React from 'react';
+import { useContext } from 'react';
 import "./Nav.scss"
 import { NavLink, Link, Navigate } from 'react-router-dom'
 import Select, { StylesConfig } from 'react-select';
+import UserContext from '../../UserContext';
+import { CurrentUser } from '../../interface';
+
 const Decks = [
     { label: <NavLink className='dd-menu dd-menu-be' to='/flashcards/technicalBE'>Technical Back End</NavLink>},
     { label: <NavLink className='dd-menu dd-menu-fe' to='/flashcards/technicalFE'>Technical Front End</NavLink> },
@@ -12,11 +15,11 @@ const dropdownMenuStyles = {
     container: (provided)=>({
         ...provided,
         width: '15vw'
-}),
+    }),
     option: (styles, state) => ({
         ...styles,
         height: '4vh',
-        'font-size': '2vh'
+        fontSize: '2vh'
     }),
     menu: (styles, state) => ({
         ...styles,
@@ -24,16 +27,17 @@ const dropdownMenuStyles = {
     })
 }
 
-
- const Nav = () => {
+const Nav: React.FC = () => {
+    const {setUser}: CurrentUser = useContext(UserContext)
+    const logout = () => {
+        setUser(undefined)
+    }
 
     return (
         <div className='nav'>
-            
             <NavLink className='appName' to='/dashboard'>
-                <h2>DEVPREP</h2>
+                <h2>DevPrep</h2>
             </NavLink>
-            
             <div className='navlink-container'>
                 <NavLink 
                         className='home-button nav-button' 
@@ -43,7 +47,7 @@ const dropdownMenuStyles = {
                 <NavLink 
                         className='signout-button nav-button' 
                         to='/'>
-                    <button className='nav-button'>Logout</button>
+                    <button className='nav-button' onClick={logout}>Logout</button>
                 </NavLink>
                 <Select 
                         className='deck-select'

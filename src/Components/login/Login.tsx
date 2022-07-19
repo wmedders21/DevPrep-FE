@@ -1,7 +1,8 @@
 import { Navigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import './Login.scss';
-import Modal from '../modal/Modal'
+import Modal from '../modal/Modal';
+const Checkmark =  require("./Checkmark.png");
 const userData = require("../../mock-data/login-user/loginUserRes.json");
 
 interface LoginProps {
@@ -14,7 +15,6 @@ const Login: React.FC<LoginProps> = ({ user, setUser }) => {
   const [email, setEmail] = useState<string>('')
   const [error, setError] = useState<boolean>(false)
   const [showModal, setShowModal] = useState<boolean>(false)
-
 
   const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setEmail(event.target.value)
@@ -49,10 +49,10 @@ const Login: React.FC<LoginProps> = ({ user, setUser }) => {
         <div className='login-container'>
             <div className='left-info-container'>
                 <h1>Welcome to DevPrep!</h1>
-                <p>Study for your upcoming interview</p>
-                <p>Integrated flashcards</p>
-                <p>Create and modify custom cards</p>
-                <p>See your stats on the dashboard</p>
+                <p><img src={Checkmark} alt='checkmark'/>Study for your upcoming interview</p>
+                <p><img src={Checkmark} alt='checkmark'/>Utilize integrated flashcards</p>
+                <p><img src={Checkmark} alt='checkmark'/>Create and modify custom cards</p>
+                <p><img src={Checkmark} alt='checkmark'/>See your stats on the dashboard</p>
             </div>
             <div className='right-side-container'>
                 <p className='ask-login'>Please Login</p>
@@ -76,7 +76,7 @@ const Login: React.FC<LoginProps> = ({ user, setUser }) => {
                     value={email}
                     onChange={event => handleChangeEmail(event)}
                     />
-                    
+
                     <input type="submit" value='Login' className='login-button'/>
                 </form>
                 <p onClick={openModal} className='ask-signup'>New User? Sign Up</p>
