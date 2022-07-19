@@ -2,7 +2,7 @@ import { Navigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import './Login.scss';
 import Modal from '../modal/Modal';
-import { getUser } from '../../apiCalls/apiCalls'
+import { getUser, postCard } from '../../apiCalls/apiCalls'
 
 const Checkmark =  require("./Checkmark.png");
 
@@ -16,6 +16,7 @@ const Login: React.FC<LoginProps> = ({ user, setUser }) => {
   const [email, setEmail] = useState<string>('')
   const [errorMessage, setErrorMessage] = useState<string>('')
   const [showModal, setShowModal] = useState<boolean>(false)
+
 
   const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setEmail(event.target.value)

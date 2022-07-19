@@ -3,10 +3,10 @@ import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { Navigation, Thumbs } from "swiper";
 import "./FlashcardCarousel.scss";
 import CreateNewFlashcardButton from "../components/CreateNewFlashcardButton";
-import DeleteFlashCardButton from "../components/DeleteFlashCardButton";
+import DeleteFlashCardButton from "../components/deleteCard/DeleteFlashCardButton";
 import UpdateFlashcardButton from "../components/updateFlashcard/UpdateFlashcardButton";
 import Card from '../flashcard/Flashcard'
-import CardContext from '../../../CardContext'
+import {DeckContext, CardContext} from '../../../Context'
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -28,8 +28,9 @@ type Card = {
 };
 
 
-const FlashCardCarousel = ({ deck, setDeck }) => {
+const FlashCardCarousel = () => {
   const {currentCard, setCurrentCard} = useContext(CardContext)
+  const {deck, setDeck} = useContext(DeckContext)
   const swiper = useSwiper()
 
 
@@ -60,7 +61,7 @@ const FlashCardCarousel = ({ deck, setDeck }) => {
       </Swiper>
       <div className="carousel-bottom-nav-container">
         <CreateNewFlashcardButton></CreateNewFlashcardButton>
-        <UpdateFlashcardButton deck={deck} setDeck={setDeck}></UpdateFlashcardButton>
+        <UpdateFlashcardButton></UpdateFlashcardButton>
         <DeleteFlashCardButton></DeleteFlashCardButton>
       </div>
     </div>

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./FlashcardList.scss";
 import Select, { StylesConfig } from 'react-select';
+import {DeckContext} from '../../../Context'
 
 const filters = [
   { label: "stars high-low" },
@@ -24,7 +25,8 @@ const dropdownMenuStyles = {
     })
 }
 
-const FlashcardList = ({deck}) => {
+const FlashcardList = () => {
+	const {deck} = useContext(DeckContext)
 
 	const renderDeck = () => {
 
