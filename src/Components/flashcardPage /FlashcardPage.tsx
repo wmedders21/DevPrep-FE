@@ -6,8 +6,8 @@ import Nav from "../nav/Nav";
 import Decks from "../decks/Decks";
 import FlashcardCarousel from "./flashcardCarousel/FlashcardCarousel";
 import FlashcardList from "./flashcardList/FlashcardList";
-import CardContext from "../../CardContext";
-import UserContext from "../../UserContext";
+import {UserContext, CardContext, DeckContext} from "../../Context";
+
 
 type Card = {
   id: string;
@@ -24,34 +24,34 @@ type Card = {
 const FlashcardPage = () => {
   let { id } = useParams();
   const { user } = useContext(UserContext);
-  
+
   const [currentCard, setCurrentCard] = useState<Card | undefined>(undefined);
-  
+
   const [deck, setDeck] = useState([]);
   useEffect(() => {
-    if(!user) {
-      return
+    if (!user) {
+      return;
     }
     getCards(user.data.userId).then((res) => {
       setDeck(res.data[id]);
     });
   }, [id]);
-  
-    if(!user) {
-      return (
-        <Navigate to={"/"} />
-      )
-    }
-  
+
+  if (!user) {
+    return <Navigate to={"/"} />;
+  }
+
   return (
-    <CardContext.Provider value={{ currentCard, setCurrentCard }}>
-      <div className="flashcards-page">
-        <Nav />
-        <FlashcardCarousel deck={deck} setDeck={setDeck} />
-        <FlashcardList deck={deck} />
-        <Decks style="flashcards" />
-      </div>
-    </CardContext.Provider>
+    <DeckContext.Provider value={{ deck, setDeck }}>
+      <CardContext.Provider value={{ currentCard, setCurrentCard }}>
+        <div className="flashcards-page">
+          <Nav />
+          <FlashcardCarousel />
+          <FlashcardList />
+          <Decks style="flashcards" />
+        </div>
+      </CardContext.Provider>
+    </DeckContext.Provider>
   );
 };
 

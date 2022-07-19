@@ -8,8 +8,7 @@ import Button from "@mui/material/Button";
 import { Navigate } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "./UpdateFlashcard.scss";
-import CardContext from "../../../../CardContext";
-import UserContext from "../../../../UserContext";
+import {UserContext, CardContext, DeckContext} from "../../../../Context";
 import { patchCard } from "../../../../apiCalls/apiCalls";
 
 export const theme = createTheme({
@@ -20,10 +19,14 @@ export const theme = createTheme({
     secondary: {
       main: "#9ec7c0",
     },
+    warning: {
+      main: "#d32f2f" 
+    }
+
   },
 });
 
-function UpdateFlashcardButton({setDeck, deck}) {
+function UpdateFlashcardButton() {
   const { currentCard } = useContext(CardContext);
   const { user } = useContext(UserContext);
   const [open, setOpen] = useState(false);
@@ -32,6 +35,7 @@ function UpdateFlashcardButton({setDeck, deck}) {
   const [rating, setRating] = useState(0);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const { deck, setDeck } = useContext(DeckContext)
 
   useEffect(() => {
     if (!currentCard) {

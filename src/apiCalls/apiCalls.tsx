@@ -73,22 +73,28 @@ const patchCard = (userId: number, cardId: number, updatedCard: UpdatedCard) =>
     })
     .catch((err) => alert(err));
 
-    const deleteCard = (userId: number, cardId: number) => fetch(`https://devprep-be.herokuapp.com/api/v1/users/${userId}/cards/${cardId}`, {
+const deleteCard = (userId: number, cardId: number) =>
+  fetch(
+    `https://devprep-be.herokuapp.com/api/v1/users/${userId}/cards/${cardId}`,
+    {
       method: "DELETE"
-    }).then(res => res.json()).catch(err => alert(err))
-
-    const postCard = () => {
-      return fetch(`https://devprep-be.herokuapp.com/api/v1/users/3/cards/`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          category: "technicalBE",
-          frontSide: "What is your name?",
-          backSide: "Michael" 
-        })
-      }).then(res => res.json()).catch(err => alert(err))
     }
+  ).catch((err) => alert(err));
+
+const postCard = () => {
+  return fetch(`https://devprep-be.herokuapp.com/api/v1/users/3/cards`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      category: "technicalBE",
+      frontSide: "What is your name?",
+      backSide: "Michael",
+    }),
+  })
+    .then((res) => res.json())
+    .catch((err) => alert(err));
+};
 
 export { getUser, postNewUser, getCards, patchCard, postCard, deleteCard };
