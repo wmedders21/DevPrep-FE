@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { Navigation, Thumbs } from "swiper";
 import "./FlashcardCarousel.scss";
 import CreateNewFlashcardButton from "../components/CreateNewFlashcardButton";
-import DeleteFlashCardButton from "../components/DeleteFlashCardButton";
+import DeleteFlashCardButton from "../components/deleteCard/DeleteFlashCardButton";
 import UpdateFlashcardButton from "../components/updateFlashcard/UpdateFlashcardButton";
 import Card from '../flashcard/Flashcard'
 import CardContext from '../../../CardContext'

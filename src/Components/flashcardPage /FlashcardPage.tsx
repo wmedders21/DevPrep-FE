@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./FlashcardPage.scss";
 import { Navigate, useParams } from "react-router-dom";
-import { getCards } from "../../apiCalls/apiCalls";
+import { getCards, postCard } from "../../apiCalls/apiCalls";
 import Nav from "../nav/Nav";
 import Decks from "../decks/Decks";
 import FlashcardCarousel from "./flashcardCarousel/FlashcardCarousel";
