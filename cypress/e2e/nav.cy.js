@@ -1,10 +1,18 @@
 describe('empty spec', () => {
-    beforeEach(() => {
-      cy.visit('http://localhost:3000/dashboard')
-    })
+  before(() => {
+    cy.intercept('POST', 'https://devprep-be.herokuapp.com/api/v1/login', { fixture: 'login.json' })
+    cy.visit("http://localhost:3000/");
+		cy.get('form')
+    cy.get(".login-input-username[name='name']")
+      .type('Igor')
+    cy.get(".login-input-email[name='email']")
+      .type('email@example.com')
+			.get('.login-button')
+			.click()
+  });
 
     it('User should see several navigation options, home, signout, decks', () => {
-        cy.get('.nav').contains('DEVPREP')
+        cy.get('.nav').contains('DevPrep')
         .get('.nav').contains('Home')
         .get('.nav').contains('Decks')
         .get('.nav').contains('Logout')
@@ -12,22 +20,24 @@ describe('empty spec', () => {
     })
 
     it('User should be able to navigate to different decks with dropdown menu', () => {
+      cy.intercept('GET', 'https://devprep-be.herokuapp.com/api/v1/users/1/cards', {fixture: 'cards.json'})
         cy.get('.deck-select').contains('Decks')
         cy.get('.deck-select').click()
         cy.get('.dd-menu').contains('Technical Back End')
         cy.get('.dd-menu-be').click()
-        .url().should('eq', 'http://localhost:3000/flashcards/technicalBE')
+        .url().should('eq', 'http://localhost:3000/flashcards/BEtechnicalCards')
         cy.get('.deck-select').click()
         cy.get('.dd-menu-behavioral').click()
-        .url().should('eq', 'http://localhost:3000/flashcards/behavioral')
+        .url().should('eq', 'http://localhost:3000/flashcards/behavioralCards')
     })
 
-      // it('User should be able to signout, which will take them to login page', () => {
-      //   cy.url().should('eq', 'http://localhost:3000/dashboard')
-      //   cy.get('.signout-button').click()
-      //   cy.url().should('eq', 'http://localhost:3000/')
-      //   cy.get('.login-container').contains('Please Login')
-      //   cy.get('.left-info-container').contains('Welcome to DevPrep!')
-      // })
+      it('User should be able to signout, which will take them to login page', () => {
+        cy.get('.home-button').click()
+        cy.url().should('eq', 'http://localhost:3000/dashboard')
+        cy.get('.signout-button').click()
+        cy.url().should('eq', 'http://localhost:3000/login')
+        cy.get('.login-container').contains('Please Login')
+        cy.get('.left-info-container').contains('Welcome to DevPrep!')
+      })
       
     })

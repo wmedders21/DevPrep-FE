@@ -1,0 +1,70 @@
+@import "../../../../constants/constants.scss";
+
+*{
+	padding: 0px;
+}
+
+.MuiModal-root {
+  display: grid;
+  grid-template-columns: 1fr;
+  .MuiBox-root {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-self: center;
+    width: 35vw;
+    // height: 80vh;
+    border-radius: $borderRadius;
+		background-color: $primary;
+		.MuiFormControl-root {
+			height: 30vh;
+			label {
+				color: white;
+				font-size: 2rem;
+			}
+			background-color: $primaryTint10;
+			.MuiInput-root {
+				margin: 0px;
+				height: 100%;
+				.MuiInput-input {
+					color: white;
+					font-size: 1.2rem;
+				}
+
+			}
+		}
+    .update-flashcards-rating-container {
+			grid-row: 1;
+			grid-column: 1;
+			margin-right: 10px;
+			height: 10vh;
+      justify-self: end;
+			align-self: center;
+      background-color: white;
+			border-radius: $borderRadiusInputs;
+			height: 5.5vh;
+      .MuiRating-root {
+        height: vh; 
+				label {
+          height: 3vh;
+        }
+      }
+    }
+		h3 {
+			color: white;
+			grid-column: 1;
+			grid-row: 1;
+			justify-self: start;
+			align-self: center;
+			margin-left: 2px;
+			font-size: 2.5vw;
+		}
+		button {
+			font-size: 2rem;
+			max-height: 10vh;
+		}
+  }
+}
+
+.FrbGt {
+	margin-bottom: -10px;
+}
