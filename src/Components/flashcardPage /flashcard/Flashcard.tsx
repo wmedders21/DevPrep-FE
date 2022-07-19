@@ -3,9 +3,8 @@ import { useParams } from "react-router-dom";
 import { useSwiperSlide } from "swiper/react";
 import "./Flashcard.scss";
 import Rating from "@mui/material/Rating";
-import CardContext from "../../../CardContext";
+import {CardContext} from "../../../Context";
 import Button from '@mui/material/Button';
-// import 
 import theme from '../components/updateFlashcard/UpdateFlashcardButton'
 
 type Props = {

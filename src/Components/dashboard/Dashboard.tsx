@@ -3,7 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import "./Dashboard.scss";
 import Nav from "../nav/Nav";
 import StatsChart from "../stats-chart/statsChart";
-import UserContext from "../../UserContext";
+import {UserContext} from "../../Context";
 import { CurrentUser } from "../../interface";
 import Card from "../card/Card";
 import Decks from "../decks/Decks";

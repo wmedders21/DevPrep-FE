@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import "./Nav.scss"
 import { NavLink, Link, Navigate } from 'react-router-dom'
 import Select, { StylesConfig } from 'react-select';
-import UserContext from '../../UserContext';
+import {UserContext} from '../../Context';
 import { CurrentUser } from '../../interface';
 
 const Decks = [

@@ -6,8 +6,8 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { TextField } from '@mui/material';
-import { postNewCard } from '../../../apiCalls/apiCalls'
-import UserContext from '../../../UserContext'
+import { postCard } from '../../../apiCalls/apiCalls'
+import { UserContext } from '../../../Context'
 
 type Props = {}
 
@@ -54,7 +54,7 @@ const categories = {
 			setNewCard({...newCard, [e.target.name]: e.target.value})
 		}
 
-		const testPostCard = () => {
+		const postCard = () => {
 			console.log(newCard, id)
 			  return fetch(`https://devprep-be.herokuapp.com/api/v1/users/3/cards`, {
 				method: "POST",
