@@ -9,6 +9,13 @@ type NewUser = {
   codewarsUsername: undefined;
 };
 
+type UpdatedCard = {
+  category?: string;
+  competenceRating?: number;
+  frontSide?: string;
+  backSide?: string;
+};
+
 const getUser = (user: User) => {
   return fetch("https://devprep-be.herokuapp.com/api/v1/login", {
     method: "POST",
@@ -46,4 +53,24 @@ const getCards = (userId: number) =>
     .then((res) => res.json())
     .catch((err) => alert(err));
 
-export { getUser, postNewUser, getCards };
+const patchCard = (userId: number, cardId: number, updatedCard: UpdatedCard) =>
+  fetch(
+    `https://devprep-be.herokuapp.com/api/v1/users/${userId}/cards/${cardId}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedCard),
+    }
+  )
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        throw new Error();
+      }
+    })
+    .catch((err) => alert(err));
+
+export { getUser, postNewUser, getCards, patchCard };

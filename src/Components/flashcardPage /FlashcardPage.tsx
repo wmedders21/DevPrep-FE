@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./FlashcardPage.scss";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { getCards } from "../../apiCalls/apiCalls";
 import Nav from "../nav/Nav";
 import Decks from "../decks/Decks";
@@ -24,22 +24,30 @@ type Card = {
 const FlashcardPage = () => {
   let { id } = useParams();
   const { user } = useContext(UserContext);
-
+  
   const [currentCard, setCurrentCard] = useState<Card | undefined>(undefined);
-
+  
   const [deck, setDeck] = useState([]);
-
   useEffect(() => {
+    if(!user) {
+      return
+    }
     getCards(user.data.userId).then((res) => {
       setDeck(res.data[id]);
     });
   }, [id]);
-
+  
+    if(!user) {
+      return (
+        <Navigate to={"/"} />
+      )
+    }
+  
   return (
     <CardContext.Provider value={{ currentCard, setCurrentCard }}>
       <div className="flashcards-page">
         <Nav />
-        <FlashcardCarousel deck={deck} />
+        <FlashcardCarousel deck={deck} setDeck={setDeck} />
         <FlashcardList deck={deck} />
         <Decks style="flashcards" />
       </div>

@@ -74,12 +74,12 @@ function Card({ card }: Props) {
         />
         <h2>Notes:</h2>
         <p>{card.attributes.backSide}</p>
-        <button
+        <Button
           onClick={() => handleClick()}
           className="toggle-flashcard-button"
         >
           Flip To Front
-        </button>
+        </Button>
         <div className="flashcard-footer">
           <span>{card.attributes.category}</span>|<span>{card.id}</span>
         </div>

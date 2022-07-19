@@ -28,7 +28,7 @@ type Card = {
 };
 
 
-const FlashCardCarousel = ({ deck }) => {
+const FlashCardCarousel = ({ deck, setDeck }) => {
   const {currentCard, setCurrentCard} = useContext(CardContext)
   const swiper = useSwiper()
 
@@ -60,7 +60,7 @@ const FlashCardCarousel = ({ deck }) => {
       </Swiper>
       <div className="carousel-bottom-nav-container">
         <CreateNewFlashcardButton></CreateNewFlashcardButton>
-        <UpdateFlashcardButton></UpdateFlashcardButton>
+        <UpdateFlashcardButton deck={deck} setDeck={setDeck}></UpdateFlashcardButton>
         <DeleteFlashCardButton></DeleteFlashCardButton>
       </div>
     </div>

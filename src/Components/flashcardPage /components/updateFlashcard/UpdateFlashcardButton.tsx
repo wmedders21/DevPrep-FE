@@ -1,13 +1,16 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Modal from "@mui/material/Modal";
 import Rating from "@mui/material/Rating";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import { Navigate } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "./UpdateFlashcard.scss";
 import CardContext from "../../../../CardContext";
+import UserContext from "../../../../UserContext";
+import { patchCard } from "../../../../apiCalls/apiCalls";
 
 export const theme = createTheme({
   palette: {
@@ -22,17 +25,50 @@ export const theme = createTheme({
 
 type Props = {};
 
-function UpdateFlashcardButton({}: Props) {
+function UpdateFlashcardButton({setDeck, deck}) {
   const { currentCard } = useContext(CardContext);
+  const { user } = useContext(UserContext);
   const [open, setOpen] = useState(false);
   const [question, setQuestion] = useState("");
   const [notes, setNotes] = useState("");
   const [rating, setRating] = useState(0);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const handleSubmit = (e) => {
+
+  useEffect(() => {
+    if (!currentCard) {
+      return;
+    }
+    setQuestion(currentCard.attributes.frontSide);
+    setNotes(currentCard.attributes.backSide);
+    setRating(currentCard.attributes.competenceRating);
+  }, [currentCard]);
+
+  if (!user) {
+    return <Navigate to="/" />;
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const updatedCard = {};
+    const updatedCard = {
+      competenceRating: rating,
+      frontSide: question,
+      backSide: notes,
+    };
+    await patchCard(
+      Number(user.data.userId),
+      Number(currentCard.id),
+      updatedCard
+    ).then((res) => {
+      setDeck([...deck.map((card) => {
+        if(card.id === res.data.id) {
+          return res.data
+        } else {
+          return card
+        }
+      })])
+    });
+    handleClose()
   };
 
   return (
