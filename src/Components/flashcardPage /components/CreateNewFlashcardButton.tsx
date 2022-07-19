@@ -6,11 +6,16 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { TextField } from '@mui/material';
-import { createNewCard } from '../../../apiCalls/apiCalls'
+import { postNewCard } from '../../../apiCalls/apiCalls'
 import UserContext from '../../../UserContext'
 
 type Props = {}
 
+const categories = {
+	BEtechnicalCards: 'technicalBE',
+	FEtechnicalCards: 'techicalFE',
+	behavioralCards: 'behavioral'
+}
 
  const theme = createTheme({})
 
@@ -22,7 +27,7 @@ type Props = {}
 		const handleOpen = () => setOpen(true);
 		const handleClose = () => setOpen(false);
 		const [newCard, setNewCard] = useState({
-			category: id,
+			category: categories[id],
 			frontSide: '',
 			backSide: ''
 		})
@@ -37,13 +42,34 @@ type Props = {}
 
 		const handleClick = (e) => {
 			e.preventDefault()
-			createNewCard(newCard, user.data.userId)
+			//console.log(user.data.userId)
+			//console.log(newCard)
+			//postNewCard(newCard, user.data.userId).then(res => console.log(res))
+			testPostCard()
 			clearInputs()
 		}
 
 		const handleChange = e => {
+			console.log(newCard, user.data.userId)
 			setNewCard({...newCard, [e.target.name]: e.target.value})
 		}
+
+		const testPostCard = () => {
+			console.log(newCard, id)
+			  return fetch(`https://devprep-be.herokuapp.com/api/v1/users/3/cards`, {
+				method: "POST",
+				headers: {
+				  "Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+				  category: "technicalFE",
+				  frontSide: "What is your name?",
+				  backSide: "RiO",
+				}),
+			  })
+				.then((res) => res.json())
+				.catch((err) => alert(err));
+			};
 
 		return (
 		  <div>
@@ -82,7 +108,8 @@ type Props = {}
 						value={newCard.backSide}
 						className='newcard-textfield-answer'
 						name='backSide'
-						onChange={e => handleChange(e)}					/>
+						onChange={e => handleChange(e)} 
+					/>
 					<Button color='primary' variant='contained' onClick={(e) => handleClick(e)} >Create New Card</Button>
 					</ThemeProvider>
 			  </Box>

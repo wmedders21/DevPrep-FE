@@ -1,7 +1,7 @@
 type newCard = {
-	category: string,
-	frontSide: string,
-	backSide: string
+	category?: string,
+	frontSide?: string,
+	backSide?: string
 }
 
 type User = {
@@ -79,13 +79,34 @@ fetch(
     })
     .catch((err) => alert(err));
 	
-	const createNewCard = (newCard: newCard, userId: number) => {
-		return fetch(`https://devprep-be.herokuapp.com/api/v1/users/${userId}}/cards)`, {
+	const testPostCard = (newCard: newCard, userId: number) => {
+		console.log(newCard, userId, 'card, and id')
+		  return fetch(`https://devprep-be.herokuapp.com/api/v1/${userId}/3/cards`, {
 			method: "POST",
-			body: JSON.stringify(newCard),
+			headers: {
+			  "Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+			  category: "technicalFE",
+			  frontSide: "What is your name?",
+			  backSide: "RiO",
+			}),
+		  })
+			.then((res) => res.json())
+			.catch((err) => alert(err));
+		};
+		
+	const postNewCard = (newCard: newCard, userId: number) => {
+		return fetch(`https://devprep-be.herokuapp.com/api/v1/users/${userId}/cards)`, {
+			method: "POST",
 			headers: {
 			  "Content-Type": "application/json"
-			}
+			},
+			body: JSON.stringify({
+				category: newCard.category,
+				frontSide: newCard.frontSide,
+				backSide: newCard.backSide,
+			  }),
 		  }).then(res => {
 			if(res.ok) {
 			  return res.json();
@@ -94,5 +115,5 @@ fetch(
 			}
 		  })
 		}
-	export { getUser, postNewUser, getCards, patchCard, createNewCard };
+	export { getUser, postNewUser, getCards, patchCard, postNewCard };
 	
