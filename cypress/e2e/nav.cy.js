@@ -20,14 +20,15 @@ describe('empty spec', () => {
     })
 
     it('User should be able to navigate to different decks with dropdown menu', () => {
+      cy.intercept('GET', 'https://devprep-be.herokuapp.com/api/v1/users/1/cards', {fixture: 'cards.json'})
         cy.get('.deck-select').contains('Decks')
         cy.get('.deck-select').click()
         cy.get('.dd-menu').contains('Technical Back End')
         cy.get('.dd-menu-be').click()
-        .url().should('eq', 'http://localhost:3000/flashcards/technicalBE')
+        .url().should('eq', 'http://localhost:3000/flashcards/BEtechnicalCards')
         cy.get('.deck-select').click()
         cy.get('.dd-menu-behavioral').click()
-        .url().should('eq', 'http://localhost:3000/flashcards/behavioral')
+        .url().should('eq', 'http://localhost:3000/flashcards/behavioralCards')
     })
 
       it('User should be able to signout, which will take them to login page', () => {

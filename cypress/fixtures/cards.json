@@ -1,0 +1,76 @@
+{
+  "data": {
+    "BEtechnicalCards": [
+      {
+        "id": "1",
+        "type": "flashCard",
+        "attributes": {
+          "category": "technicalBE",
+          "competenceRating": 4.5,
+          "frontSide": "what is MVC?",
+          "backSide": "A design pattern commonly used to build web applications.",
+          "userId": "1"
+        }
+      },
+      {
+        "id": "2",
+        "type": "flashCard",
+        "attributes": {
+          "category": "technicalBE",
+          "competenceRating": 0,
+          "frontSide": "Explain your understanding of relational databases.",
+          "backSide": "akfbnasldkfjnbaskdfjbalsdfasd",
+          "userId": "1"
+        }
+      }
+    ],
+    "FEtechnicalCards": [
+      {
+        "id": "1",
+        "type": "flashCard",
+        "attributes": {
+          "category": "technicalFE",
+          "competenceRating": 4.5,
+          "frontSide": "what is MVC?",
+          "backSide": "A design pattern commonly used to build web applications.",
+          "userId": "1"
+        }
+      },
+      {
+        "id": "2",
+        "type": "flashCard",
+        "attributes": {
+          "category": "technicalFE",
+          "competenceRating": 0,
+          "frontSide": "Explain your understanding of relational databases.",
+          "backSide": "",
+          "userId": "1"
+        }
+      }
+    ],
+    "behavioralCards": [
+      {
+        "id": "3",
+        "type": "flashCard",
+        "attributes": {
+          "category": "behavioral",
+          "competenceRating": 0,
+          "frontSide": "What are you looking for in a role?",
+          "backSide": "",
+          "userId": "1"
+        }
+      },
+      {
+        "id": "4",
+        "type": "flashCard",
+        "attributes": {
+          "category": "behavioral",
+          "competenceRating": 0,
+          "frontSide": "What are you proud of?",
+          "backSide": "",
+          "userId": "1"
+        }
+      }
+    ]
+  }
+}

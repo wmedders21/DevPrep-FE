@@ -23,8 +23,6 @@ export const theme = createTheme({
   },
 });
 
-type Props = {};
-
 function UpdateFlashcardButton({setDeck, deck}) {
   const { currentCard } = useContext(CardContext);
   const { user } = useContext(UserContext);

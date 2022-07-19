@@ -38,13 +38,14 @@ describe("Dashboard", () => {
 			.should('have.text', 'java: 1234')
   });
 
-	it('a user should be able to see a group of decks and be navigate to a flashcard page witht for that deck', () => {
+	it('a user should be able to see a group of decks and be navigate to a flashcard page with for that deck', () => {
+		cy.intercept('GET', 'https://devprep-be.herokuapp.com/api/v1/users/1/cards', {fixture: 'cards.json'})
 		cy.get('.dashboard-deck-list')
 		.find('a')
 		.first()
 		.click()
 		.url()
-		.should('equal', 'http://localhost:3000/flashcards/behavioral')
+		.should('equal', 'http://localhost:3000/flashcards/behavioralCards')
 		.get('.appName > h2')
 		.click()
 	})
