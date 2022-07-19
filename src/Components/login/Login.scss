@@ -90,6 +90,12 @@
           color: white;
         }
 
+        .login-error-message {
+          color: red;
+          font-size: 2vh;
+          text-align: center;
+        }
+
         form {
           height: 40%;
           width: 80%;
@@ -120,6 +126,8 @@
               color: white;
             }
           }
+
+          
         }
       }
     }

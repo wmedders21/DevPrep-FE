@@ -2,10 +2,13 @@ import { Navigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import './Login.scss';
 import Modal from '../modal/Modal';
-const Checkmark =  require("./Checkmark.png");
-const userData = require("../../mock-data/login-user/loginUserRes.json");
+import { getUser } from '../../apiCalls/apiCalls'
 
-interface LoginProps {
+
+const Checkmark =  require("./Checkmark.png");
+// const userData = require("../../mock-data/login-user/loginUserRes.json");
+
+type LoginProps = {
     user: {};
     setUser: (userInfo: {}) => void;
 }
@@ -13,7 +16,7 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({ user, setUser }) => {
   const [username, setUsername] = useState<string>('')
   const [email, setEmail] = useState<string>('')
-  const [error, setError] = useState<boolean>(false)
+  const [errorMessage, setErrorMessage] = useState<string>('')
   const [showModal, setShowModal] = useState<boolean>(false)
 
   const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -25,18 +28,22 @@ const Login: React.FC<LoginProps> = ({ user, setUser }) => {
   }
 
   const userLogin = (): void => {
-    setUser(userData)
-
-    //userarray.find (or filter)
-    //if the user name and password match the database API, then user can navigate to the dashboard and we'll set current user,
-    //else setError(true)
-
-
+    const body = {
+      "email": email,
+      "username": username
+    }
+    getUser(body)
+    .then(data => setUser(data))
+    .catch(() => {
+      setErrorMessage('Please enter valid username and email')
+    })
+  
     clearInputs()
   }
 
   const clearInputs = () => {
     setEmail('')
+    setUsername('')
   }
 
   const openModal = () => {
@@ -79,8 +86,8 @@ const Login: React.FC<LoginProps> = ({ user, setUser }) => {
 
                     <input type="submit" value='Login' className='login-button'/>
                 </form>
+                {errorMessage && <p className="login-error-message">{errorMessage}</p>}
                 <p onClick={openModal} className='ask-signup'>New User? Sign Up</p>
-                {error && <p>Please input correct email</p>}
             </div>
             </div>
         {showModal && <Modal setShowModal= {setShowModal}/> }
