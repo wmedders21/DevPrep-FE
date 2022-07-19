@@ -1,102 +1,93 @@
 import React, { useState, useContext } from "react";
 import Modal from "@mui/material/Modal";
 import Rating from "@mui/material/Rating";
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import './UpdateFlashcard.scss';
-import CardContext from '../../../../CardContext'
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import "./UpdateFlashcard.scss";
+import CardContext from "../../../../CardContext";
 
 export const theme = createTheme({
-	palette: {
-		primary: {
-			main: '#5d6160'
-		},
-		secondary: {
-			main: '#9ec7c0'
-		}
-	}
-})
+  palette: {
+    primary: {
+      main: "#5d6160",
+    },
+    secondary: {
+      main: "#9ec7c0",
+    },
+  },
+});
 
 type Props = {};
 
 function UpdateFlashcardButton({}: Props) {
-
-	const {currentCard} = useContext(CardContext)
+  const { currentCard } = useContext(CardContext);
   const [open, setOpen] = useState(false);
   const [question, setQuestion] = useState("");
   const [notes, setNotes] = useState("");
   const [rating, setRating] = useState(0);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-	const handleSubmit = (e) => {
-		e.preventDefault()
-		const updatedCard = {
-			
-		}
-		console.log(currentCard)
-	}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const updatedCard = {};
+  };
 
   return (
     <>
       <button onClick={handleOpen}>Update Current FlashCard</button>
       <Modal open={open} onClose={handleClose}>
-					
-        <Box
-					component="form"
-				>
-					<h3>Update Current Card</h3>
-					
-          <div className='update-flashcards-rating-container'>
-						<Typography style={{textAlign: 'center', fontSize: '2.8'}} component="legend" >Comfort Rating</Typography>
+        <Box component="form">
+          <h3>Update Current Card</h3>
+
+          <div className="update-flashcards-rating-container">
+            <Typography
+              style={{ textAlign: "center", fontSize: "2.8" }}
+              component="legend"
+            >
+              Comfort Rating
+            </Typography>
             <Rating
               name="simple-controlled"
               value={rating}
               onChange={(e, value) => setRating(value)}
             />
           </div>
-					<ThemeProvider
-					theme={theme}
-					>
-          <TextField
-						multiline
-						color='secondary'
-						variant="standard"
-						label="Question"
-            value={question}
-						rows={6}
-            onChange={(e) => setQuestion(e.target.value)}
-            className="text-field update-flashcard-question"
-            type="text"
-						/>
+          <ThemeProvider theme={theme}>
+            <TextField
+              multiline
+              color="secondary"
+              variant="standard"
+              label="Question"
+              value={question}
+              rows={6}
+              onChange={(e) => setQuestion(e.target.value)}
+              className="text-field update-flashcard-question"
+              type="text"
+            />
 
-          <TextField
-						multiline
-						color='secondary'
-						variant="standard"
-						label="Notes"
-            value={notes}
-						rows={6}
-            onChange={(e) => setNotes(e.target.value)}
-            className="text-field update-flashcard-notes"
-            type="text"
-          />
+            <TextField
+              multiline
+              color="secondary"
+              variant="standard"
+              label="Notes"
+              value={notes}
+              rows={6}
+              onChange={(e) => setNotes(e.target.value)}
+              className="text-field update-flashcard-notes"
+              type="text"
+            />
 
-					<Button
-					variant="contained"
-					onClick={(e) => handleSubmit(e)}
-					color='primary'
-					
-					>
-					
-						Submit
-					</Button>
-				</ThemeProvider>
-
-					
-
+            <Button
+              variant="contained"
+              onClick={(e) => handleSubmit(e)}
+              color="primary"
+            >
+              Submit
+            </Button>
+          </ThemeProvider>
         </Box>
       </Modal>
     </>
