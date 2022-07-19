@@ -5,7 +5,7 @@ import "./FlashcardCarousel.scss";
 import CreateNewFlashcardButton from "../components/CreateNewFlashcardButton";
 import DeleteFlashCardButton from "../components/DeleteFlashCardButton";
 import UpdateFlashcardButton from "../components/updateFlashcard/UpdateFlashcardButton";
-import Card from '../flashcard/Flashard'
+import Card from '../flashcard/Flashcard'
 import CardContext from '../../../CardContext'
 
 import "swiper/css";
