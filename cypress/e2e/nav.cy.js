@@ -1,5 +1,6 @@
 describe('empty spec', () => {
   before(() => {
+    cy.intercept('POST', 'https://devprep-be.herokuapp.com/api/v1/login', { fixture: 'login.json' })
     cy.visit("http://localhost:3000/");
 		cy.get('form')
     cy.get(".login-input-username[name='name']")
