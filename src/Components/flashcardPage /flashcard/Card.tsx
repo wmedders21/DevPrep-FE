@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import {useParams} from 'react-router-dom'
+import {useSwiperSlide} from 'swiper/react'; 
 import "./Card.scss";
 import Rating from '@mui/material/Rating';
+import CardContext from '../../../CardContext'
 
 
 type Props = {
@@ -19,6 +22,15 @@ type Props = {
 
 function Card({ card }: Props) {
   const [onFront, setOnFront] = useState(true);
+  const swiperSlider = useSwiperSlide()
+  const {currentCard, setCurrentCard} = useContext(CardContext)
+  const {deck} = useParams()
+
+  useEffect(() => {
+    if(swiperSlider.isActive) {
+      setCurrentCard(card)
+    }
+  }, [swiperSlider.isActive, deck])
 
   const handleClick = () => {
     setOnFront(onFront ? false : true)
@@ -31,8 +43,7 @@ function Card({ card }: Props) {
       <div className="flashcard-front">
         <Rating 
         name="read-only"
-        // value={card.attributes.competenceRating}
-        value={3.5}
+        value={card.attributes.competenceRating}
         readOnly
         className='rating'
         />
@@ -45,7 +56,7 @@ function Card({ card }: Props) {
           Flip To Back
         </button>
         <div>
-          <span>Deck Type</span>|<span>Card Number</span>
+          <span>{card.attributes.category}</span>|<span>{card.id}</span>
         </div>
       </div>
     );

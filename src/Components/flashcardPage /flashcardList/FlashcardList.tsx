@@ -27,7 +27,7 @@ const dropdownMenuStyles = {
 const FlashcardList = ({deck}) => {
 
 	const renderDeck = () => {
-		console.log(deck,'deck')
+
 		const deckList = deck.map(card => (
 			<div className={`decklist-card ${card.category}`} key={card.id}>
 				<p className='decklist-question'>Question: {card.question}</p>
