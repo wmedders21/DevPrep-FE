@@ -6,18 +6,18 @@ import Dashboard from '../dashboard/Dashboard';
 import ErrorHandling from '../errorHandling/ErrorHandling';
 import React, { useState } from 'react';
 import UserContext from '../../UserContext';
-import { User } from '../../interface'
+import { CurrentUser } from '../../interface'
 
-const App = () => {
+const App: React.FC = () => {
 
-  const [user, setUser] = useState<User>()
+  const [user, setUser ] = useState<CurrentUser>()
 
   return (
-    < UserContext.Provider value={user} >
+    < UserContext.Provider value={{user, setUser}} >
       <main className="App">
         <Routes>
           < Route path='/' element={ !user? < Navigate to="/login" replace /> : <Navigate to="/dashboard" replace />} />
-          < Route path='/login' element={ < Login user={user} setUser={setUser} /> } />
+          < Route path='/login' element={< Login user={user} setUser={setUser} /> } />
           < Route path='/dashboard' element={ !user? < Navigate to="/login" replace /> :  < Dashboard /> }/>
           {/* < Route path='/flashcards/:id' element= {  !user? < Navigate to="/login" replace /> : < FlashcardPage/> } /> */}
           < Route path='/flashcards/:id' element= { < FlashcardPage/> } />

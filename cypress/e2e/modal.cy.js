@@ -1,6 +1,6 @@
 describe('Modal', () => {
   beforeEach(() => {
-    // cy.intercept('GET', '', { fixture: 'example.json' })
+    cy.intercept('POST', 'https://devprep-be.herokuapp.com/api/v1/users', { fixture: 'newUser.json'})
     cy.visit('http://localhost:3000/')
     cy.get('.ask-signup')
       .click()
@@ -32,21 +32,15 @@ describe('Modal', () => {
   })
 
   it('should be able to sign up with username and email when clicking signup button', () => {
-    //cy.intercept('POST', 'url', {
-    //statusCode: 200,
-    //body: {
-    //.....
-    //}
-    //})
-    // cy.get('form')
-    // cy.get("input[name='name']")
-    //   .type('Igor')
-    // cy.get("input[name='email']")
-    //   .type('email@example.com')
-    // cy.get('.login-button')
-    //   .click()
-    // cy.url('http://localhost:3000/)
-    //  .should('exist')
+    cy.get('form')
+    cy.get(".signup-input-username[name='name']")
+      .type('Igor')
+    cy.get(".signup-input-email[name='email']")
+      .type('email@example.com')
+    cy.get('.signup-button')
+      .click()
+    cy.url('http://localhost:3000/login')
+     .should('exist')
   })
 
   it('should be able to close modal by clicking close button', () => {

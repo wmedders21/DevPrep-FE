@@ -1,5 +1,6 @@
 describe("Dashboard", () => {
   before(() => {
+		cy.intercept('POST', 'https://devprep-be.herokuapp.com/api/v1/login', { fixture: 'login.json' })
     cy.visit("http://localhost:3000/");
 		cy.get('form')
     cy.get(".login-input-username[name='name']")
@@ -15,12 +16,12 @@ describe("Dashboard", () => {
   });
 
   it("a user should see their username", () => {
-    cy.get("h1").should("contain", "coolguy123");
+    cy.get("h1").should("contain", "IgorIsDope");
   });
 
   it("a user should be able fill out a codewars link form", () => {
     cy.get(".form-header")
-      .should("have.text", "Would you like to Link your Codewars account?")
+      .should("have.text", "Link Your Codewars Account")
       .get('input[name="username"]')
       .type("MichaelPutnam2")
       .should("have.value", "MichaelPutnam2")
@@ -44,6 +45,8 @@ describe("Dashboard", () => {
 		.click()
 		.url()
 		.should('equal', 'http://localhost:3000/flashcards/behavioral')
+		.get('.appName > h2')
+		.click()
 	})
 
 	it('a user should be able to see charts regarding their progress in the 3 different decks', () => {

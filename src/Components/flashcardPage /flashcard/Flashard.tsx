@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useSwiperSlide } from "swiper/react";
-import "./Card.scss";
+import "./Flashcard.scss";
 import Rating from "@mui/material/Rating";
 import CardContext from "../../../CardContext";
 import Button from '@mui/material/Button';

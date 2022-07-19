@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import ReactDom from 'react-dom'
 import './Modal.scss'
+import { postNewUser } from '../../apiCalls/apiCalls'
 
 interface ModalProps {
   setShowModal: (userInfo: boolean) => void;
@@ -9,6 +10,7 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = ({ setShowModal }) => {
   const [username, setUsername] = useState<string>('')
   const [email, setEmail] = useState<string>('')
+  const [errorMessage, setErrorMessage] = useState<string>('')
   const modalRef: React.MutableRefObject<undefined> = useRef();
   const closeModal = (event: any): void => {
     if (event.target === modalRef.current) {
@@ -25,8 +27,24 @@ const Modal: React.FC<ModalProps> = ({ setShowModal }) => {
   }
 
   const userSignup = () => {
-    console.log("USER SIGNUP")
-    //post new user to data base and setShowModal(false)
+    const body = {
+      "email": email,
+      "username": username,
+      "codewarsUsername": undefined
+    }
+    
+    postNewUser(body)
+    .then(() => setShowModal(false))
+    .catch(() => {
+      setErrorMessage('This user already exists, please use another')
+    })
+    
+    clearInputs()
+  }
+
+  const clearInputs = () => {
+    setEmail('')
+    setUsername('')
   }
 
   return ReactDom.createPortal(
@@ -53,7 +71,7 @@ const Modal: React.FC<ModalProps> = ({ setShowModal }) => {
               value={email}
               onChange={event => handleChangeEmail(event)}
             />
-
+            {errorMessage && <p className="signup-error-message">{errorMessage}</p>}
             <input type='submit' value='Signup' className='signup-button'/>
         </form>
         <button className="close-button" onClick={() => setShowModal(false)}>Close</button>

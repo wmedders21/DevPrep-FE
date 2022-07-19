@@ -1,62 +1,98 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { Link, Navigate } from "react-router-dom";
-
 import "./Dashboard.scss";
-import Decks from '../decks/Decks'
-
 import Nav from "../nav/Nav";
 import StatsChart from "../stats-chart/statsChart";
+import UserContext from "../../UserContext";
+import { CurrentUser } from "../../interface";
+import Card from "../card/Card";
+import Decks from "../decks/Decks";
 
-const userData = require("../../mock-data/login-user/loginUserRes.json");
+type StatsData = {
+  labels: string[];
+  datasets: {
+    label: string;
+    data: any[];
+    backgroundColor: string[];
+    borderColor: string;
+    borderWidth: number;
+  }[];
+};
 
-const options = {
+type CwStats = {
+  codewarsUsername: string;
+  cwLeaderboardPosition: number;
+  totalCompleted: number;
+  languageRanks: {
+    java: number;
+    ruby: number;
+  };
+};
+
+type Options = {
   scales: {
     x: {
       grid: {
-        display: false
-      }
+        display: boolean;
+      };
+    };
+    y: {
+      grid: {
+        display: boolean;
+      };
+    };
+  };
+};
+
+const options: Options = {
+  scales: {
+    x: {
+      grid: {
+        display: false,
+      },
     },
     y: {
       grid: {
-        display: false
-      }
-    }
+        display: false,
+      },
+    },
+  },
+};
 
-  }
-}
-
-const Dashboard = () => {
-  const [user, setUser] = useState(userData.data.attributes);
-  const [username, setUsername] = useState(userData.data.attributes.username);
-
-  const [statsData, setStatsData] = useState({
-    labels: Object.keys(userData.data.attributes.preparednessRating).map(
+const Dashboard: React.FC = () => {
+  const { user, setUser }: CurrentUser = useContext(UserContext);
+  const [username, setUsername] = useState<string | undefined>(
+    user.data.attributes.username
+  );
+  const [statsData, setStatsData] = useState<StatsData>({
+    labels: Object.keys(user.data.attributes.preparednessRating).map(
       (key) => key
     ),
     datasets: [
       {
         label: "Preparedness Level",
-        data: Object.keys(userData.data.attributes.preparednessRating).map(
-          (key) => userData.data.attributes.preparednessRating[key]
-          ),
-        backgroundColor: ['red', 'green', 'blue'],
+        data: Object.keys(user.data.attributes.preparednessRating).map(
+          (key) => user.data.attributes.preparednessRating[key]
+        ),
+        backgroundColor: ["red", "green", "blue"],
         borderColor: "black",
         borderWidth: 2,
       },
     ],
-
   });
 
-  const [cwStats, setCWStats] = useState(userData.data.attributes.cwAttributes);
+  const [cwStats, setCWStats] = useState<CwStats>(
+    user.data.attributes.cwAttributes
+  );
+  const [cwUsername, setCWUsername] = useState<string>("");
 
-  const [cwUsername, setCWUsername] = useState("");
   if (!user) {
     return <Navigate to="/login" replace={true} />;
   }
 
   const renderCodewarsStats = () => {
     const languageRanks = () => {
-      let languageKeys = Object.keys(cwStats.languageRanks);
+      let languageKeys: string[] = Object.keys(cwStats.languageRanks);
       return languageKeys.map((language) => {
         return (
           <li key={Math.random() * 100}>
@@ -80,7 +116,7 @@ const Dashboard = () => {
     );
   };
 
-  const handleFormSubmission = (e) => {
+  const handleFormSubmission = (e: any): void => {
     e.preventDefault();
     setCWStats({
       ...cwStats,
@@ -91,45 +127,38 @@ const Dashboard = () => {
   const renderForm = () => {
     return (
       <form onSubmit={(e) => handleFormSubmission(e)}>
-        <h2 className="form-header">
-          Would you like to Link your Codewars account?
-        </h2>
+        <h2 className="form-header">Link Your Codewars Account</h2>
         <input
           required
           type="text"
           name="username"
-          placeholder="username"
+          placeholder="Username"
           value={cwUsername}
           onChange={(e) => setCWUsername(e.target.value)}
         />
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" className="cw-submit-button" />
       </form>
     );
   };
 
   return (
-    <>
+    <div className="all-dashboard">
       <Nav />
       <div className="dashboard">
         <h1 className="username">
-          <span>hello,</span> {username}
+          <span>Hello,</span> {username}!
         </h1>
-
         <div className="flashcard-statistics">
           <StatsChart chartData={statsData} options={options} />
         </div>
-
         <div className="codewars-container">
           {cwStats.codewarsUsername ? renderCodewarsStats() : renderForm()}
         </div>
 
-        <Decks style='dashboard' />
-
+        <Decks style="dashboard" />
+          <Card />
       </div>
-      <div className="bottom-nav">
-        <a href="https://github.com/2201-DevPrep">GitHub</a>
-      </div>
-    </>
+    </div>
   );
 };
 
