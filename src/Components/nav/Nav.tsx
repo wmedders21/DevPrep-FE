@@ -6,9 +6,9 @@ import UserContext from '../../UserContext';
 import { CurrentUser } from '../../interface';
 
 const Decks = [
-    { label: <NavLink className='dd-menu dd-menu-be' to='/flashcards/technicalBE'>Technical Back End</NavLink>},
-    { label: <NavLink className='dd-menu dd-menu-fe' to='/flashcards/technicalFE'>Technical Front End</NavLink> },
-    { label: <NavLink className='dd-menu dd-menu-behavioral' to='/flashcards/behavioral'>Behavioral</NavLink> }
+    { label: <NavLink className='dd-menu dd-menu-be' to='/flashcards/BEtechnicalCards'>Technical Back End</NavLink>},
+    { label: <NavLink className='dd-menu dd-menu-fe' to='/flashcards/FEtechnicalCards'>Technical Front End</NavLink> },
+    { label: <NavLink className='dd-menu dd-menu-behavioral' to='/flashcards/behavioralCards'>Behavioral</NavLink> }
 ]
 
 const dropdownMenuStyles = {

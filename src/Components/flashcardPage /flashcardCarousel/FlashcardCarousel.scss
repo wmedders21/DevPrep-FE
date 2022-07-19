@@ -1,0 +1,39 @@
+@import "../../../constants/constants.scss";
+
+
+.carousel-container {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $primary;
+  .swiper {
+    background-color: $primaryTint30;
+  }
+  
+  .carousel-bottom-nav-container {
+    width: 60vw;
+    display: flex;
+    justify-content: space-around;
+    background-color: $primaryTint30;
+
+    button {
+      width: 30%;
+    }
+  }
+}
+
+.flashcard-carousel-swiper {
+  height: 40vh;
+  width: 60vw;
+  background-color: white;
+}
+
+.flashcard {
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

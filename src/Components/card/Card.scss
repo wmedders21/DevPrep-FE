@@ -1,17 +1,16 @@
-.flashcard-of-the-day {
-  display: flex;
+@import '../../constants/constants.scss';
+
+.quote-of-the-day {
+  display: grid;
   text-align: center;
-  align-items: center;
-  justify-content: center;
-}
-
-
-.flashcard {
-  margin: 5%;
-  font-size: 4vh;
-
+  border-radius: $borderRadius;
+  background-color: $primaryMono1;
+  box-shadow: 10px 12px 15px rgba(0, 0, 0, 0.35);
   h2 {
-    font-size: 4.5vh;
-    margin-bottom: 7%;
+    font-size: 2rem;
+    align-self: end;
+  }
+  p {
+    font-size: 1.5rem;
   }
 }

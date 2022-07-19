@@ -4,9 +4,7 @@ import './Login.scss';
 import Modal from '../modal/Modal';
 import { getUser } from '../../apiCalls/apiCalls'
 
-
 const Checkmark =  require("./Checkmark.png");
-// const userData = require("../../mock-data/login-user/loginUserRes.json");
 
 type LoginProps = {
     user: {};
@@ -67,7 +65,7 @@ const Login: React.FC<LoginProps> = ({ user, setUser }) => {
                     <input
                     required
                     className='login-input-username'
-                    type='text'
+                    type='username'
                     placeholder='Username'
                     name='name'
                     value={username}
@@ -77,7 +75,7 @@ const Login: React.FC<LoginProps> = ({ user, setUser }) => {
                     <input
                     required
                     className='login-input-email'
-                    type='text'
+                    type='email'
                     placeholder='Email'
                     name='email'
                     value={email}

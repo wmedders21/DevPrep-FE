@@ -2,10 +2,11 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { Link, Navigate } from "react-router-dom";
 import "./Dashboard.scss";
 import Nav from "../nav/Nav";
-import Card from "../card/Card";
 import StatsChart from "../stats-chart/statsChart";
-import UserContext from '../../UserContext';
-import { CurrentUser } from '../../interface';
+import UserContext from "../../UserContext";
+import { CurrentUser } from "../../interface";
+import Card from "../card/Card";
+import Decks from "../decks/Decks";
 
 type StatsData = {
   labels: string[];
@@ -16,7 +17,7 @@ type StatsData = {
     borderColor: string;
     borderWidth: number;
   }[];
-}
+};
 
 type CwStats = {
   codewarsUsername: string;
@@ -26,7 +27,7 @@ type CwStats = {
     java: number;
     ruby: number;
   };
-}
+};
 
 type Options = {
   scales: {
@@ -38,29 +39,31 @@ type Options = {
     y: {
       grid: {
         display: boolean;
-        };
+      };
     };
   };
-}
+};
 
 const options: Options = {
   scales: {
     x: {
       grid: {
-        display: false
-      }
+        display: false,
+      },
     },
     y: {
       grid: {
-        display: false
-      }
-    }
-  }
-}
+        display: false,
+      },
+    },
+  },
+};
 
 const Dashboard: React.FC = () => {
-  const {user, setUser} : CurrentUser = useContext(UserContext)
-  const [username, setUsername] = useState<string | undefined >(user.data.attributes.username);
+  const { user, setUser }: CurrentUser = useContext(UserContext);
+  const [username, setUsername] = useState<string | undefined>(
+    user.data.attributes.username
+  );
   const [statsData, setStatsData] = useState<StatsData>({
     labels: Object.keys(user.data.attributes.preparednessRating).map(
       (key) => key
@@ -70,15 +73,17 @@ const Dashboard: React.FC = () => {
         label: "Preparedness Level",
         data: Object.keys(user.data.attributes.preparednessRating).map(
           (key) => user.data.attributes.preparednessRating[key]
-          ),
-        backgroundColor: ['red', 'green', 'blue'],
+        ),
+        backgroundColor: ["red", "green", "blue"],
         borderColor: "black",
         borderWidth: 2,
       },
     ],
   });
 
-  const [cwStats, setCWStats] = useState<CwStats>(user.data.attributes.cwAttributes);
+  const [cwStats, setCWStats] = useState<CwStats>(
+    user.data.attributes.cwAttributes
+  );
   const [cwUsername, setCWUsername] = useState<string>("");
 
   if (!user) {
@@ -122,9 +127,7 @@ const Dashboard: React.FC = () => {
   const renderForm = () => {
     return (
       <form onSubmit={(e) => handleFormSubmission(e)}>
-        <h2 className="form-header">
-          Link Your Codewars Account
-        </h2>
+        <h2 className="form-header">Link Your Codewars Account</h2>
         <input
           required
           type="text"
@@ -139,7 +142,7 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className='all-dashboard'>
+    <div className="all-dashboard">
       <Nav />
       <div className="dashboard">
         <h1 className="username">
@@ -151,17 +154,9 @@ const Dashboard: React.FC = () => {
         <div className="codewars-container">
           {cwStats.codewarsUsername ? renderCodewarsStats() : renderForm()}
         </div>
-        <div className="dashboard-deck-container">
-          <ul className="dashboard-deck-list">
-            <h2>Choose Your Deck</h2>
-            <Link to="/flashcards/behavioral">Behavior</Link>
-            <Link to="/flashcards/technicalFE">Technical FE</Link>
-            <Link to="/flashcards/technicalBE">Technical BE</Link>
-          </ul>
-        </div>
-        <div className="flashcard-of-the-day">
+
+        <Decks style="dashboard" />
           <Card />
-        </div>
       </div>
     </div>
   );

@@ -1,0 +1,8 @@
+@import '../../constants/constants.scss';
+
+.flashcards-page {
+	background-color: $primary;
+	height: 100vh;
+	display: grid;
+	grid-template-columns: 1fr;
+}
