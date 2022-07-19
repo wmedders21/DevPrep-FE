@@ -17,7 +17,7 @@ const App: React.FC = () => {
       <main className="App">
         <Routes>
           < Route path='/' element={ !user? < Navigate to="/login" replace /> : <Navigate to="/dashboard" replace />} />
-          < Route path='/login' element={ < Login user={user} setUser={setUser} /> } />
+          < Route path='/login' element={< Login user={user} setUser={setUser} /> } />
           < Route path='/dashboard' element={ !user? < Navigate to="/login" replace /> :  < Dashboard /> }/>
           < Route path='/flashcards/:id' element= {  !user? < Navigate to="/login" replace /> : < FlashcardPage/> } />
           < Route path='/error' element= { < ErrorHandling /> } />

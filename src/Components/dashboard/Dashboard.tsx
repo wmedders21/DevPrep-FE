@@ -7,7 +7,7 @@ import StatsChart from "../stats-chart/statsChart";
 import UserContext from '../../UserContext';
 import { CurrentUser } from '../../interface';
 
-const cardsData = require("../../mock-data/getUsersCards.json");
+// const cardsData = require("../../mock-data/getUsersCards.json");
 
 type StatsData = {
   labels: string[];
@@ -62,7 +62,7 @@ const options: Options = {
 
 const Dashboard: React.FC = () => {
   const {user, setUser} : CurrentUser = useContext(UserContext)
-  const [username, setUsername] = useState<string>(user.data.attributes.username);
+  const [username, setUsername] = useState<string | undefined >(user.data.attributes.username);
   const [statsData, setStatsData] = useState<StatsData>({
     labels: Object.keys(user.data.attributes.preparednessRating).map(
       (key) => key
