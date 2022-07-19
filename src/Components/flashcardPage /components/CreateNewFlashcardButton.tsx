@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { TextField } from '@mui/material';
-import createNewCard from '../../../apiCalls/apiCalls'
+import { createNewCard } from '../../../apiCalls/apiCalls'
 import UserContext from '../../../UserContext'
 
 type Props = {}
