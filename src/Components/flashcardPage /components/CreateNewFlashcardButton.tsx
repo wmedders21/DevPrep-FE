@@ -10,6 +10,11 @@ import { postCard } from '../../../apiCalls/apiCalls'
 import { UserContext } from '../../../Context'
 
 type Props = {}
+type Card = {
+	category: string,
+	frontSide: string,
+	backSide: string
+}
 
 const categories = {
 	BEtechnicalCards: 'technicalBE',
@@ -42,10 +47,7 @@ const categories = {
 
 		const handleClick = (e) => {
 			e.preventDefault()
-			//console.log(user.data.userId)
-			//console.log(newCard)
-			//postNewCard(newCard, user.data.userId).then(res => console.log(res))
-			testPostCard()
+			postCard(newCard, user.data.userId)
 			clearInputs()
 		}
 
@@ -53,23 +55,6 @@ const categories = {
 			console.log(newCard, user.data.userId)
 			setNewCard({...newCard, [e.target.name]: e.target.value})
 		}
-
-		const postCard = () => {
-			console.log(newCard, id)
-			  return fetch(`https://devprep-be.herokuapp.com/api/v1/users/3/cards`, {
-				method: "POST",
-				headers: {
-				  "Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-				  category: "technicalFE",
-				  frontSide: "What is your name?",
-				  backSide: "RiO",
-				}),
-			  })
-				.then((res) => res.json())
-				.catch((err) => alert(err));
-			};
 
 		return (
 		  <div>
