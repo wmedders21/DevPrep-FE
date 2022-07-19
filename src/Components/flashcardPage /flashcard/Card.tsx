@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
-import {useParams} from 'react-router-dom'
-import {useSwiperSlide} from 'swiper/react'; 
+import { useParams } from "react-router-dom";
+import { useSwiperSlide } from "swiper/react";
 import "./Card.scss";
-import Rating from '@mui/material/Rating';
-import CardContext from '../../../CardContext'
-
+import Rating from "@mui/material/Rating";
+import CardContext from "../../../CardContext";
+import Button from '@mui/material/Button';
+// import 
+import theme from '../components/updateFlashcard/UpdateFlashcardButton'
 
 type Props = {
   card: {
@@ -22,40 +24,39 @@ type Props = {
 
 function Card({ card }: Props) {
   const [onFront, setOnFront] = useState(true);
-  const swiperSlider = useSwiperSlide()
-  const {currentCard, setCurrentCard} = useContext(CardContext)
-  const {deck} = useParams()
+  const swiperSlider = useSwiperSlide();
+  const { currentCard, setCurrentCard } = useContext(CardContext);
+  const { deck } = useParams();
 
   useEffect(() => {
-    if(swiperSlider.isActive) {
-      setCurrentCard(card)
+    if (swiperSlider.isActive) {
+      setCurrentCard(card);
     }
-  }, [swiperSlider.isActive, deck])
+  }, [swiperSlider.isActive, deck]);
 
   const handleClick = () => {
-    setOnFront(onFront ? false : true)
+    setOnFront(onFront ? false : true);
   };
-
-
 
   const renderFront = () => {
     return (
       <div className="flashcard-front">
-        <Rating 
-        name="read-only"
-        value={card.attributes.competenceRating}
-        readOnly
-        className='rating'
+        <Rating
+          name="read-only"
+          value={card.attributes.competenceRating}
+          readOnly
+          className="rating"
         />
         <h2>Question:</h2>
         <p>{card.attributes.frontSide}</p>
-        <button
+        <Button
           onClick={() => handleClick()}
           className="toggle-flashcard-button"
+          variant='contained'
         >
           Flip To Back
-        </button>
-        <div>
+        </Button>
+        <div className="flashcard-footer">
           <span>{card.attributes.category}</span>|<span>{card.id}</span>
         </div>
       </div>
@@ -65,7 +66,13 @@ function Card({ card }: Props) {
   const renderBack = () => {
     return (
       <div className="flashcard-back">
-        Notes: 
+        <Rating
+          name="read-only"
+          value={card.attributes.competenceRating}
+          readOnly
+          className="rating"
+        />
+        <h2>Notes:</h2>
         <p>{card.attributes.backSide}</p>
         <button
           onClick={() => handleClick()}
@@ -73,7 +80,7 @@ function Card({ card }: Props) {
         >
           Flip To Front
         </button>
-        <div>
+        <div className="flashcard-footer">
           <span>{card.attributes.category}</span>|<span>{card.id}</span>
         </div>
       </div>

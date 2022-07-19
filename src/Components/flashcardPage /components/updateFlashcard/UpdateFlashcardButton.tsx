@@ -37,7 +37,11 @@ function UpdateFlashcardButton({}: Props) {
 
   return (
     <>
-      <button onClick={handleOpen}>Update Current FlashCard</button>
+      <ThemeProvider theme={theme}>
+        <Button variant="contained" color="secondary" onClick={handleOpen}>
+          Update Current FlashCard
+        </Button>
+      </ThemeProvider>
       <Modal open={open} onClose={handleClose}>
         <Box component="form">
           <h3>Update Current Card</h3>

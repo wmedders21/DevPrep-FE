@@ -30,9 +30,9 @@ const FlashcardPage = () => {
   const [deck, setDeck] = useState([]);
 
   useEffect(() => {
-    // apiCalls.getCards().then(data => {
-    //   console.log(data)
-    // })
+    apiCalls.getCards().then(data => {
+      console.log(data)
+    })
     setDeck(data[id]);
   }, [id]);
 

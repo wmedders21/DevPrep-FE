@@ -1,13 +1,38 @@
-.flashcard-container {
-	height: 40vh;
-	width: 50vw;
-	border: solid black 2px;
-	.flashcard-front, .flashcard-back {
-		display: grid;
-		grid-template-columns: 1fr;
-		.rating {
-			justify-self: end;
-		}
+@import "../../../constants/constants.scss";
+// * {
+// 	border: solid 2px pink;
+// }
 
-	}
+.flashcard-container {
+  height: 40vh;
+  width: 50vw;
+  border: solid black 2px;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  background-color: $primaryTint10;
+  color: white;
+  .flashcard-front,
+  .flashcard-back {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 48vw;
+    .rating {
+      justify-self: end;
+    }
+    .flashcard-footer {
+      grid-row: 4;
+      grid-column: 1;
+      justify-self: end;
+    }
+    p {
+      height: 30vh;
+      font-size: 2rem;
+    }
+    button {
+      justify-self: start;
+      grid-row: 4;
+      grid-column: 1;
+    }
+  }
 }
