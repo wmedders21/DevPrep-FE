@@ -1,6 +1,6 @@
       describe('Login Page', () => {
   beforeEach(() => {
-    // cy.intercept('GET', '', { fixture: 'example.json' })
+    cy.intercept('POST', 'https://devprep-be.herokuapp.com/api/v1/login', { fixture: 'login.json' })
     cy.visit('http://localhost:3000/')
   })
 
@@ -44,21 +44,15 @@
   })
 
   it('should be able to log in with username and email when clicking login button', () => {
-    //cy.intercept('GET', 'url', {
-    //statusCode: 200,
-    //body: {
-    //.....
-    //}
-    //})
-    // cy.get('form')
-    // cy.get("input[name='name']")
-    //   .type('Igor')
-    // cy.get("input[name='email']")
-    //   .type('email@example.com')
-    // cy.get('.login-button')
-    //   .click()
-    // cy.url('http://localhost:3000/dashboard')
-    //  .should('exist')
+    cy.get('form')
+    cy.get("input[name='name']")
+      .type('IgorIsDope')
+    cy.get("input[name='email']")
+      .type('hello@example.com')
+    cy.get('.login-button')
+      .click()
+    cy.url('http://localhost:3000/dashboard')
+     .should('exist')
   })
 
   //should be able to display an error message if login is unsuccessful?
