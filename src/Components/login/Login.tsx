@@ -4,6 +4,7 @@ import './Login.scss';
 import Modal from '../modal/Modal';
 import { getUser } from '../../apiCalls/apiCalls'
 
+
 const Checkmark =  require("./Checkmark.png");
 // const userData = require("../../mock-data/login-user/loginUserRes.json");
 
@@ -15,7 +16,6 @@ type LoginProps = {
 const Login: React.FC<LoginProps> = ({ user, setUser }) => {
   const [username, setUsername] = useState<string>('')
   const [email, setEmail] = useState<string>('')
-  // const [error, setError] = useState<boolean>(false)
   const [errorMessage, setErrorMessage] = useState<string>('')
   const [showModal, setShowModal] = useState<boolean>(false)
 

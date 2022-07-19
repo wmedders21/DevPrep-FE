@@ -7,8 +7,6 @@ import StatsChart from "../stats-chart/statsChart";
 import UserContext from '../../UserContext';
 import { CurrentUser } from '../../interface';
 
-// const cardsData = require("../../mock-data/getUsersCards.json");
-
 type StatsData = {
   labels: string[];
   datasets: {
