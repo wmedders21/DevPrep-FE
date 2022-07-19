@@ -1,25 +1,35 @@
-import * as React from 'react';
+import React, { useState, useContext } from 'react';
 import './CreateNewFlashcardButton.scss'
+import { useParams } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { TextField } from '@mui/material';
+import createNewCard from '../../../apiCalls/apiCalls'
+import UserContext from '../../../UserContext'
 
 type Props = {}
+
+
  const theme = createTheme({})
 
 	export default function CreateNewFlashcardButton({}: Props) {
-		const [open, setOpen] = React.useState(false);
+		const { user }  = useContext(UserContext)
+
+		let { id } = useParams();
+		const [open, setOpen] = useState(false);
 		const handleOpen = () => setOpen(true);
 		const handleClose = () => setOpen(false);
-		const [question, setQuestion] = React.useState<string>('')
-  		const [answer, setAnswer] = React.useState<string>('')
+		const [newCard, setNewCard] = useState({
+			category: id,
+			frontSide: '',
+			backSide: ''
+		})
 
-	
-		  const createNewCard = () => {
-			// new card POST 
-		  }
+		const handleSubmit = () => {
+			createNewCard(newCard, user.data.userId)
+		}
 
 		return (
 		  <div>
@@ -42,9 +52,9 @@ type Props = {}
 						rows={6}
 						type='text'
 						label='Question'
-						value={question}
+						value={newCard.frontSide}
 						className='newcard-textfield-question'
-						onChange={e => setQuestion(e.target.value)}
+						onChange={e => setNewCard({ ...newCard, frontSide: e.target.value})}
 					/>
 			
 					<TextField						
@@ -54,11 +64,11 @@ type Props = {}
 						rows={6}
 						type='text'
 						label='Answer'
-						value={answer}
+						value={newCard.backSide}
 						className='newcard-textfield-answer'
-						onChange={e => setAnswer(e.target.value)}
+						onChange={e => setNewCard({ ...newCard, backSide: e.target.value})}
 					/>
-					<Button color='primary' variant='contained' onSubmit={() => createNewCard()} >Create New Card</Button>
+					<Button color='primary' variant='contained' onSubmit={() => handleSubmit()} >Create New Card</Button>
 					</ThemeProvider>
 			  </Box>
 			</Modal>
