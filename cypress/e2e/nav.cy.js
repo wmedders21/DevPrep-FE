@@ -30,12 +30,13 @@ describe('empty spec', () => {
         .url().should('eq', 'http://localhost:3000/flashcards/behavioral')
     })
 
-      // it('User should be able to signout, which will take them to login page', () => {
-      //   cy.url().should('eq', 'http://localhost:3000/dashboard')
-      //   cy.get('.signout-button').click()
-      //   cy.url().should('eq', 'http://localhost:3000/')
-      //   cy.get('.login-container').contains('Please Login')
-      //   cy.get('.left-info-container').contains('Welcome to DevPrep!')
-      // })
+      it('User should be able to signout, which will take them to login page', () => {
+        cy.get('.home-button').click()
+        cy.url().should('eq', 'http://localhost:3000/dashboard')
+        cy.get('.signout-button').click()
+        cy.url().should('eq', 'http://localhost:3000/login')
+        cy.get('.login-container').contains('Please Login')
+        cy.get('.left-info-container').contains('Welcome to DevPrep!')
+      })
       
     })
