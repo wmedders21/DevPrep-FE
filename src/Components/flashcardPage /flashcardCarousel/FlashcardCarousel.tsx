@@ -60,7 +60,7 @@ const FlashCardCarousel = () => {
         {renderCards()}
       </Swiper>
       <div className="carousel-bottom-nav-container">
-        <CreateNewFlashcardButton></CreateNewFlashcardButton>
+        <CreateNewFlashcardButton variant='carousel'></CreateNewFlashcardButton>
         <UpdateFlashcardButton name="Current Card" variant='carousel'></UpdateFlashcardButton>
         <DeleteFlashCardButton variant='carousel'></DeleteFlashCardButton>
       </div>

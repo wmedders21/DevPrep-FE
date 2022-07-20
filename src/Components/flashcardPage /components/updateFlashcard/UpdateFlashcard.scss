@@ -1,26 +1,23 @@
 @import "../../../../constants/constants.scss";
 
-*{
-	padding: 0px;
-}
-
 .MuiModal-root {
   display: grid;
   grid-template-columns: 1fr;
   .MuiBox-root {
     display: grid;
     grid-template-columns: 1fr;
-    place-self: center;
+		place-self: center;
+		height: 80vh;
     width: 35vw;
     border-radius: $borderRadius;
 		background-color: $primary;
 		.MuiFormControl-root {
 			height: 30vh;
+			background-color: $primaryTint10;
 			label {
 				color: white;
-				font-size: 2rem;
+				font-size: 4vh;
 			}
-			background-color: $primaryTint10;
 			.MuiInput-root {
 				margin: 0px;
 				height: 100%;
@@ -31,39 +28,30 @@
 
 			}
 		}
-    .update-flashcards-rating-container {
-			grid-row: 1;
-			grid-column: 1;
-			margin-right: 10px;
-			height: 10vh;
-      justify-self: end;
-			align-self: center;
-      background-color: white;
-			border-radius: $borderRadiusInputs;
-			height: 5.5vh;
-      .MuiRating-root {
-        height: vh; 
-				label {
-          height: 3vh;
-        }
-      }
-    }
-		h3 {
-			color: white;
-			grid-column: 1;
-			grid-row: 1;
-			justify-self: start;
-			align-self: center;
-			margin-left: 2px;
-			font-size: 2.5vw;
-		}
-		button {
-			font-size: 2rem;
-			max-height: 10vh;
+		.update-form-header {
+			display: flex;
+			justify-content: space-between;
+			.update-flashcards-rating-container {
+				margin-right: .5vw;
+				align-self: center;
+				background-color: white;
+				border-radius: $borderRadiusInputs;
+				legend {
+					font-size: 2.2vh;
+				}
+				.MuiRating-root {
+					label {
+						height: 3vh;
+					}
+				}
+			}
+			h3 {
+				color: white;
+				align-self: center;
+				margin-left: .5vw;
+				font-size: 2.5vw;
+			}
+
 		}
   }
-}
-
-.FrbGt {
-	margin-bottom: -10px;
 }

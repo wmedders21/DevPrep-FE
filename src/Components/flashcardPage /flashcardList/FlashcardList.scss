@@ -6,6 +6,10 @@
   background-color: $primaryComplement;
   color: white;
   border-radius: $borderRadius;
+  display: grid;
+  .MuiButtonBase-root {
+    place-self: center;
+  }
   .cards-list {
     margin: 10px;
   }

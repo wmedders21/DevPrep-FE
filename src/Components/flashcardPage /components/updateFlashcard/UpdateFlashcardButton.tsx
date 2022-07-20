@@ -34,7 +34,7 @@ function UpdateFlashcardButton({
   name: string;
   cardId?: number;
 }) {
-  const { currentCard } = useContext(CardContext);
+  const { currentCard, setCurrentCard } = useContext(CardContext);
   const { user } = useContext(UserContext);
   const [open, setOpen] = useState(false);
   const [question, setQuestion] = useState("");
@@ -92,6 +92,7 @@ function UpdateFlashcardButton({
             }
           }),
         ]);
+        setCurrentCard(res.data)
       }
     );
     handleClose();
@@ -106,21 +107,23 @@ function UpdateFlashcardButton({
       </ThemeProvider>
       <Modal open={open} onClose={handleClose}>
         <Box component="form">
-          <h3>{`Update ${name}`}</h3>
-
-          <div className="update-flashcards-rating-container">
-            <Typography
-              style={{ textAlign: "center", fontSize: "2.8" }}
-              component="legend"
-            >
-              Comfort Rating
-            </Typography>
-            <Rating
-              name="simple-controlled"
-              value={rating}
-              onChange={(e, value) => setRating(value)}
-            />
+          <div className="update-form-header">
+            <h3>{`Update ${name}`}</h3>
+            <div className="update-flashcards-rating-container">
+              <Typography
+                style={{ textAlign: "center", fontSize: "2.8" }}
+                component="legend"
+              >
+                Comfort Rating
+              </Typography>
+              <Rating
+                name="simple-controlled"
+                value={rating}
+                onChange={(e, value) => setRating(value)}
+              />
+            </div>
           </div>
+
           <ThemeProvider theme={theme}>
             <TextField
               multiline

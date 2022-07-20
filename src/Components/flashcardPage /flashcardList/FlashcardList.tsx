@@ -1,23 +1,23 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./FlashcardList.scss";
-import Select, { StylesConfig } from "react-select";
+import Select from "react-select";
 import { DeckContext } from "../../../Context";
 import DeleteFlashcardButton from "../components/deleteCard/DeleteFlashCardButton";
 import CreateNewFlashcardButton from "../components/CreateNewFlashcardButton";
 import UpdateFlashcardButton from "../components/updateFlashcard/UpdateFlashcardButton";
 import { styled } from "@mui/material/styles";
-import { Button, Divider } from '@mui/material'
+import { Button, Divider } from "@mui/material";
 import MuiGrid from "@mui/material/Grid";
-import {useParams} from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 const deckNames = {
-	BEtechnicalCards: "Technical Back-End Deck",
-	FEtechnicalCards: "Technical Front-End Deck",
-	behavioralCards: "Behavioral Deck"
-}
+  BEtechnicalCards: "Technical Back-End Deck",
+  FEtechnicalCards: "Technical Front-End Deck",
+  behavioralCards: "Behavioral Deck",
+};
 
 const Grid = styled(MuiGrid)(({ theme }) => ({
-	gap: '10px',
+  gap: "10px",
   width: "100%",
   ...theme.typography.body2,
   '& [role="separator"]': {
@@ -27,45 +27,98 @@ const Grid = styled(MuiGrid)(({ theme }) => ({
 
 const filters = [
   { label: "stars high-low" },
-  { label: "stars low-high" },
-  { label: "Js" },
+  { label: "stars low-high" }
 ];
 
 const dropdownMenuStyles = {
   container: (provided) => ({
     ...provided,
-    width: "15vw",
   }),
   option: (styles, state) => ({
     ...styles,
     height: "4vh",
-    "font-size": "2vh",
+    fontSize: "2vh",
   }),
   menu: (styles, state) => ({
     ...styles,
     width: "35vw",
+    backgroundColor: 'black',
+    color: 'white'
   }),
 };
 
 const FlashcardList = () => {
-  const { deck } = useContext(DeckContext);
-	const { id } = useParams()
+  const { deck, setDeck } = useContext(DeckContext);
+  const { id } = useParams();
+  const [deckList, setDeckList] = useState(deck)
+
+  useEffect(() => {
+    setDeckList(deck)
+  }, [deck])
+
+  const handleSort = (label: string) => {
+    switch (label) {
+      case "stars high-low":
+        setDeckList([
+          ...deckList.sort(
+            (
+              b: { attributes: { competenceRating: number } },
+              a: { attributes: { competenceRating: number } }
+            ) => {
+              return (
+                a.attributes.competenceRating - b.attributes.competenceRating
+              );
+            }
+          ),
+        ]);
+        break;
+      case "stars low-high":
+        setDeck([
+          ...deckList.sort(
+            (
+              a: { attributes: { competenceRating: number } },
+              b: { attributes: { competenceRating: number } }
+            ) => {
+              return (
+                a.attributes.competenceRating - b.attributes.competenceRating
+              );
+            }
+          ),
+        ]);
+        break;
+      default:
+        return
+    }
+  };
 
   const renderDeck = () => {
-    return deck.map((card) => {
+    return deckList.map((card) => {
       return (
         <Grid container key={card.id}>
           <Grid item xs>
             <p className="decklist-question">{card.attributes.frontSide}</p>
           </Grid>
-          <Divider style={{borderColor: '#9ec7c0'}} light={true} className='divider' orientation="vertical"></Divider>
+          <Divider
+            style={{ borderColor: "#9ec7c0" }}
+            light={true}
+            className="divider"
+            orientation="vertical"
+          ></Divider>
           <Grid item xs>
             <p className="decklist-response">{card.attributes.backSide}</p>
           </Grid>
-					<Divider style={{borderColor: '#9ec7c0'}} light={true} className='divider' orientation="vertical"></Divider>
-          <DeleteFlashcardButton cardId={card.id} variant="list"></DeleteFlashcardButton>
+          <Divider
+            style={{ borderColor: "#9ec7c0" }}
+            light={true}
+            className="divider"
+            orientation="vertical"
+          ></Divider>
+          <DeleteFlashcardButton
+            cardId={card.id}
+            variant="list"
+          ></DeleteFlashcardButton>
           <UpdateFlashcardButton
-					cardId={card.id}
+            cardId={card.id}
             name="Card"
             variant="list"
           ></UpdateFlashcardButton>
@@ -83,10 +136,12 @@ const FlashcardList = () => {
           styles={dropdownMenuStyles}
           placeholder={<h4>filter</h4>}
           options={filters}
+          onChange={(e) => {handleSort(e.label)}}
+          // value={filter}
         />
       </div>
-
       <div className="cards-list">{renderDeck()}</div>
+      <CreateNewFlashcardButton variant="list"></CreateNewFlashcardButton>
     </div>
   );
 };
