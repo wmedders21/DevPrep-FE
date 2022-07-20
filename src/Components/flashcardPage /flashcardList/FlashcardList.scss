@@ -1,18 +1,43 @@
+@import "../../../constants/constants.scss";
+
 .flashcard-list-container {
-    margin: 0 auto;
-    width: 75vw;
-    overflow: hidden;
-    border: 1px solid #AAA;
+  margin: 0 auto;
+  width: 90vw;
+  background-color: $primaryComplement;
+  color: white;
+  border-radius: $borderRadius;
+  display: grid;
+  .MuiButtonBase-root {
+    place-self: center;
+  }
+  .cards-list {
+    margin: 10px;
+  }
 }
-    
+
 .deck-list-header {
-    display: flex;
+  display: flex;
+  justify-content: space-between;
+  h3 {
+    margin-top: 1vh;
+    margin-left: 1vh;
+  }
+  .deck-list-filter {
+    margin-top: 1vh;
+    margin-right: 1vh;
+  }
 }
 
 .cards-list {
-    overflow-y: scroll;
+  display: grid;
+  gap: 1vh;
 }
 
-.decklist-card {
-    display: flex;
+.MuiGrid-root {
+    background-color: $primaryTriadic2;
+    .MuiButton-root {
+        max-height: 4vh;
+        place-self: center;
+    }
 }
+
