@@ -9,6 +9,7 @@ const Decks = ({style}) => {
     return (
         <div className={`${style}-deck-container`}>
         <ul className={`${style}-deck-list`}>
+          <h2>Choose Your Deck</h2>
           <NavLink to="/flashcards/behavioralCards">Behavior</NavLink>
 
           <NavLink to="/flashcards/FEtechnicalCards">Technical FE</NavLink>
