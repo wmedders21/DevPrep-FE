@@ -6,6 +6,7 @@ const Decks = ({ style, allDecks }: { style: string; allDecks?: any }) => {
   const renderDashboardDeckList = () => (
     <div className={`${style}-deck-container`}>
       <ul className={`${style}-deck-list`}>
+      <h2>Choose Your Deck</h2>
         <NavLink
           className={({ isActive }) => {
             return "nav-link" + (isActive ? " selected" : "");
@@ -42,6 +43,7 @@ const Decks = ({ style, allDecks }: { style: string; allDecks?: any }) => {
     return (
     <div className={`${style}-deck-container`}>
       <ul className={`${style}-deck-list`}>
+
         <NavLink
           className={({ isActive }) => {
             return "nav-link" + (isActive ? " selected" : "");

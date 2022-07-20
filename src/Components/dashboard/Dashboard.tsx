@@ -3,10 +3,11 @@ import { Link, Navigate } from "react-router-dom";
 import "./Dashboard.scss";
 import Nav from "../nav/Nav";
 import StatsChart from "../stats-chart/statsChart";
-import {UserContext} from "../../Context";
+import { UserContext } from "../../Context";
 import { CurrentUser } from "../../interface";
 import Card from "../card/Card";
 import Decks from "../decks/Decks";
+import { getQuote } from '../../apiCalls/apiCalls'
 
 type StatsData = {
   labels: string[];
@@ -85,6 +86,12 @@ const Dashboard: React.FC = () => {
     user.data.attributes.cwAttributes
   );
   const [cwUsername, setCWUsername] = useState<string>("");
+  const [quote, setQuote] = useState<string>('')
+  
+  useEffect(() => {
+    getQuote()
+    .then(data => setQuote(`"${data.Quote}" - ${data.Author}`))
+  }, [])
 
   if (!user) {
     return <Navigate to="/login" replace={true} />;
@@ -155,7 +162,7 @@ const Dashboard: React.FC = () => {
           {cwStats.codewarsUsername ? renderCodewarsStats() : renderForm()}
         </div>
         <Decks style="dashboard" />
-        <Card />
+        <Card quote={quote}/>
       </div>
     </div>
   );

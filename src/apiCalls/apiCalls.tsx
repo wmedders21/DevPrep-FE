@@ -87,17 +87,28 @@ const deleteCard = (userId: number, cardId: number) =>
     }
   ).catch((err) => alert(err));
 
-  const postCard = (newCard: newCard, id: number) => {
-	console.log(newCard, id)
-	  return fetch(`https://devprep-be.herokuapp.com/api/v1/users/${id}/cards`, {
-		method: "POST",
-		headers: {
-		  "Content-Type": "application/json",
-		},
-		body: JSON.stringify(newCard),
-	  })
-		.then((res) => res.json())
-		.catch((err) => alert(err));
-	};
+const postCard = (newCard: newCard, id: number) => {
+	return fetch(`https://devprep-be.herokuapp.com/api/v1/users/${id}/cards`, {
+	method: "POST",
+	headers: {
+		"Content-Type": "application/json",
+	},
+	body: JSON.stringify(newCard),
+	})
+	.then((res) => res.json())
+	.catch((err) => alert(err));
+};
 
-export { getUser, postNewUser, getCards, patchCard, postCard, deleteCard };
+const getQuote = () => {
+	return fetch ('https://devprep-be.herokuapp.com/api/v1/quote' )
+	.then((res) => {
+		if (res.ok) {
+			return res.json();
+		} else {
+			throw new Error();
+		}
+    })
+    .catch((err) => alert(err));
+}
+
+export { getUser, postNewUser, getCards, patchCard, postCard, deleteCard, getQuote };

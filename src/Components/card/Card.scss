@@ -1,16 +1,21 @@
 @import '../../constants/constants.scss';
 
 .quote-of-the-day {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+ 
+  align-items: center;
   text-align: center;
   border-radius: $borderRadius;
   background-color: $primaryMono1;
   box-shadow: 10px 12px 15px rgba(0, 0, 0, 0.35);
   h2 {
-    font-size: 2rem;
-    align-self: end;
+    font-size: 4.5vh;
+    margin-top: 7%
   }
   p {
-    font-size: 1.5rem;
+    margin: 5%;
+    font-size: 4vh;
   }
 }
+

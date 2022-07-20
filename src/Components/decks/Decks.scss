@@ -5,9 +5,10 @@
   border-radius: $borderRadius;
   background-color: $primaryMono1;
   box-shadow: 2px 2px 10px $primaryTint10;
-  height: 20vh;
+  // height: 30vh;
   display: grid;
   grid-template-columns: 1fr;
+
   .flashcards-deck-list {
     place-self: center;
   }
@@ -63,10 +64,9 @@
 }
 
 .dashboard-deck-container {
-  border-radius: $borderRadius;
-  background-color: $primaryMono1;
   box-shadow: 10px 12px 15px rgba(0, 0, 0, 0.35);
   height: 100%;
+  // padding-bottom: 3%;
 
   .dashboard-deck-list {
     list-style-type: none;
@@ -77,6 +77,11 @@
     align-items: center;
     
     
+
+    h2 {
+      font-size: 4.5vh;
+      margin-top: 1vh;
+    }
 
     a {
       display: flex;
