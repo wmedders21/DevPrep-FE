@@ -1,30 +1,16 @@
-@import "../../../../constants/constants.scss";
-
-*{
-	padding: 0px;
-}
-
 .MuiModal-root {
-  display: grid;
-  grid-template-columns: 1fr;
   .MuiBox-root {
-		display: grid;
-    grid-template-columns: 1fr;
-    place-self: center;
-		height: 45vh;
-    width: 35vw;
-    border-radius: $borderRadius;
-		background-color: $primary;
 		.delete-button {
-			margin-left: 5px;
-			margin-right: 5px;
+			height: 8vh;
+			font-size: 1.2rem;
+
 			align-self: end;
 		}
 		.return-button {
-			margin-left: 5px;
-			margin-right: 5px;
+			font-size: 1.2rem;
+			height: 8vh;
 			align-self: start;
-			margin-bottom: -6vh;
+			margin-bottom: -4vh;
 		}
 		h3 {
 			text-align: center;
