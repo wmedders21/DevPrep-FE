@@ -61,8 +61,8 @@ const FlashCardCarousel = () => {
       </Swiper>
       <div className="carousel-bottom-nav-container">
         <CreateNewFlashcardButton></CreateNewFlashcardButton>
-        <UpdateFlashcardButton></UpdateFlashcardButton>
-        <DeleteFlashCardButton></DeleteFlashCardButton>
+        <UpdateFlashcardButton name="Current Card" variant='carousel'></UpdateFlashcardButton>
+        <DeleteFlashCardButton variant='carousel'></DeleteFlashCardButton>
       </div>
     </div>
   );

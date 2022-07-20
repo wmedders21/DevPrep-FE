@@ -1,37 +1,46 @@
 import React, { useState, useContext } from "react";
 import "./DeleteFlashCardButton.scss";
-import { Modal, Box, Button, Typography } from "@mui/material";
+import { Modal, Box, Button } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "../updateFlashcard/UpdateFlashcardButton";
 import { deleteCard } from "../../../../apiCalls/apiCalls";
-import {UserContext, CardContext, DeckContext} from "../../../../Context";
+import { UserContext, CardContext, DeckContext } from "../../../../Context";
 import { Navigate } from "react-router-dom";
 
-
-function DeleteFlashCardButton() {
-
+function DeleteFlashCardButton({
+  variant,
+  cardId,
+}: {
+  variant: string;
+  cardId?: number;
+}) {
   const [open, setOpen] = useState(false);
   const handleToggle = () => setOpen(!open);
   const { currentCard } = useContext(CardContext);
   const { user } = useContext(UserContext);
-	const {deck, setDeck} = useContext(DeckContext)
+  const { deck, setDeck } = useContext(DeckContext);
 
-	if(!user) {
-		return (
-			<Navigate to="/"/>
-		)
-	}
+  if (!user) {
+    return <Navigate to="/" />;
+  }
 
   const handleDelete = async () => {
-		 await deleteCard(Number(user.data.userId), Number(currentCard.id)).then((res : any) => {
-			if(res.ok) {
-				setDeck(deck.filter(card => card.id !== currentCard.id))
-			} else {
-				alert(res)
-			}
-		})
-		handleToggle()
-	};
+    let id: number;
+    if (variant === "list") {
+      id = Number(cardId);
+    } else if (variant === "carousel") {
+      id = Number(currentCard.id);
+    }
+
+    await deleteCard(Number(user.data.userId), id).then((res: any) => {
+      if (res.ok) {
+        setDeck([...deck.filter((card) => Number(card.id) !== id)]);
+      } else {
+        alert(res);
+      }
+    });
+    handleToggle();
+  };
 
   return (
     <>

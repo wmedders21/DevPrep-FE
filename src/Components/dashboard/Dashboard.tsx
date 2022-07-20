@@ -154,9 +154,8 @@ const Dashboard: React.FC = () => {
         <div className="codewars-container">
           {cwStats.codewarsUsername ? renderCodewarsStats() : renderForm()}
         </div>
-
         <Decks style="dashboard" />
-          <Card />
+        <Card />
       </div>
     </div>
   );
