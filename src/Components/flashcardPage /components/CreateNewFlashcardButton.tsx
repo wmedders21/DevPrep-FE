@@ -8,6 +8,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { TextField } from '@mui/material';
 import { postCard } from '../../../apiCalls/apiCalls'
 import { UserContext } from '../../../Context'
+import { theme } from '../components/updateFlashcard/UpdateFlashcardButton'
 
 type Props = {}
 type Card = {
@@ -21,8 +22,6 @@ const categories = {
 	FEtechnicalCards: 'techicalFE',
 	behavioralCards: 'behavioral'
 }
-
- const theme = createTheme({})
 
 	export default function CreateNewFlashcardButton({}: Props) {
 		const { user }  = useContext(UserContext)
@@ -57,8 +56,16 @@ const categories = {
 		}
 
 		return (
-		  <div>
-			<Button onClick={handleOpen}>Create New</Button>
+		  <>
+			<ThemeProvider 
+				theme={theme}>
+				<Button 
+					color='secondary'
+					variant='contained' 
+					onClick={handleOpen}>
+						Create New
+				</Button>
+			</ThemeProvider>
 			<Modal
 			  open={open}
 			  onClose={handleClose}
@@ -99,6 +106,6 @@ const categories = {
 					</ThemeProvider>
 			  </Box>
 			</Modal>
-		  </div>
+		  </>
 		);
 	  }
