@@ -118,7 +118,7 @@ const FlashcardList = () => {
             variant="list"
           ></DeleteFlashcardButton>
           <UpdateFlashcardButton
-            cardId={card.id}
+            card={card}
             name="Card"
             variant="list"
           ></UpdateFlashcardButton>

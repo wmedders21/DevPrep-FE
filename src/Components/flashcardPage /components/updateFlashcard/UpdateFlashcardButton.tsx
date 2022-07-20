@@ -28,11 +28,11 @@ export const theme = createTheme({
 function UpdateFlashcardButton({
   variant,
   name,
-  cardId,
+  card,
 }: {
   variant: string;
   name: string;
-  cardId?: number;
+  card?: any;
 }) {
   const { currentCard, setCurrentCard } = useContext(CardContext);
   const { user } = useContext(UserContext);
@@ -46,7 +46,6 @@ function UpdateFlashcardButton({
 
   useEffect(() => {
     if (variant === "list") {
-      let card = deck.find((card) => card.id === cardId);
       setQuestion(card.attributes.frontSide);
       setNotes(card.attributes.backSide);
       setRating(card.attributes.competenceRating);
@@ -59,7 +58,7 @@ function UpdateFlashcardButton({
       setNotes(currentCard.attributes.backSide);
       setRating(currentCard.attributes.competenceRating);
     }
-  }, [currentCard, deck, cardId, variant]);
+  }, [currentCard, deck, card, variant]);
 
   if (!user) {
     return <Navigate to="/" />;
@@ -72,7 +71,7 @@ function UpdateFlashcardButton({
     }
 
     if (variant === "list") {
-      flashcardId = Number(cardId);
+      flashcardId = Number(card.id);
     }
 
     e.preventDefault();
