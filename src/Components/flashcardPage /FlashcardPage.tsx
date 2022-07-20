@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./FlashcardPage.scss";
 import { Navigate, useParams } from "react-router-dom";
-import { getCards, postCard } from "../../apiCalls/apiCalls";
+import { getCards } from "../../apiCalls/apiCalls";
 import Nav from "../nav/Nav";
 import Decks from "../decks/Decks";
 import FlashcardCarousel from "./flashcardCarousel/FlashcardCarousel";
@@ -21,12 +21,19 @@ type Card = {
   };
 };
 
+export type AllDecks = {
+  BEtechnicalCards: Card[],
+  FEtechnicalCards: Card[],
+  behavioralCards: Card[]
+}
+
 const FlashcardPage = () => {
   let { id } = useParams();
   const { user } = useContext(UserContext);
 
   const [currentCard, setCurrentCard] = useState<Card | undefined>(undefined);
-
+  const [allDecks, setAllDecks] = useState<AllDecks | undefined>(undefined)
+  
   const [deck, setDeck] = useState([]);
   useEffect(() => {
     if (!user) {
@@ -34,8 +41,9 @@ const FlashcardPage = () => {
     }
     getCards(user.data.userId).then((res) => {
       setDeck(res.data[id]);
+      setAllDecks(res.data)
     });
-  }, [id]);
+  }, [id, deck]);
 
   if (!user) {
     return <Navigate to={"/"} />;
@@ -48,7 +56,7 @@ const FlashcardPage = () => {
           <Nav />
           <FlashcardCarousel />
           <FlashcardList />
-          <Decks style="flashcards" />
+          <Decks allDecks={allDecks} style="flashcards" />
         </div>
       </CardContext.Provider>
     </DeckContext.Provider>

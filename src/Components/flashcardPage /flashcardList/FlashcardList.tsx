@@ -6,7 +6,7 @@ import DeleteFlashcardButton from "../components/deleteCard/DeleteFlashCardButto
 import CreateNewFlashcardButton from "../components/CreateNewFlashcardButton";
 import UpdateFlashcardButton from "../components/updateFlashcard/UpdateFlashcardButton";
 import { styled } from "@mui/material/styles";
-import { Button, Divider } from "@mui/material";
+import { Divider } from "@mui/material";
 import MuiGrid from "@mui/material/Grid";
 import { useParams } from "react-router-dom";
 

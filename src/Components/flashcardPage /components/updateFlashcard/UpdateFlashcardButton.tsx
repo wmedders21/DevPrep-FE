@@ -58,7 +58,7 @@ function UpdateFlashcardButton({
       setNotes(currentCard.attributes.backSide);
       setRating(currentCard.attributes.competenceRating);
     }
-  }, [currentCard, deck, card, variant]);
+  }, [currentCard]);
 
   if (!user) {
     return <Navigate to="/" />;
@@ -91,7 +91,7 @@ function UpdateFlashcardButton({
             }
           }),
         ]);
-        setCurrentCard(res.data)
+        setCurrentCard(res.data);
       }
     );
     handleClose();
