@@ -1,0 +1,47 @@
+@import '../../../constants/constants.scss';
+
+.MuiModal-root {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    .MuiBox-root {
+        display: grid;
+        grid-template-columns: 1fr;
+        place-self: center;
+        width: 35vw;
+        height: 80vh;
+        background-color: $primary;
+        border-radius: $borderRadius;
+
+            .MuiFormControl-root {
+                background-color: $primaryTint10;
+                height: 30vh;
+                label {
+                    color: white;
+                    font-size: 2rem;
+                }
+                .MuiInput-root {
+                    height: 100%;
+                    color: white;
+
+                    .MuiInput-input {
+                        font-size: 1.2rem;
+                    }
+                }
+
+            }
+            button {
+                font-size: 1.5rem;
+                max-height: 10vh;
+            }
+            h3 {
+                color: white;
+                place-self: center;
+
+            }
+            
+    }
+
+}
+
+
