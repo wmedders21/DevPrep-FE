@@ -1,8 +1,12 @@
 const { Children } = require("react");
 
 describe('FlashcardPage', () => {
-    beforeEach(() => {
+  beforeEach(() => {
+      cy.intercept('GET', 'https://devprep-be.herokuapp.com/api/v1/users/1/cards', {fixture: 'cards.json'})
       cy.intercept('POST', 'https://devprep-be.herokuapp.com/api/v1/login', { fixture: 'login.json' })
+      cy.intercept('POST', 'https://devprep-be.herokuapp.com/api/v1/users/1/cards', { fixture: "newCard.json"})
+      cy.intercept('PATCH', 'https://devprep-be.herokuapp.com/api/v1/users/1/cards/3', { fixture: "editCard.json"})
+      cy.intercept('DELETE', 'https://devprep-be.herokuapp.com/api/v1/users/1/cards/3', { fixture: "deleteCard.json"})
       cy.visit("http://localhost:3000/");
       cy.get('form')
       cy.get(".login-input-username[name='name']")
@@ -11,12 +15,11 @@ describe('FlashcardPage', () => {
         .type('email@example.com')
         .get('.login-button')
         .click()
-      cy.intercept('GET', 'https://devprep-be.herokuapp.com/api/v1/users/1/cards', {fixture: 'cards.json'})
     .get('[href="/flashcards/behavioralCards"]').click()
     .url().should('eq', 'http://localhost:3000/flashcards/behavioralCards')
   });
 
-  it.skip('user should be able to navigate app pages with app icon or buttons', () => {
+  it('user should be able to navigate app pages with app icon or buttons', () => {
     cy.get('.appName > h2').click()
     .url().should('eq', 'http://localhost:3000/dashboard')
     cy.get('[href="/flashcards/behavioralCards"]').click()
@@ -41,14 +44,14 @@ describe('FlashcardPage', () => {
   })
 
   it('user should see a carousel of flashcards and be able to navigate through it', () => {
-    cy.get('.flashcard-footer > :nth-child(2)')
-    .should('contain', "912")
+    cy.get('.flashcard-front > p')
+    .should('contain', "What are you looking for in a role?")
     .get('.swiper-button-next').click()
-    cy.get('.flashcard-footer > :nth-child(2)')
-    .should('contain', '913')
+    cy.get('.flashcard-front > p')
+    .should('contain', 'What are you proud of?')
     .get('.swiper-button-prev').click()
-    cy.get('.flashcard-footer > :nth-child(2)')
-    .should('contain', "912")
+    cy.get('.flashcard-front > p')
+    .should('contain', "What are you looking for in a role?")
     cy.get('.swiper-slide-active > .flashcard-container > .flashcard-front > .MuiButton-root').click()
     cy.get('.flashcard-back > h2')
     .should('be.visible')
@@ -65,8 +68,9 @@ describe('FlashcardPage', () => {
     cy.get('.newcard-textfield-answer > .MuiInput-root').click()
     .type('Yep!')
     .should('contain', 'Yep!')
-    cy.intercept('POST', 'https://devprep-be.herokuapp.com/api/v1/users/1/cards', { fixture: "newCard.json"})
     cy.get('.MuiBox-root > .MuiButton-root').click()
+    cy.get('.swiper-button-next').click().click()
+    cy.get('.flashcard-front').contains('Is this test working?')
   })
 
   it('user should be able to edit and delete the current card', () => {
@@ -75,20 +79,36 @@ describe('FlashcardPage', () => {
     .type(' testing, testing, 123')
     .should('include.text', 'testing, testing, 123')
     cy.get('[for=":rv:"]').click()
-    cy.intercept('PATCH', 'https://devprep-be.herokuapp.com/api/v1/users/1/cards/1', { fixture: "editCard.json"})
     cy.get('.MuiBox-root > .MuiButton-root').click()
     cy.get('.flashcard-front > p')
     .should('include.text', 'testing, testing, 123')
-    cy.intercept('DELETE', 'https://devprep-be.herokuapp.com/api/v1/users/1/cards/1', { fixture: "deleteCard.json"})
-    cy.get('.MuiButton-containedWarning').click()
-    
+    cy.get('.carousel-bottom-nav-container > .MuiButton-containedWarning').click()
+    cy.get('.MuiBox-root > .MuiButton-containedWarning').click()
+    cy.get('.flashcard-front > p').contains('What are you proud of?')
   })
 
 
-
-  it.skip('user should see a list of cards from the current deck', () => {
-    cy.get('.flashcard-list-container')
-    .should('contain')
-
+  it('user should see a list of cards from the current deck below the carousel and be able to delete, update, addnew', () => {
+    cy.get('.deck-list-header').contains('Behavioral Deck')
+    cy.get('.flashcard-list-container').contains('What are you looking for in a role?')
+    cy.get(':nth-child(1) > .MuiButton-containedSecondary').click()
+    cy.get('.update-flashcard-question > .MuiInput-root').click()
+    .type(' testing, testing, 123')
+    .should('include.text', 'testing, testing, 123')
+    cy.get('[for=":rv:"]').click()
+    cy.get('.MuiBox-root > .MuiButton-root').click()
+    cy.get(':nth-child(1) > :nth-child(1) > .decklist-question').contains('testing, testing, 123')
+    cy.get(':nth-child(1) > .MuiButton-containedWarning').click()
+    cy.get('.MuiBox-root > .MuiButton-containedWarning').click()
+    cy.get('.flashcard-list-container').should('not.have.text', 'testing, testing, 123')
+    cy.get('[data-testid="AddBoxIcon"]').click()
+    cy.get('.newcard-textfield-question > .MuiInput-root').click()
+    .type('Is this test working?')
+    .should('contain', 'Is this test working?')
+    cy.get('.newcard-textfield-answer > .MuiInput-root').click()
+    .type('Yep!')
+    .should('contain', 'Yep!')
+    cy.get('.MuiBox-root > .MuiButton-root').click()
+    cy.get('.flashcard-list-container').contains('Yep!')
   })
 })
