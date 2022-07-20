@@ -1,0 +1,13 @@
+{
+    "data": {
+      "id": "1",
+      "type": "flashCard",
+      "attributes": {
+        "category": "behavioral",
+        "competenceRating": 0,
+        "frontSide": "Is this test working?",
+        "backSide": "Yep!",
+        "userId": "1"
+      }
+    }
+  }
