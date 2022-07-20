@@ -43,7 +43,7 @@ const FlashcardPage = () => {
       setDeck(res.data[id]);
       setAllDecks(res.data)
     });
-  }, [id, deck]);
+  }, [id]);
 
   if (!user) {
     return <Navigate to={"/"} />;

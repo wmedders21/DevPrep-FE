@@ -1,8 +1,10 @@
 @import '../../constants/constants.scss';
 
 .flashcards-page {
-	// background-color: $primary;
-	// display: grid;
+	background-image: url("../login/Black-Texture.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+	display: grid;
 	grid-template-columns: 1fr;
 	gap: 40px;
 	height: 100%;

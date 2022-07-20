@@ -12,6 +12,11 @@
   }
   .cards-list {
     margin: 10px;
+    .MuiGrid-container {
+      .MuiRating-root {
+        width: 5vw;
+      }
+    }
   }
 }
 
@@ -40,4 +45,3 @@
         place-self: center;
     }
 }
-

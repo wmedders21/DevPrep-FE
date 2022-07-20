@@ -14,7 +14,7 @@ import "swiper/css/thumbs";
 
 const FlashCardCarousel = () => {
   const { setCurrentCard} = useContext(CardContext)
-  const {deck } = useContext(DeckContext)
+  const { deck } = useContext(DeckContext)
 
   const handleSlideChange = async (index: number) => {
     await setCurrentCard(deck.find((card, i) => i + 1 === index))

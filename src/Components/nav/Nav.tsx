@@ -23,7 +23,8 @@ const dropdownMenuStyles = {
     }),
     menu: (styles, state) => ({
         ...styles,
-        width: '35vw'
+        width: '35vw',
+        placement: 'top',
     })
 }
 
