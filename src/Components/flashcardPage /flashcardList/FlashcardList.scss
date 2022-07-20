@@ -5,6 +5,7 @@
   width: 90vw;
   background-color: $primaryComplement;
   color: white;
+  border-radius: $borderRadius;
   .cards-list {
     margin: 10px;
   }
@@ -29,5 +30,10 @@
 }
 
 .MuiGrid-root {
-    background-color: $primaryComplement;
+    background-color: $primaryTriadic2;
+    .MuiButton-root {
+        max-height: 4vh;
+        place-self: center;
+    }
 }
+
