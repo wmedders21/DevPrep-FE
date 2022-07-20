@@ -74,6 +74,7 @@ function Card({ card }: Props) {
         <h2>Notes:</h2>
         <p>{card.attributes.backSide}</p>
         <Button
+          variant="contained"
           onClick={() => handleClick()}
           className="toggle-flashcard-button"
         >

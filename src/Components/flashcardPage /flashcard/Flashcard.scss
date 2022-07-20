@@ -1,35 +1,51 @@
 @import "../../../constants/constants.scss";
 
 .flashcard-container {
-  height: 40vh;
-  width: 50vw;
-  border: solid black 2px;
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
   background-color: $primaryTint10;
+  border-radius: $borderRadius;
   color: white;
   .flashcard-front,
   .flashcard-back {
+    height: 50vh;
+    width: 65vw;
     display: grid;
     grid-template-columns: 1fr;
-    width: 48vw;
     .rating {
       justify-self: end;
+      margin-top: .5vw;
+      margin-right: .5vw;
+      background-color: white;
+      border-radius: $borderRadiusInputs;
+      align-items: center;
+      height: 3vh;
     }
     .flashcard-footer {
       grid-row: 4;
       grid-column: 1;
       justify-self: end;
+      align-self: end;
+      margin-right: .5vw;
+      margin-bottom: .5vw;
+    }
+    h2 {
+      margin-left: .5vw;
+      margin-right: .5vw;
     }
     p {
+      margin-right: .5vw;
+      margin-left: .5vw;
       height: 30vh;
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
     button {
       justify-self: start;
       grid-row: 4;
       grid-column: 1;
+      margin-left: .5vw;
+      margin-bottom: .5vw;
     }
   }
 }
