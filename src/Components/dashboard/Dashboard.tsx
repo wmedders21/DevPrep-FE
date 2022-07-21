@@ -7,7 +7,7 @@ import { UserContext } from "../../Context";
 import { CurrentUser } from "../../interface";
 import Card from "../card/Card";
 import Decks from "../decks/Decks";
-import { getQuote } from '../../apiCalls/apiCalls'
+import { getQuote, updateUser } from '../../apiCalls/apiCalls'
 
 type StatsData = {
   labels: string[];
@@ -21,7 +21,7 @@ type StatsData = {
 };
 
 type CwStats = {
-  codewarsUsername: string;
+  cwUsername: string;
   cwLeaderboardPosition: number;
   totalCompleted: number;
   languageRanks: {
@@ -63,7 +63,7 @@ const options: Options = {
 const Dashboard: React.FC = () => {
   const { user, setUser }: CurrentUser = useContext(UserContext);
   const [username, setUsername] = useState<string | undefined>(
-    user.data.attributes.username
+    null
   );
   const [statsData, setStatsData] = useState<StatsData>({
     labels: Object.keys(user.data.attributes.preparednessRating).map(
@@ -85,7 +85,7 @@ const Dashboard: React.FC = () => {
   const [cwStats, setCWStats] = useState<CwStats>(
     user.data.attributes.cwAttributes
   );
-  const [cwUsername, setCWUsername] = useState<string>("");
+  const [cwUsername, setCWUsername] = useState<string>('');
   const [quote, setQuote] = useState<string>('')
   
   useEffect(() => {
@@ -95,6 +95,14 @@ const Dashboard: React.FC = () => {
 
   if (!user) {
     return <Navigate to="/login" replace={true} />;
+  }
+  const updateCWAccess = () => {
+    const body = {
+      "codewarsUsername": cwUsername,
+      "username": user.data.attributes.username
+    }
+    updateUser(body, Number(user.data.userId))
+    .then(data => setUser(data))
   }
 
   const renderCodewarsStats = () => {
@@ -112,7 +120,7 @@ const Dashboard: React.FC = () => {
     return (
       <div className="codewars-stats-container">
         <h2>Codewars Stats</h2>
-        <p>Username: {cwStats.codewarsUsername}</p>
+        <p>Username: {cwStats.cwUsername}</p>
         <ul>
           <h3>Language Ranks:</h3>
           {languageRanks()}
@@ -125,9 +133,10 @@ const Dashboard: React.FC = () => {
 
   const handleFormSubmission = (e: any): void => {
     e.preventDefault();
+    updateCWAccess();
     setCWStats({
       ...cwStats,
-      codewarsUsername: cwUsername,
+      cwUsername: cwUsername,
     });
   };
 
@@ -153,13 +162,13 @@ const Dashboard: React.FC = () => {
       <Nav />
       <div className="dashboard">
         <h1 className="username">
-          <span>Hello,</span> {username}!
+          <span>Hello,</span> {user.data.attributes.username}!
         </h1>
         <div className="flashcard-statistics">
           <StatsChart chartData={statsData} options={options} />
         </div>
         <div className="codewars-container">
-          {cwStats.codewarsUsername ? renderCodewarsStats() : renderForm()}
+          {cwStats.cwUsername ? renderCodewarsStats() : renderForm()}
         </div>
         <Decks style="dashboard" />
         <Card quote={quote}/>

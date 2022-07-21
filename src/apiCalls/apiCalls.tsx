@@ -22,6 +22,11 @@ type UpdatedCard = {
 	backSide?: string;
 };
 
+type CWUpdate = {
+	codewarsUsername: string,
+  username: string
+}
+
 const getUser = (user: User) => {
 	return fetch("https://devprep-be.herokuapp.com/api/v1/login", {
 		method: "POST",
@@ -111,4 +116,16 @@ const getQuote = () => {
     .catch((err) => alert(err));
 }
 
-export { getUser, postNewUser, getCards, patchCard, postCard, deleteCard, getQuote };
+const updateUser = (user: CWUpdate, id: number) => {
+	return fetch(`https://devprep-be.herokuapp.com/api/v1/users/${id}`, {
+	method: "PATCH",
+	headers: {
+		"Content-Type": "application/json",
+	},
+	body: JSON.stringify(user),
+	})
+	.then((res) => res.json())
+	.catch((err) => alert(err));
+}
+
+export { getUser, postNewUser, getCards, patchCard, postCard, deleteCard, getQuote, updateUser };

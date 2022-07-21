@@ -13,7 +13,7 @@ type Data = {
         behavioral: number
       },
       cwAttributes: {
-        codewarsUsername: string,
+        cwUsername: string,
         cwLeaderboardPosition: number,
         totalCompleted: number,
         languageRanks: {
