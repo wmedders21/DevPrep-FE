@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import { useSwiperSlide } from "swiper/react";
 import "./Flashcard.scss";
 import Rating from "@mui/material/Rating";
-import {CardContext} from "../../../Context";
-import {Button, Divider} from '@mui/material';
+import { CardContext } from "../../../Context";
+import { Button, Divider } from "@mui/material";
 
 type Props = {
   card: {
@@ -50,7 +50,7 @@ function Card({ card }: Props) {
         <Button
           onClick={() => handleClick()}
           className="toggle-flashcard-button"
-          variant='contained'
+          variant="contained"
         >
           Flip To Back
         </Button>
@@ -80,7 +80,9 @@ function Card({ card }: Props) {
           Flip To Front
         </Button>
         <div className="flashcard-footer">
-          <span>{card.attributes.category}</span>{"  "}|{"  "}<span>{card.id}</span>
+          <span>{card.attributes.category}</span>
+          {"  "}|{"  "}
+          <span>{card.id}</span>
         </div>
       </div>
     );

@@ -1,24 +1,23 @@
 .MuiModal-root {
   .MuiBox-root {
-		.delete-button {
-			height: 8vh;
-			font-size: 1.2rem;
-
-			align-self: end;
-		}
-		.return-button {
-			font-size: 1.2rem;
-			height: 8vh;
-			align-self: start;
-			margin-bottom: -4vh;
-		}
-		h3 {
-			text-align: center;
-			margin-left: 5px;
-			margin-right: 5px;
-			color: white;
-			align-self: center;
-			font-size: 2.5vw;
-		}
+    .delete-button {
+      height: 8vh;
+      font-size: 1.2rem;
+      align-self: end;
+    }
+    .return-button {
+      font-size: 1.2rem;
+      height: 8vh;
+      align-self: start;
+      margin-bottom: -4vh;
+    }
+    h3 {
+      text-align: center;
+      margin-left: 5px;
+      margin-right: 5px;
+      color: white;
+      align-self: center;
+      font-size: 2.5vw;
+    }
   }
 }

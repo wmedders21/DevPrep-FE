@@ -6,13 +6,14 @@ const Decks = ({ style, allDecks }: { style: string; allDecks?: any }) => {
   const renderDashboardDeckList = () => (
     <div className={`${style}-deck-container`}>
       <ul className={`${style}-deck-list`}>
-      <h2>Choose Your Deck</h2>
+        <h2>Choose Your Deck</h2>
         <NavLink
           className={({ isActive }) => {
             return "nav-link" + (isActive ? " selected" : "");
           }}
           to="/flashcards/behavioralCards"
-        >Behavioral
+        >
+          Behavioral
         </NavLink>
 
         <NavLink
@@ -36,45 +37,53 @@ const Decks = ({ style, allDecks }: { style: string; allDecks?: any }) => {
     </div>
   );
 
-  const renderFlashcardPageDeckList = () =>{ 
-      if(!allDecks) {
-        return
-      }
+  const renderFlashcardPageDeckList = () => {
+    if (!allDecks) {
+      return;
+    }
     return (
-    <div className={`${style}-deck-container`}>
-      <ul className={`${style}-deck-list`}>
+      <div className={`${style}-deck-container`}>
+        <ul className={`${style}-deck-list`}>
+          <NavLink
+            className={({ isActive }) => {
+              return "nav-link" + (isActive ? " selected" : "");
+            }}
+            to="/flashcards/behavioralCards"
+          >
+            <h3>Behavioral</h3>
+            <p style={{ fontSize: "2vh" }}>
+              Flashcards: {allDecks["behavioralCards"].length}
+            </p>
+          </NavLink>
 
-        <NavLink
-          className={({ isActive }) => {
-            return "nav-link" + (isActive ? " selected" : "");
-          }}
-          to="/flashcards/behavioralCards"
-        >
-          <h3>Behavioral</h3>
-          <p style={{fontSize: '2vh'}}>Flashcards: {allDecks["behavioralCards"].length}</p>
-        </NavLink>
+          <NavLink
+            className={({ isActive }) => {
+              return "nav-link" + (isActive ? " selected" : "");
+            }}
+            to="/flashcards/FEtechnicalCards"
+          >
+            {" "}
+            <h3>Technical Front End</h3>
+            <p style={{ fontSize: "2vh" }}>
+              Flashcards: {allDecks["FEtechnicalCards"].length}
+            </p>
+          </NavLink>
 
-        <NavLink
-          className={({ isActive }) => {
-            return "nav-link" + (isActive ? " selected" : "");
-          }}
-          to="/flashcards/FEtechnicalCards"
-        >          <h3>Technical Front End</h3>
-        <p style={{fontSize: '2vh'}}>Flashcards: {allDecks["FEtechnicalCards"].length}</p>
-        </NavLink>
-
-        <NavLink
-          className={({ isActive }) => {
-            return "nav-link" + (isActive ? " selected" : "");
-          }}
-          to="/flashcards/BEtechnicalCards"
-        >
-          <h3>Technical Back End</h3>
-        <p style={{fontSize: '2vh'}}>Flashcards: {allDecks["BEtechnicalCards"].length}</p>
-        </NavLink>
-      </ul>
-    </div>
-  )};
+          <NavLink
+            className={({ isActive }) => {
+              return "nav-link" + (isActive ? " selected" : "");
+            }}
+            to="/flashcards/BEtechnicalCards"
+          >
+            <h3>Technical Back End</h3>
+            <p style={{ fontSize: "2vh" }}>
+              Flashcards: {allDecks["BEtechnicalCards"].length}
+            </p>
+          </NavLink>
+        </ul>
+      </div>
+    );
+  };
 
   return (
     <>

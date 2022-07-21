@@ -6,8 +6,7 @@ import Nav from "../nav/Nav";
 import Decks from "../decks/Decks";
 import FlashcardCarousel from "./flashcardCarousel/FlashcardCarousel";
 import FlashcardList from "./flashcardList/FlashcardList";
-import {UserContext, CardContext, DeckContext} from "../../Context";
-
+import { UserContext, CardContext, DeckContext } from "../../Context";
 
 type Card = {
   id: string;
@@ -22,18 +21,18 @@ type Card = {
 };
 
 export type AllDecks = {
-  BEtechnicalCards: Card[],
-  FEtechnicalCards: Card[],
-  behavioralCards: Card[]
-}
+  BEtechnicalCards: Card[];
+  FEtechnicalCards: Card[];
+  behavioralCards: Card[];
+};
 
 const FlashcardPage = () => {
   let { id } = useParams();
   const { user } = useContext(UserContext);
 
   const [currentCard, setCurrentCard] = useState<Card | undefined>(undefined);
-  const [allDecks, setAllDecks] = useState<AllDecks | undefined>(undefined)
-  
+  const [allDecks, setAllDecks] = useState<AllDecks | undefined>(undefined);
+
   const [deck, setDeck] = useState([]);
   useEffect(() => {
     if (!user) {
@@ -41,7 +40,7 @@ const FlashcardPage = () => {
     }
     getCards(user.data.userId).then((res) => {
       setDeck(res.data[id]);
-      setAllDecks(res.data)
+      setAllDecks(res.data);
     });
   }, [id]);
 
