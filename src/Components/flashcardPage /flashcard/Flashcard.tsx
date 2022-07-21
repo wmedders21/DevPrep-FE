@@ -4,8 +4,7 @@ import { useSwiperSlide } from "swiper/react";
 import "./Flashcard.scss";
 import Rating from "@mui/material/Rating";
 import {CardContext} from "../../../Context";
-import Button from '@mui/material/Button';
-import theme from '../components/updateFlashcard/UpdateFlashcardButton'
+import {Button, Divider} from '@mui/material';
 
 type Props = {
   card: {
@@ -24,7 +23,7 @@ type Props = {
 function Card({ card }: Props) {
   const [onFront, setOnFront] = useState(true);
   const swiperSlider = useSwiperSlide();
-  const { currentCard, setCurrentCard } = useContext(CardContext);
+  const { setCurrentCard } = useContext(CardContext);
   const { deck } = useParams();
 
   useEffect(() => {
@@ -81,7 +80,7 @@ function Card({ card }: Props) {
           Flip To Front
         </Button>
         <div className="flashcard-footer">
-          <span>{card.attributes.category}</span>|<span>{card.id}</span>
+          <span>{card.attributes.category}</span>{"  "}|{"  "}<span>{card.id}</span>
         </div>
       </div>
     );

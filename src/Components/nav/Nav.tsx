@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import "./Nav.scss"
-import { NavLink, Link, Navigate } from 'react-router-dom'
-import Select, { StylesConfig } from 'react-select';
+import { NavLink } from 'react-router-dom'
+import Select from 'react-select';
 import {UserContext} from '../../Context';
 import { CurrentUser } from '../../interface';
 
@@ -23,7 +23,8 @@ const dropdownMenuStyles = {
     }),
     menu: (styles, state) => ({
         ...styles,
-        width: '35vw'
+        width: '35vw',
+        placement: 'top',
     })
 }
 

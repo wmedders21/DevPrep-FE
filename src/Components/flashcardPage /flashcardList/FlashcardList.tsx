@@ -6,7 +6,7 @@ import DeleteFlashcardButton from "../components/deleteCard/DeleteFlashCardButto
 import CreateNewFlashcardButton from "../components/CreateNewFlashcardButton";
 import UpdateFlashcardButton from "../components/updateFlashcard/UpdateFlashcardButton";
 import { styled } from "@mui/material/styles";
-import { Button, Divider } from "@mui/material";
+import { Divider, Rating } from "@mui/material";
 import MuiGrid from "@mui/material/Grid";
 import { useParams } from "react-router-dom";
 
@@ -95,6 +95,15 @@ const FlashcardList = () => {
     return deckList.map((card) => {
       return (
         <Grid container key={card.id}>
+          <Grid style={{width: '2vw'}} item xs md={1}>
+            <Rating readOnly value={card.attributes.competenceRating}></Rating>
+          </Grid>
+          <Divider
+            style={{ borderColor: "#9ec7c0" }}
+            light={true}
+            className="divider"
+            orientation="vertical"
+          ></Divider>
           <Grid item xs>
             <p className="decklist-question">{card.attributes.frontSide}</p>
           </Grid>

@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Thumbs } from "swiper";
 import "./FlashcardCarousel.scss";
 import CreateNewFlashcardButton from "../components/CreateNewFlashcardButton";
@@ -12,31 +12,12 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
-
-
-
-type Card = {
-  id: string;
-  type: string;
-  attributes: {
-    category: string;
-    competenceRating: number;
-    frontSide: string;
-    backSide: string;
-    userId: string;
-  };
-};
-
-
 const FlashCardCarousel = () => {
-  const {currentCard, setCurrentCard} = useContext(CardContext)
-  const {deck, setDeck} = useContext(DeckContext)
-  const swiper = useSwiper()
-
-
+  const { setCurrentCard} = useContext(CardContext)
+  const { deck } = useContext(DeckContext)
 
   const handleSlideChange = async (index: number) => {
-    await setCurrentCard(deck.find((card: Card, i) => i + 1 === index))
+    await setCurrentCard(deck.find((card, i) => i + 1 === index))
 
   }
 
