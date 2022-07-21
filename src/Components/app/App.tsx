@@ -33,7 +33,12 @@ const App: React.FC = () => {
             path="/dashboard"
             element={!user ? <Navigate to="/login" replace /> : <Dashboard />}
           />
-          < Route path='/flashcards/:id' element= {  !user? < Navigate to="/login" replace /> : < FlashcardPage/> } />
+          <Route
+            path="/flashcards/:id"
+            element={
+              !user ? <Navigate to="/login" replace /> : <FlashcardPage />
+            }
+          />
           <Route path="/error" element={<ErrorHandling />} />
           <Route path="*" element={<Navigate to="/error" replace />} />
         </Routes>

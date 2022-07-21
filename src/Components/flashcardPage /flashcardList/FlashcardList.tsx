@@ -25,10 +25,7 @@ const Grid = styled(MuiGrid)(({ theme }) => ({
   },
 }));
 
-const filters = [
-  { label: "stars high-low" },
-  { label: "stars low-high" }
-];
+const filters = [{ label: "stars high-low" }, { label: "stars low-high" }];
 
 const dropdownMenuStyles = {
   container: (provided) => ({
@@ -42,19 +39,19 @@ const dropdownMenuStyles = {
   menu: (styles, state) => ({
     ...styles,
     width: "35vw",
-    backgroundColor: 'black',
-    color: 'white'
+    backgroundColor: "black",
+    color: "white",
   }),
 };
 
 const FlashcardList = () => {
   const { deck, setDeck } = useContext(DeckContext);
   const { id } = useParams();
-  const [deckList, setDeckList] = useState(deck)
+  const [deckList, setDeckList] = useState(deck);
 
   useEffect(() => {
-    setDeckList(deck)
-  }, [deck])
+    setDeckList(deck);
+  }, [deck]);
 
   const handleSort = (label: string) => {
     switch (label) {
@@ -87,7 +84,7 @@ const FlashcardList = () => {
         ]);
         break;
       default:
-        return
+        return;
     }
   };
 
@@ -95,7 +92,7 @@ const FlashcardList = () => {
     return deckList.map((card) => {
       return (
         <Grid container key={card.id}>
-          <Grid style={{width: '2vw'}} item xs md={1.2}>
+          <Grid style={{ width: "2vw" }} item xs md={1.2}>
             <Rating readOnly value={card.attributes.competenceRating}></Rating>
           </Grid>
           <Divider
@@ -145,8 +142,9 @@ const FlashcardList = () => {
           styles={dropdownMenuStyles}
           placeholder={<h4>filter</h4>}
           options={filters}
-          onChange={(e) => {handleSort(e.label)}}
-          // value={filter}
+          onChange={(e) => {
+            handleSort(e.label);
+          }}
         />
       </div>
       <div className="cards-list">{renderDeck()}</div>
