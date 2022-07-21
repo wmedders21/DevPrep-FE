@@ -54,7 +54,7 @@
         "type": "flashCard",
         "attributes": {
           "category": "behavioral",
-          "competenceRating": 0,
+          "competenceRating": 1,
           "frontSide": "What are you looking for in a role?",
           "backSide": "",
           "userId": "1"
@@ -65,7 +65,7 @@
         "type": "flashCard",
         "attributes": {
           "category": "behavioral",
-          "competenceRating": 0,
+          "competenceRating": 2,
           "frontSide": "What are you proud of?",
           "backSide": "",
           "userId": "1"
