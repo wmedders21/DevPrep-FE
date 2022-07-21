@@ -6,7 +6,7 @@
   justify-items: center;
   background-color: $primaryTint10;
   border-radius: $borderRadius;
-  box-shadow: 0px 15px 15px rgba(0, 0, 0);
+  box-shadow: 0px 15px 15px rgba(0, 0, 0, .75);
   color: white;
 
   .flashcard-front,
@@ -17,9 +17,8 @@
     grid-template-columns: 1fr;
     .rating {
       justify-self: end;
-      margin-top: .5vw;
-      margin-right: .5vw;
-      background-color: white;
+      margin-top: 5%;;
+      margin-right: 5%;
       border-radius: $borderRadiusInputs;
       align-items: center;
       height: 3vh;
@@ -31,16 +30,17 @@
       grid-column: 1;
       justify-self: end;
       align-self: end;
-      margin-right: .5vw;
-      margin-bottom: .5vw;
+      margin-right: 5%;
+      margin-bottom: 2%;
     }
     h2 {
-      margin-left: .5vw;
-      margin-right: .5vw;
+      font-size: 4vh;
+      margin-left: 5%;
+      margin-bottom: 3%;
     }
     p {
-      margin-right: .5vw;
-      margin-left: .5vw;
+      margin-right: 5%;
+      margin-left: 5%;
       height: 30vh;
       font-size: 1.5rem;
     }
@@ -48,8 +48,8 @@
       justify-self: start;
       grid-row: 4;
       grid-column: 1;
-      margin-left: .5vw;
-      margin-bottom: .5vw;
+      margin-left: 2%;
+      margin-bottom: 2%;
       // margin-bottom: 2%;
     }
   }
