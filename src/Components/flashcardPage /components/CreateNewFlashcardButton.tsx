@@ -9,15 +9,8 @@ import { TextField } from "@mui/material";
 import { postCard } from "../../../apiCalls/apiCalls";
 import { UserContext, DeckContext } from "../../../Context";
 import { theme } from "../components/updateFlashcard/UpdateFlashcardButton";
-import AddBoxIcon from '@mui/icons-material/AddBox';
+import AddBoxIcon from "@mui/icons-material/AddBox";
 import IconButton from "@mui/material/IconButton";
-
-type Props = {};
-type Card = {
-  category: string;
-  frontSide: string;
-  backSide: string;
-};
 
 const categories = {
   BEtechnicalCards: "technicalBE",
@@ -31,7 +24,7 @@ export default function CreateNewFlashcardButton({
   variant: string;
 }) {
   const { user } = useContext(UserContext);
-	const { deck, setDeck } = useContext(DeckContext)
+  const { deck, setDeck } = useContext(DeckContext);
 
   let { id } = useParams();
   const [open, setOpen] = useState(false);
@@ -54,9 +47,9 @@ export default function CreateNewFlashcardButton({
   const handleClick = async (e) => {
     e.preventDefault();
     await postCard(newCard, user.data.userId).then((res) => {
-			setDeck([...deck, res.data])
-		});
-		handleClose()
+      setDeck([...deck, res.data]);
+    });
+    handleClose();
     clearInputs();
   };
 
@@ -69,7 +62,7 @@ export default function CreateNewFlashcardButton({
       <ThemeProvider theme={theme}>
         {variant === "list" ? (
           <IconButton size="large" color="secondary" onClick={handleOpen}>
-            <AddBoxIcon fontSize='large'></AddBoxIcon>
+            <AddBoxIcon fontSize="large"></AddBoxIcon>
           </IconButton>
         ) : (
           <Button color="secondary" variant="contained" onClick={handleOpen}>

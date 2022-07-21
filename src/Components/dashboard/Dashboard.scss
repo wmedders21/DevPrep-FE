@@ -1,17 +1,15 @@
 @import "../../constants/constants.scss";
 
 .all-dashboard {
-  padding-bottom: 5%;
-  height: 90%;
+  height: 100vh;
   overflow-y: hidden;
-  overflow-x: hidden;
 }
 
 .dashboard {
   display: grid;
+  height: 88%;
   grid-template-columns: 40% 40%;
-  grid-template-rows: 0.2fr 1fr 1fr 0.05fr;
-  height: 90%;
+  grid-template-rows: 0.2fr 1fr 1fr;
   color: white;
   gap: 20px 15px;
   justify-content: center;
@@ -126,13 +124,3 @@
     }
   }
 }
-
-.bottom-nav {
-  background-color: $primaryShade90;
-  height: 5vh;
-
-  a {
-    text-decoration: none;
-  }
-}
-

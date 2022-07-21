@@ -53,7 +53,7 @@ const Modal: React.FC<ModalProps> = ({ setShowModal }) => {
         <h1>DevPrep Registration</h1>
         <form
           onSubmit={(event) => {
-            userSignup()
+            userSignup();
             event.preventDefault();
           }}
         >
