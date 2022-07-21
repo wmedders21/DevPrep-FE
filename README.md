@@ -78,9 +78,17 @@ BE: Python
 
 ## Project Demo
 
+![Screen Shot 2022-07-21 at 10 41 31 AM](https://user-images.githubusercontent.com/87003746/180283478-669a690f-9be8-4762-9840-82b2aad55cc6.png)
 
+![Screen Shot 2022-07-21 at 10 41 46 AM](https://user-images.githubusercontent.com/87003746/180283666-b5c917c6-7e50-4e91-9c9c-47dd6a1a2364.png)
 
+![Screen Shot 2022-07-21 at 10 42 11 AM](https://user-images.githubusercontent.com/87003746/180283819-24eef422-f303-4779-879e-fecf76ef1251.png)
 
+![Screen Shot 2022-07-21 at 10 42 39 AM](https://user-images.githubusercontent.com/87003746/180283887-043d7196-8ba6-42de-ab66-8530261cee1d.png)
+
+![Screen Shot 2022-07-21 at 10 43 44 AM](https://user-images.githubusercontent.com/87003746/180283930-53822966-0e6f-43f3-897d-53f9d54a3f09.png)
+
+![Screen Shot 2022-07-21 at 10 43 59 AM](https://user-images.githubusercontent.com/87003746/180283977-f8da2571-1044-42ca-93de-bbcdf10e4af5.png)
 
 ## Possible Future Extensions
 - Creating a calendar where mentors and mentees can arrange meet ups
