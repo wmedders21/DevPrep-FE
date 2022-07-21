@@ -95,7 +95,7 @@ const FlashcardList = () => {
     return deckList.map((card) => {
       return (
         <Grid container key={card.id}>
-          <Grid style={{width: '2vw'}} item xs md={1}>
+          <Grid style={{width: '2vw'}} item xs md={1.2}>
             <Rating readOnly value={card.attributes.competenceRating}></Rating>
           </Grid>
           <Divider

@@ -19,7 +19,7 @@ describe('FlashcardPage', () => {
     .url().should('eq', 'http://localhost:3000/flashcards/behavioralCards')
   });
 
-  it.skip('user should be able to navigate app pages with app icon or buttons', () => {
+  it('user should be able to navigate app pages with app icon or buttons', () => {
     cy.get('.appName > h2').click()
     .url().should('eq', 'http://localhost:3000/dashboard')
     cy.get('[href="/flashcards/behavioralCards"]').click()
@@ -28,7 +28,7 @@ describe('FlashcardPage', () => {
     .url().should('eq', 'http://localhost:3000/login')
   })
 
-  it.skip('user should be able to navigate between decks from navbar', () => {
+  it('user should be able to navigate between decks from navbar', () => {
     cy.get('.deck-select').click()
     .get('.dd-menu-behavioral').click()
     .get('.flashcard-footer')
@@ -43,7 +43,7 @@ describe('FlashcardPage', () => {
     .should('contain', 'technicalBE')
   })
 
-  it.skip('user should see a carousel of flashcards and be able to navigate through it', () => {
+  it('user should see a carousel of flashcards and be able to navigate through it', () => {
     cy.get('.flashcard-front > p')
     .should('contain', "What are you looking for in a role?")
     .get('.swiper-button-next').click()
@@ -60,7 +60,7 @@ describe('FlashcardPage', () => {
     .should('be.visible')
   })
 
-  it.skip('user should be able to create a new card', () => {
+  it('user should be able to create a new card', () => {
     cy.get('.carousel-bottom-nav-container > :nth-child(1)').click()
     cy.get('.newcard-textfield-question > .MuiInput-root').click()
     .type('Is this test working?')
@@ -73,12 +73,11 @@ describe('FlashcardPage', () => {
     cy.get('.flashcard-front').contains('Is this test working?')
   })
 
-  it.skip('user should be able to edit and delete the current card', () => {
+  it('user should be able to edit and delete the current card', () => {
     cy.get('.carousel-bottom-nav-container > :nth-child(2)').click()
     cy.get('.update-flashcard-question > .MuiInput-root').click()
     .type(' testing, testing, 123')
     .should('include.text', 'testing, testing, 123')
-    cy.get('[for=":rv:"]').click()
     cy.get('.MuiBox-root > .MuiButton-root').click()
     cy.get('.flashcard-front > p')
     .should('include.text', 'testing, testing, 123')
@@ -88,16 +87,15 @@ describe('FlashcardPage', () => {
   })
 
 
-  it.skip('user should see a list of cards from the current deck below the carousel and be able to delete, update, addnew', () => {
+  it('user should see a list of cards from the current deck below the carousel and be able to delete, update, addnew', () => {
     cy.get('.deck-list-header').contains('Behavioral Deck')
     cy.get('.flashcard-list-container').contains('What are you looking for in a role?')
     cy.get(':nth-child(1) > .MuiButton-containedSecondary').click()
     cy.get('.update-flashcard-question > .MuiInput-root').click()
     .type(' testing, testing, 123')
     .should('include.text', 'testing, testing, 123')
-    cy.get('[for=":rv:"]').click()
     cy.get('.MuiBox-root > .MuiButton-root').click()
-    cy.get(':nth-child(1) > :nth-child(1) > .decklist-question').contains('testing, testing, 123')
+    cy.get('.update-flashcard-question > .MuiInput-root').contains('testing, testing, 123')
     cy.get(':nth-child(1) > .MuiButton-containedWarning').click()
     cy.get('.MuiBox-root > .MuiButton-containedWarning').click()
     cy.get('.flashcard-list-container').should('not.have.text', 'testing, testing, 123')
@@ -117,13 +115,13 @@ describe('FlashcardPage', () => {
     cy.get(':nth-child(1)')
     .contains('stars low-high')
     .click()
-    cy.get(':nth-child(1) > :nth-child(1) > .decklist-question')
+    cy.get(':nth-child(1) > :nth-child(3) > .decklist-question')
     .should('contain', 'What are you looking for in a role?')
     cy.get('.deck-list-filter').click()
     .get(':nth-child(2)')
     .contains('stars high-low')
     .click()
-    cy.get(':nth-child(1) > :nth-child(1) > .decklist-question')
+    cy.get(':nth-child(1) > :nth-child(3) > .decklist-question')
     .should('contain', 'What are you proud of?')
   })
 })
