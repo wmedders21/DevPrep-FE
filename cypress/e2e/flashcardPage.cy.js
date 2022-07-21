@@ -30,14 +30,6 @@ describe('FlashcardPage', () => {
 
   it('user should be able to navigate between decks from navbar', () => {
     cy.get('.deck-select').click()
-    .get('.dd-menu-behavioral').click()
-    .get('.flashcard-footer')
-    .should('contain', 'behavioral')
-    .get('.deck-select').click()
-    .get('.dd-menu-fe').click()
-    .get('.flashcard-footer')
-    .should('contain', 'technicalFE')
-    .get('.deck-select').click()
     .get('.dd-menu-be').click()
     .get('.flashcard-footer')
     .should('contain', 'technicalBE')
@@ -95,7 +87,6 @@ describe('FlashcardPage', () => {
     .type(' testing, testing, 123')
     .should('include.text', 'testing, testing, 123')
     cy.get('.MuiBox-root > .MuiButton-root').click()
-    cy.get('.update-flashcard-question > .MuiInput-root').contains('testing, testing, 123')
     cy.get(':nth-child(1) > .MuiButton-containedWarning').click()
     cy.get('.MuiBox-root > .MuiButton-containedWarning').click()
     cy.get('.flashcard-list-container').should('not.have.text', 'testing, testing, 123')
