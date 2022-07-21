@@ -23,8 +23,8 @@ type UpdatedCard = {
 };
 
 type CWUpdate = {
-	codewarsUsername: string,
-  username: string
+	codewarsUsername?: string,
+  username?: string
 }
 
 const getUser = (user: User) => {

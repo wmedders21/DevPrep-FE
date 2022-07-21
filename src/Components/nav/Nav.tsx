@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import Select from 'react-select';
 import {UserContext} from '../../Context';
 import { CurrentUser } from '../../interface';
+import { updateUser } from '../../apiCalls/apiCalls'
 
 const Decks = [
     { label: <NavLink className='dd-menu dd-menu-be' to='/flashcards/BEtechnicalCards'>Technical Back End</NavLink>},
@@ -27,6 +28,16 @@ const dropdownMenuStyles = {
         placement: 'top',
     })
 }
+
+// const updateStats = () => {
+//     const body = {
+//         "codewarsUsername": cwUsername,
+//         "username": user.data.attributes.username
+//       }
+//       updateUser(body, Number(user.data.userId))
+//       .then(data => setUser(data))
+    
+// }
 
 const Nav: React.FC = () => {
     const {setUser}: CurrentUser = useContext(UserContext)

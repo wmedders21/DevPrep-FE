@@ -98,8 +98,7 @@ const Dashboard: React.FC = () => {
   }
   const updateCWAccess = () => {
     const body = {
-      "codewarsUsername": cwUsername,
-      "username": user.data.attributes.username
+      "codewarsUsername": cwUsername
     }
     updateUser(body, Number(user.data.userId))
     .then(data => setUser(data))
