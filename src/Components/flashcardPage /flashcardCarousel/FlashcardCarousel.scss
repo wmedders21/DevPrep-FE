@@ -2,21 +2,29 @@
 
 
 .carousel-container {
-  height: 50vh;
-  display: flex;
-  flex-direction: column;
+  height: 90vh;
+  display: grid;
   align-items: center;
   justify-content: center;
   background-color: $primary;
   .swiper {
+    margin-top: -10vh;
     background-color: $primaryTint30;
+    height: 60vh;
+    width: 80vw;
+    align-self: end;
+    box-shadow: 2px 2px 10px;
   }
   
   .carousel-bottom-nav-container {
-    width: 60vw;
+    width: 80vw;
+    align-self: start;
+    justify-self: center;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: $primaryTint30;
+    margin: .5vw;
+    box-shadow: 2px 2px 10px;
 
     button {
       width: 30%;
@@ -24,14 +32,7 @@
   }
 }
 
-.flashcard-carousel-swiper {
-  height: 40vh;
-  width: 60vw;
-  background-color: white;
-}
-
 .flashcard {
-  height: inherit;
   display: flex;
   align-items: center;
   justify-content: center;
