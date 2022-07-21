@@ -26,9 +26,6 @@ describe('empty spec', () => {
         cy.get('.dd-menu').contains('Technical Back End')
         cy.get('.dd-menu-be').click()
         .url().should('eq', 'http://localhost:3000/flashcards/BEtechnicalCards')
-        cy.get('.deck-select').click()
-        cy.get('.dd-menu-behavioral').click()
-        .url().should('eq', 'http://localhost:3000/flashcards/behavioralCards')
     })
 
       it('User should be able to signout, which will take them to login page', () => {

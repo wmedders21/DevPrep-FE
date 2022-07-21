@@ -50,6 +50,4 @@ describe('Modal', () => {
       .should('contain', 'Welcome to DevPrep!')
   })
 
-  //should be able to display an error message if signup is unsuccessful?
-
 })

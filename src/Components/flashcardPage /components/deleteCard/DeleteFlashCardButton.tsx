@@ -51,7 +51,7 @@ function DeleteFlashCardButton({
       </ThemeProvider>
 
       <Modal open={open} onClose={handleToggle}>
-        <Box style={{height: '30vh'}} component="form">
+        <Box style={{ height: "30vh" }} component="form">
           <h3>Are you sure you want to delete this card?</h3>
           <ThemeProvider theme={theme}>
             <Button

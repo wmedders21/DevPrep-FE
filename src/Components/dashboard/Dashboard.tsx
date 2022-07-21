@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import "./Dashboard.scss";
 import Nav from "../nav/Nav";
 import StatsChart from "../stats-chart/statsChart";
@@ -89,9 +89,8 @@ const Dashboard: React.FC = () => {
   const [quote, setQuote] = useState<string>('')
   
   useEffect(() => {
-    getQuote()
-    .then(data => setQuote(`"${data.Quote}" - ${data.Author}`))
-  }, [])
+    getQuote().then((data) => setQuote(`"${data.Quote}" - ${data.Author}`));
+  }, []);
 
   if (!user) {
     return <Navigate to="/login" replace={true} />;
@@ -171,7 +170,7 @@ const Dashboard: React.FC = () => {
           {cwStats.cwUsername ? renderCodewarsStats() : renderForm()}
         </div>
         <Decks style="dashboard" />
-        <Card quote={quote}/>
+        <Card quote={quote} />
       </div>
     </div>
   );

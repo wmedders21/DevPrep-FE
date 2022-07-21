@@ -85,7 +85,7 @@ function UpdateFlashcardButton({
         setDeck([
           ...deck.map((card) => {
             if (card.id === res.data.id) {
-              console.log('hello')
+              console.log("hello");
               return res.data;
             } else {
               return card;
@@ -94,7 +94,7 @@ function UpdateFlashcardButton({
         ]);
       }
     );
-    console.log(currentCard)
+    console.log(currentCard);
     handleClose();
   };
 
