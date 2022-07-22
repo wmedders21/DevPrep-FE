@@ -3,18 +3,19 @@
     "userId": "1",
     "type": "userDashboard",
     "attributes": {
-      "username": "IgorIsDope",
+      "username": "coolguy123",
       "preparednessRating": {
         "technicalBE": 4.34,
         "technicalFE": 3.54,
         "behavioral": 5.0
       },
       "cwAttributes": {
-        "cwUsername": "null",
+				"cwUsername": "MichaelPutnam2",
         "cwLeaderboardPosition": 236,
         "totalCompleted": 230,
         "languageRanks": {
-          "java": 1234
+          "java": 1234,
+          "ruby": 1324
         }
       }
     }

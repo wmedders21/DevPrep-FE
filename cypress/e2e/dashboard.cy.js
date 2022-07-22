@@ -1,6 +1,7 @@
 describe("Dashboard", () => {
   before(() => {
 		cy.intercept('POST', 'https://devprep-be.herokuapp.com/api/v1/login', { fixture: 'login.json' })
+		cy.intercept("PATCH", 'https://devprep-be.herokuapp.com/api/v1/users/1', {fixture: 'updateUser.json'})
     cy.visit("http://localhost:3000/");
 		cy.get('form')
     cy.get(".login-input-username[name='name']")
@@ -46,13 +47,6 @@ describe("Dashboard", () => {
 		.click()
 		.url()
 		.should('equal', 'http://localhost:3000/flashcards/behavioralCards')
-		.get('.appName > h2')
-		.click()
 	})
 
-	it('a user should be able to see charts regarding their progress in the 3 different decks', () => {
-		cy.get('.flashcard-statistics')
-		.find('canvas')
-		.should('exist')
-	})
 });
