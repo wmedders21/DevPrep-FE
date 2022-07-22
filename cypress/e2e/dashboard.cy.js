@@ -2,7 +2,7 @@ describe("Dashboard", () => {
   before(() => {
 		cy.intercept('POST', 'https://devprep-be.herokuapp.com/api/v1/login', { fixture: 'login.json' })
 		cy.intercept("PATCH", 'https://devprep-be.herokuapp.com/api/v1/users/1', {fixture: 'updateUser.json'})
-    cy.visit("http://localhost:3000/");
+    cy.visit("http://localhost:3000/DevPrep-FE");
 		cy.get('form')
     cy.get(".login-input-username[name='name']")
       .type('Igor')
@@ -46,7 +46,7 @@ describe("Dashboard", () => {
 		.first()
 		.click()
 		.url()
-		.should('equal', 'http://localhost:3000/flashcards/behavioralCards')
+		.should('equal', 'http://localhost:3000/DevPrep-FE/flashcards/behavioralCards')
 	})
 
 });

@@ -7,7 +7,7 @@ describe('FlashcardPage', () => {
       cy.intercept('POST', 'https://devprep-be.herokuapp.com/api/v1/users/1/cards', { fixture: "newCard.json"})
       cy.intercept('PATCH', 'https://devprep-be.herokuapp.com/api/v1/users/1/cards/3', { fixture: "editCard.json"})
       cy.intercept('DELETE', 'https://devprep-be.herokuapp.com/api/v1/users/1/cards/3', { fixture: "deleteCard.json"})
-      cy.visit("http://localhost:3000/");
+      cy.visit("http://localhost:3000/DevPrep-FE");
       cy.get('form')
       cy.get(".login-input-username[name='name']")
         .type('Igor')
@@ -16,16 +16,16 @@ describe('FlashcardPage', () => {
         .get('.login-button')
         .click()
     .get('[href="/flashcards/behavioralCards"]').click()
-    .url().should('eq', 'http://localhost:3000/flashcards/behavioralCards')
+    .url().should('eq', 'http://localhost:3000/DevPrep-FE/flashcards/behavioralCards')
   });
 
   it('user should be able to navigate app pages with app icon or buttons', () => {
     cy.get('.appName > h2').click()
-    .url().should('eq', 'http://localhost:3000/dashboard')
+    .url().should('eq', 'http://localhost:3000/DevPrep-FE/dashboard')
     cy.get('[href="/flashcards/behavioralCards"]').click()
-    .url().should('eq', 'http://localhost:3000/flashcards/behavioralCards')
+    .url().should('eq', 'http://localhost:3000/DevPrep-FE/flashcards/behavioralCards')
     cy.get('.signout-button > .nav-button').click()
-    .url().should('eq', 'http://localhost:3000/login')
+    .url().should('eq', 'http://localhost:3000/DevPrep-FE/login')
   })
 
   it('user should be able to navigate between decks from navbar', () => {
