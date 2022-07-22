@@ -1,7 +1,7 @@
 describe('empty spec', () => {
   before(() => {
     cy.intercept('POST', 'https://devprep-be.herokuapp.com/api/v1/login', { fixture: 'login.json' })
-    cy.visit("http://localhost:3000/");
+    cy.visit("http://localhost:3000/DevPrep-FE");
 		cy.get('form')
     cy.get(".login-input-username[name='name']")
       .type('Igor')
@@ -25,14 +25,14 @@ describe('empty spec', () => {
         cy.get('.deck-select').click()
         cy.get('.dd-menu').contains('Technical Back End')
         cy.get('.dd-menu-be').click()
-        .url().should('eq', 'http://localhost:3000/flashcards/BEtechnicalCards')
+        .url().should('eq', 'http://localhost:3000/DevPrep-FE/flashcards/BEtechnicalCards')
     })
 
       it('User should be able to signout, which will take them to login page', () => {
         cy.get('.home-button').click()
-        cy.url().should('eq', 'http://localhost:3000/dashboard')
+        cy.url().should('eq', 'http://localhost:3000/DevPrep-FE/dashboard')
         cy.get('.signout-button').click()
-        cy.url().should('eq', 'http://localhost:3000/login')
+        cy.url().should('eq', 'http://localhost:3000/DevPrep-FE/login')
         cy.get('.login-container').contains('Please Login')
         cy.get('.left-info-container').contains('Welcome to DevPrep!')
       })

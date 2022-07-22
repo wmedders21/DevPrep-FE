@@ -1,7 +1,7 @@
 describe('Modal', () => {
   beforeEach(() => {
     cy.intercept('POST', 'https://devprep-be.herokuapp.com/api/v1/users', { fixture: 'newUser.json'})
-    cy.visit('http://localhost:3000/')
+    cy.visit('http://localhost:3000/DevPrep-FE')
     cy.get('.ask-signup')
       .click()
   })
@@ -39,7 +39,7 @@ describe('Modal', () => {
       .type('email@example.com')
     cy.get('.signup-button')
       .click()
-    cy.url('http://localhost:3000/login')
+    cy.url('http://localhost:3000/DevPrep-FE/login')
      .should('exist')
   })
 

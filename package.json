@@ -2,7 +2,7 @@
   "name": "dev-prep",
   "version": "0.1.0",
   "private": false,
-  "homepage": "http://dev-prep-turing.herokuapp.com",
+  "homepage": "https://2201-DevPrep.github.io/DevPrep-FE",
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
@@ -24,6 +24,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "heroku-postbuild": "npm run build",
     "build": "react-scripts build",
@@ -52,6 +54,7 @@
   },
   "devDependencies": {
     "cypress": "^10.3.0",
+    "gh-pages": "^4.0.0",
     "typescript": "^4.7.4"
   }
 }

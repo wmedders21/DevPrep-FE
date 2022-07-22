@@ -1,11 +1,11 @@
       describe('Login Page', () => {
   beforeEach(() => {
     cy.intercept('POST', 'https://devprep-be.herokuapp.com/api/v1/login', { fixture: 'login.json' })
-    cy.visit('http://localhost:3000/')
+    cy.visit('http://localhost:3000/DevPrep-FE')
   })
 
-  it('should be able to visit the login page by accessing `http://localhost:3000/`', () => {
-    cy.url('http://localhost:3000')
+  it('should be able to visit the login page by accessing `http://localhost:3000/DevPrep-FE`', () => {
+    cy.url('http://localhost:3000/DevPrep-FE')
   })
 
   it('should be able to see welcome title and general paragraph info', () => {
@@ -51,7 +51,7 @@
       .type('hello@example.com')
     cy.get('.login-button')
       .click()
-    cy.url('http://localhost:3000/dashboard')
+    cy.url('http://localhost:3000/DevPrep-FE/dashboard')
      .should('exist')
   })
 
