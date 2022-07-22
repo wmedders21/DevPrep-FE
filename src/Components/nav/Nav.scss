@@ -18,24 +18,34 @@
 }
 
 .nav-button {
-  background-color: white;
-  width: 50%;
-  height: 40%;
-  border-radius: 15px;
-  &:hover {
-    cursor: pointer;
-    background-color: #bababa;
+    background-color: white;
+    width: 50%;
+    height: 40%;
+    border-radius: 15px;
+
+    &:hover{
+      cursor: pointer;
+      background-color: #bababa;
+      
+    }
   }
-}
 
 .appName {
-  color: white;
-  text-decoration: none;
+    color: white;
+    text-decoration: none;
 }
 
 .css-1s2u09g-control {
   display: flex;
   align-items: center;
-  border: solid red 2px;
 }
+
+.css-hv18hu-menu {
+  width: 20%;
+}
+
+.css-tnip6t-menu {
+  z-index: 1;
+}
+
 

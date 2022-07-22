@@ -1,9 +1,9 @@
-import { useContext } from "react";
-import "./Nav.scss";
-import { NavLink } from "react-router-dom";
-import Select from "react-select";
-import { UserContext } from "../../Context";
-import { CurrentUser } from "../../interface";
+import { useContext } from 'react';
+import "./Nav.scss"
+import { NavLink } from 'react-router-dom'
+import Select from 'react-select';
+import {UserContext} from '../../Context';
+import { CurrentUser } from '../../interface';
 
 const Decks = [
   {

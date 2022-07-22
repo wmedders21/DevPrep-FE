@@ -55,6 +55,4 @@
      .should('exist')
   })
 
-  //should be able to display an error message if login is unsuccessful?
-
 })

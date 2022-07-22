@@ -97,8 +97,7 @@ const Dashboard: React.FC = () => {
   }
   const updateCWAccess = () => {
     const body = {
-      "codewarsUsername": cwUsername,
-      "username": user.data.attributes.username
+      "codewarsUsername": cwUsername
     }
     updateUser(body, Number(user.data.userId))
     .then(data => setUser(data))
@@ -167,7 +166,7 @@ const Dashboard: React.FC = () => {
           <StatsChart chartData={statsData} options={options} />
         </div>
         <div className="codewars-container">
-          {cwStats.cwUsername ? renderCodewarsStats() : renderForm()}
+          {cwStats.cwUsername !== "null" ? renderCodewarsStats() : renderForm()}
         </div>
         <Decks style="dashboard" />
         <Card quote={quote} />
