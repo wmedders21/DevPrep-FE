@@ -58,7 +58,7 @@ Deployment:
 - Heroku
 
 ## Deployed Link
-- Use DevPrep right [HERE]()!
+- Use DevPrep right [HERE](https://2201-devprep.github.io/DevPrep-FE/)!
 
 ## Learning Goals
 - Learning how to work on large development team and collaborate with each other
@@ -110,5 +110,5 @@ BE: Python
 ## Project Repo
 - The project repo can be found [here](https://github.com/2201-DevPrep)
 
-## Additional Resources
-- 
+
+
