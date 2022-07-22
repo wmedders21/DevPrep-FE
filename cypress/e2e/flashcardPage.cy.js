@@ -15,7 +15,7 @@ describe('FlashcardPage', () => {
         .type('email@example.com')
         .get('.login-button')
         .click()
-    .get('[href="/flashcards/behavioralCards"]').click()
+    .get('[href="/DevPrep-FE/flashcards/behavioralCards"]').click()
     .url().should('eq', 'http://localhost:3000/DevPrep-FE/flashcards/behavioralCards')
   });
 
