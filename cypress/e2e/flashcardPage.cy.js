@@ -22,7 +22,7 @@ describe('FlashcardPage', () => {
   it('user should be able to navigate app pages with app icon or buttons', () => {
     cy.get('.appName > h2').click()
     .url().should('eq', 'http://localhost:3000/DevPrep-FE/dashboard')
-    cy.get('[href="/flashcards/behavioralCards"]').click()
+    cy.get('[href="/DevPrep-FE/flashcards/behavioralCards"]').click()
     .url().should('eq', 'http://localhost:3000/DevPrep-FE/flashcards/behavioralCards')
     cy.get('.signout-button > .nav-button').click()
     .url().should('eq', 'http://localhost:3000/DevPrep-FE/login')
