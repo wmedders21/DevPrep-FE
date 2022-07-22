@@ -1,7 +1,8 @@
 {
   "name": "dev-prep",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "homepage": "http://dev-prep-turing.herokuapp.com",
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
