@@ -1,7 +1,7 @@
 describe("Dashboard", () => {
   before(() => {
-		cy.intercept('POST', 'https://devprep-be.herokuapp.com/api/v1/login', { fixture: 'login.json' })
-		cy.intercept("PATCH", 'https://devprep-be.herokuapp.com/api/v1/users/1', {fixture: 'updateUser.json'})
+		cy.intercept('POST', 'https://devprep-be.fly.dev/api/v1/login', { fixture: 'login.json' })
+		cy.intercept("PATCH", 'https://devprep-be.fly.dev/api/v1/users/1', {fixture: 'updateUser.json'})
     cy.visit("http://localhost:3000/DevPrep-FE");
 		cy.get('form')
     cy.get(".login-input-username[name='name']")
@@ -40,7 +40,7 @@ describe("Dashboard", () => {
   });
 
 	it('a user should be able to see a group of decks and be navigate to a flashcard page with for that deck', () => {
-		cy.intercept('GET', 'https://devprep-be.herokuapp.com/api/v1/users/1/cards', {fixture: 'cards.json'})
+		cy.intercept('GET', 'https://devprep-be.fly.dev/api/v1/users/1/cards', {fixture: 'cards.json'})
 		cy.get('.dashboard-deck-list')
 		.find('a')
 		.first()
