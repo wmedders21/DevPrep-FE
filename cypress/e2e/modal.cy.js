@@ -1,6 +1,6 @@
 describe('Modal', () => {
   beforeEach(() => {
-    cy.intercept('POST', 'https://devprep-be.herokuapp.com/api/v1/users', { fixture: 'newUser.json'})
+    cy.intercept('POST', 'https://devprep-be.fly.dev/api/v1/users', { fixture: 'newUser.json'})
     cy.visit('http://localhost:3000/DevPrep-FE')
     cy.get('.ask-signup')
       .click()

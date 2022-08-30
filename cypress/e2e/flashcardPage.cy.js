@@ -2,11 +2,11 @@ const { Children } = require("react");
 
 describe('FlashcardPage', () => {
   beforeEach(() => {
-      cy.intercept('GET', 'https://devprep-be.herokuapp.com/api/v1/users/1/cards', {fixture: 'cards.json'})
-      cy.intercept('POST', 'https://devprep-be.herokuapp.com/api/v1/login', { fixture: 'login.json' })
-      cy.intercept('POST', 'https://devprep-be.herokuapp.com/api/v1/users/1/cards', { fixture: "newCard.json"})
-      cy.intercept('PATCH', 'https://devprep-be.herokuapp.com/api/v1/users/1/cards/3', { fixture: "editCard.json"})
-      cy.intercept('DELETE', 'https://devprep-be.herokuapp.com/api/v1/users/1/cards/3', { fixture: "deleteCard.json"})
+      cy.intercept('GET', 'https://devprep-be.fly.dev/api/v1/users/1/cards', {fixture: 'cards.json'})
+      cy.intercept('POST', 'https://devprep-be.fly.dev/api/v1/login', { fixture: 'login.json' })
+      cy.intercept('POST', 'https://devprep-be.fly.dev/api/v1/users/1/cards', { fixture: "newCard.json"})
+      cy.intercept('PATCH', 'https://devprep-be.fly.dev/api/v1/users/1/cards/3', { fixture: "editCard.json"})
+      cy.intercept('DELETE', 'https://devprep-be.fly.dev/api/v1/users/1/cards/3', { fixture: "deleteCard.json"})
       cy.visit("http://localhost:3000/DevPrep-FE");
       cy.get('form')
       cy.get(".login-input-username[name='name']")

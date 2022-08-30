@@ -28,7 +28,7 @@ type CWUpdate = {
 }
 
 const getUser = (user: User) => {
-	return fetch("https://devprep-be.herokuapp.com/api/v1/login", {
+	return fetch("https://devprep-be.fly.dev/api/v1/login", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -44,7 +44,7 @@ const getUser = (user: User) => {
 };
 
 const postNewUser = (newUser: NewUser) => {
-	return fetch("https://devprep-be.herokuapp.com/api/v1/users", {
+	return fetch("https://devprep-be.fly.dev/api/v1/users", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -60,13 +60,13 @@ const postNewUser = (newUser: NewUser) => {
 };
 
 const getCards = (userId: number) =>
-fetch(`https://devprep-be.herokuapp.com/api/v1/users/${userId}/cards`)
+fetch(`https://devprep-be.fly.dev/api/v1/users/${userId}/cards`)
 .then((res) => res.json())
 .catch((err) => alert(err));
 
 const patchCard = (userId: number, cardId: number, updatedCard: UpdatedCard) =>
 fetch(
-	`https://devprep-be.herokuapp.com/api/v1/users/${userId}/cards/${cardId}`,
+	`https://devprep-be.fly.dev/api/v1/users/${userId}/cards/${cardId}`,
     {
 		method: "PATCH",
 		headers: {
@@ -86,14 +86,14 @@ fetch(
 
 const deleteCard = (userId: number, cardId: number) =>
   fetch(
-    `https://devprep-be.herokuapp.com/api/v1/users/${userId}/cards/${cardId}`,
+    `https://devprep-be.fly.dev/api/v1/users/${userId}/cards/${cardId}`,
     {
       method: "DELETE"
     }
   ).catch((err) => alert(err));
 
 const postCard = (newCard: newCard, id: number) => {
-	return fetch(`https://devprep-be.herokuapp.com/api/v1/users/${id}/cards`, {
+	return fetch(`https://devprep-be.fly.dev/api/v1/users/${id}/cards`, {
 	method: "POST",
 	headers: {
 		"Content-Type": "application/json",
@@ -105,7 +105,7 @@ const postCard = (newCard: newCard, id: number) => {
 };
 
 const getQuote = () => {
-	return fetch ('https://devprep-be.herokuapp.com/api/v1/quote' )
+	return fetch ('https://devprep-be.fly.dev/api/v1/quote' )
 	.then((res) => {
 		if (res.ok) {
 			return res.json();
@@ -117,7 +117,7 @@ const getQuote = () => {
 }
 
 const updateUser = (user: CWUpdate, id: number) => {
-	return fetch(`https://devprep-be.herokuapp.com/api/v1/users/${id}`, {
+	return fetch(`https://devprep-be.fly.dev/api/v1/users/${id}`, {
 	method: "PATCH",
 	headers: {
 		"Content-Type": "application/json",

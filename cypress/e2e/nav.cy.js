@@ -1,6 +1,6 @@
 describe('empty spec', () => {
   before(() => {
-    cy.intercept('POST', 'https://devprep-be.herokuapp.com/api/v1/login', { fixture: 'login.json' })
+    cy.intercept('POST', 'https://devprep-be.fly.dev/api/v1/login', { fixture: 'login.json' })
     cy.visit("http://localhost:3000/DevPrep-FE");
 		cy.get('form')
     cy.get(".login-input-username[name='name']")
@@ -20,7 +20,7 @@ describe('empty spec', () => {
     })
 
     it('User should be able to navigate to different decks with dropdown menu', () => {
-      cy.intercept('GET', 'https://devprep-be.herokuapp.com/api/v1/users/1/cards', {fixture: 'cards.json'})
+      cy.intercept('GET', 'https://devprep-be.fly.dev/api/v1/users/1/cards', {fixture: 'cards.json'})
         cy.get('.deck-select').contains('Decks')
         cy.get('.deck-select').click()
         cy.get('.dd-menu').contains('Technical Back End')
