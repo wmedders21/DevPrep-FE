@@ -49,13 +49,15 @@ Front-End:
 - Router
 - SCSS
 - Cypress
+- Material UI
+- React Context (Global State Management)
 
 Back-End:
 - Python
 - Flask
 
 Deployment:
-- Heroku
+- Github Pages
 
 ## Deployed Link
 - Use DevPrep right [HERE](https://2201-devprep.github.io/DevPrep-FE/)!
